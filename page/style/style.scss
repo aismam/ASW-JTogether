@@ -1,0 +1,105 @@
+$greenColor : #66A377;
+$blackColor : #333;
+$borderRadius : 5px;
+
+@import url(reset.css);
+
+@font-face {
+    font-family: OpenSans;
+    src: url(../res/fonts/Open_Sans/OpenSans-Regular.ttf);
+}
+@font-face {
+    font-family: OpenSans;
+    src: url(../res/fonts/Open_Sans/OpenSans-Bold.ttf);
+    font-weight: bold;
+}
+
+
+@mixin flexCenter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+@mixin rectangleSize {
+    padding: 15px 5%;
+    width: 100%;
+    border-radius: $borderRadius;
+    border: 1px solid $blackColor;
+    box-sizing: border-box;
+}
+
+body{
+    color:$blackColor;
+    background-image: url("../res/J\ Togerther opacity 0.7.jpg");
+    background-size: cover;
+    font-family: OpenSans;
+    @include flexCenter();
+    height: 100vh;
+}
+
+main{
+    @include flexCenter();
+    text-align: center;
+    width: 90%;
+    font-size: 1em;
+
+    h1{
+        color: $greenColor;
+        -webkit-text-stroke: 1px $blackColor; /* width and color */
+        margin: 30px 0;
+        font-size: 400%;
+        font-weight: bold;
+    }
+
+    section{ 
+        width: 100%;
+        margin: 30px 0;
+        & *{font-size: 100%;}
+    
+        form{
+            li{
+                margin: 20px 0;
+            }
+            input{
+                outline: none;
+                transition: border-color 0.3s;
+                @include rectangleSize();
+                &[type="submit"]{
+                    @extend button
+                }
+                &:focus{
+                    border: 1px solid $greenColor;
+                }
+            }
+        }
+
+        a{
+            color:inherit;
+            text-decoration: none;
+        }
+
+        button{ 
+            cursor: pointer;
+            @include rectangleSize();
+            background-color: $greenColor;
+            color:white;
+        }
+    }
+
+}
+
+footer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: $blackColor;
+
+    p{
+        text-align: center;
+        @include rectangleSize; 
+        color: white;
+    }
+}
+
