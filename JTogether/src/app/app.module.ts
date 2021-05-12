@@ -16,6 +16,8 @@ import { PartecipatedActivityComponent } from './participated-activity/partecipa
 import { SettingsComponent } from './settings/settings.component';
 import { ModifyActivityComponent } from './modify-activity/modify-activity.component';
 import { ModifyProfileComponent } from './modify-profile/modify-profile.component';
+import { EditTextComponent } from './edit-text/edit-text.component';
+import { LargeButtonComponent } from './large-button/large-button.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { ModifyProfileComponent } from './modify-profile/modify-profile.componen
     PartecipatedActivityComponent,
     SettingsComponent,
     ModifyActivityComponent,
-    ModifyProfileComponent
+    ModifyProfileComponent,
+    EditTextComponent,
+    LargeButtonComponent
   ],
   imports: [
     BrowserModule,
