@@ -1,0 +1,28 @@
+- Components:
+Barra ricerca
+Card -> Card footer
+Card list
+
+- Pages:
+Login
+Sign up
+Modify profile
+Create activity
+Modify activity
+Menù
+Chat
+Notifications
+Single Chat
+Profile
+Participated activities
+Home
+
+- Common elements:
+Buttons -> Green button, Red butto
+Inputs -> Searching input, Input with icon, Input
+Setting element -> {icon,title}
+Home page buttons 
+
+- Generals:
+Footer -> Login, Sign up, Modify profile, Create activity, Modify activity, Menù
+Navbar -> Login, Sign up, Modify profile, Create activity, Modify activity, Menù
