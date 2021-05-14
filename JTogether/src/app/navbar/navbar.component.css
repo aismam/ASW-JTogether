@@ -1,7 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 200%;
+  background-color: #333333;
+}
+
+.mat-raised-button {
+  color: white;
+  background-color: #66a377;
+}
+
+.edit-text {
+  outline: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+  border: 1px solid #333;
+  padding: 7px 4%;
+  transition: all 0.3s;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+.edit-text:focus {
+  border-color: #66a377;
+}
+
+@media screen and (min-width: 480px) {
+  .edit-text {
+    padding: 7px 3%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .edit-text {
+    padding: 7px 2%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .edit-text {
+    padding: 7px 1%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .edit-text {
+    padding: 7px 5%;
+  }
+}
+mat-toolbar {
+  background-color: #333;
+}
+mat-toolbar span#toolbar-title {
+  color: #66a377;
+}
+
 .example-spacer {
   flex: 1 1 auto;
 }
 
+mat-icon {
+  color: #66a377;
+}
 mat-icon:hover {
   cursor: pointer;
 }

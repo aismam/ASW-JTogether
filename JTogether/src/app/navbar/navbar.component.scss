@@ -1,11 +1,20 @@
+@import "../../styles";
+
+mat-toolbar{
+  background-color: $secondary;
+  span#toolbar-title{
+    color: $primary;
+  }
+}
 
 .example-spacer {
   flex: 1 1 auto;
 }
-
-mat-icon:hover{
-  cursor: pointer;
-
-
+mat-icon{
+  color: $primary;
+  &:hover{
+    cursor: pointer;
+  }
 }
+
 
