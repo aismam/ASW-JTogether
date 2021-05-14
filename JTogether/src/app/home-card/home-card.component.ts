@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-home-card',
   templateUrl: './home-card.component.html',
   styleUrls: ['./home-card.component.scss']
 })
-export class HomeCardComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class HomeCardComponent {
+  @Input() imageUrl: string | undefined;
 }

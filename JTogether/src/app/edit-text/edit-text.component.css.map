@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["edit-text.component.scss"],"names":[],"mappings":"AAAA;EACE","file":"edit-text.component.css"}
+{"version":3,"sourceRoot":"","sources":["../../styles.scss","edit-text.component.scss"],"names":[],"mappings":"AAAA;AAEA;EAAa;;;AACb;EAAO;EAAW;EAAmD;;;AAMrE;EACE,OAHU;EAIV,kBANS;;;ACHX;EACE;;AACA;EACE;;AAEF;EACE,kBDDQ;;;ACIZ;EACE;EACA","file":"edit-text.component.css"}

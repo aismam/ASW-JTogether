@@ -1,3 +1,37 @@
+ul#card-list {
+  padding: 0;
+  margin: 0;
+}
 
+:host ::ng-deep ul#card-list > li {
+  margin: 10px 0 0 1%;
+  display: inline-block;
+  width: 98%;
+}
+
+@media screen and (min-width: 480px) {
+  :host ::ng-deep ul#card-list > li {
+    margin: 10px 0 0 1%;
+    width: 48%;
+  }
+}
+@media screen and (min-width: 768px) {
+  :host ::ng-deep ul#card-list > li {
+    margin: 10px 0 0 1%;
+    width: 32%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  :host ::ng-deep ul#card-list > li {
+    margin: 10px 0 0 2%;
+    width: 22.5%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  :host ::ng-deep ul#card-list > li {
+    margin: 10px 0 0 0.5%;
+    width: 19.4%;
+  }
+}
 
 /*# sourceMappingURL=card-list.component.css.map */
