@@ -7,11 +7,15 @@ import {Router} from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent{
+  private menuIcon = 'menu';
+  private closeIcon = 'close';
+
   @Input() title: string | undefined;
-  check = true;
+
+  icon = this.menuIcon;
 
   constructor(private router: Router) {
-    router.getCurrentNavigation()?.extractedUrl.toString() === '/home' ? this.check = true : this.check = false;
+    this.icon = router.getCurrentNavigation()?.extractedUrl.toString() === '/home' ? this.menuIcon : this.closeIcon;
   }
 
   onItemClick(): void {

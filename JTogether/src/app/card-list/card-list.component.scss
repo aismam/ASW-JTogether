@@ -4,14 +4,16 @@ ul#card-list{
 }
 
 :host ::ng-deep ul#card-list > li{
-  margin: 10px 0 0 1%;
+  margin: 10px 0;
   display: inline-block;
-  width: 98%;
+  width: 100%;
 }
 
 @media screen and (min-width: 480px) {
   :host ::ng-deep ul#card-list > li{
-    margin: 10px 0 0 1%;
+    &:nth-child(odd){
+      margin-left: 2%;
+    }
     width: 48%;
   }
 }

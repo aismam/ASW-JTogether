@@ -1,11 +1,35 @@
 main {
-  background-color: #333333;
   margin: 0 auto;
   display: flex;
   align-content: center;
   flex-direction: column;
   justify-content: center;
-  width: 98%;
+  width: 95%;
+}
+
+@media screen and (min-width: 480px) {
+  :host ::ng-deep ul#card-list > li {
+    margin: 10px 0 0 1%;
+    width: 48%;
+  }
+}
+@media screen and (min-width: 768px) {
+  :host ::ng-deep ul#card-list > li {
+    margin: 10px 0 0 1%;
+    width: 32%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  :host ::ng-deep ul#card-list > li {
+    margin: 10px 0 0 2%;
+    width: 22.5%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  :host ::ng-deep ul#card-list > li {
+    margin: 10px 0 0 0.5%;
+    width: 19.4%;
+  }
 }
 
 /*# sourceMappingURL=home.component.css.map */
