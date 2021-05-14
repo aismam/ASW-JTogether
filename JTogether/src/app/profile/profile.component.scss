@@ -1,0 +1,139 @@
+.profPic img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer span {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profNameEmail {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media only screen  and (min-width: 0px) and (max-width: 320px){
+  .profPic {
+    padding-bottom: 2px;
+    padding-top: 4px;
+
+    img {
+      width: 100px;
+      border-radius: 100px;
+    }
+  }
+
+  .footer span {
+    font-size: x-small;
+  }
+
+  .profNameEmail span {
+    font-size: small;
+  }
+
+}
+
+@media only screen  and (min-width: 321px) and (max-width: 481px){
+  .profPic {
+    padding-bottom: 5px;
+    padding-top: 7px;
+
+    img {
+      width: 120px;
+      border-radius: 120px;
+    }
+  }
+
+  .footer span {
+    font-size: small;
+  }
+
+  .profNameEmail {
+    font-size: medium;
+  }
+
+}
+
+@media only screen and (min-width: 482px) and (max-width: 769px) {
+  .profPic {
+    padding-bottom: 7px;
+    padding-top: 9px;
+
+    img {
+      width: 140px;
+      border-radius: 140px;
+    }
+  }
+
+  .footer span {
+    font-size: medium;
+  }
+
+  .profNameEmail {
+    padding-bottom: 5px;
+    padding-top: 1px;
+    font-size: large;
+  }
+}
+
+@media only screen and (min-width: 770px) and (max-width: 1201px) {
+  .profPic {
+    padding-bottom: 9px;
+    padding-top: 11px;
+
+    img {
+      width: 160px;
+      border-radius: 160px;
+    }
+  }
+
+  .footer span {
+    font-size: medium;
+  }
+
+  .profNameEmail {
+    padding-bottom: 10px;
+    padding-top: 1px;
+    font-size: large;
+  }
+}
+
+@media only screen and (min-width: 1202px){
+  .profPic {
+    padding-bottom: 9px;
+    padding-top: 11px;
+
+    img {
+      width: 200px;
+      border-radius: 200px;
+    }
+  }
+
+  .footer span {
+    font-size: medium;
+  }
+
+  .profNameEmail {
+    padding-bottom: 10px;
+    padding-top: 3px;
+    font-size: x-large;
+
+    span {
+      margin-bottom: 1%;
+    }
+  }
+}
+
+
+
+
+
+/* // Card degli eventi
+.contentDiv mat-card {
+  max-width: 200px;
+} */
+
