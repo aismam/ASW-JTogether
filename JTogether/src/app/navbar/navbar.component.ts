@@ -8,8 +8,11 @@ import {Router} from '@angular/router';
 })
 export class NavbarComponent{
   @Input() title: string | undefined;
+  check = true;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    router.getCurrentNavigation()?.extractedUrl.toString() === '/home' ? this.check = true : this.check = false;
+  }
 
   onItemClick(): void {
     this.router.url === '/home' ?

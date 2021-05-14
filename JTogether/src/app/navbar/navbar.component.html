@@ -2,6 +2,7 @@
   <mat-toolbar-row>
     <span>{{title}}</span>
     <span class="example-spacer"></span>
-    <mat-icon color="primary" aria-hidden="false" aria-label="Navbar icon" (click)="onItemClick()">menu</mat-icon>
+    <mat-icon *ngIf="check" color="primary" aria-hidden="false" aria-label="Navbar icon" (click)="onItemClick()">menu</mat-icon>
+    <mat-icon *ngIf="!check" color="primary" aria-hidden="false" aria-label="Navbar icon" (click)="onItemClick()">clear</mat-icon>
   </mat-toolbar-row>
 </mat-toolbar>
