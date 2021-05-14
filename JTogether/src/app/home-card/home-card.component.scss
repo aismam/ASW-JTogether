@@ -1,10 +1,14 @@
 @import "../../styles";
 
 mat-card-content{
+  margin: 0;
   ul{
+    margin-left: 2%;
     padding: 0;
     li{
-      margin: 4px 0;
+      &:not(:first-child){
+        margin: 10px 0;
+      }
       display: flex;
       align-items: center;
 
@@ -12,9 +16,12 @@ mat-card-content{
         color: $primary;
       }
       span{
-        margin-left: 10%;
+        margin-left: 5%;
       }
     }
+  }
+  p{
+    text-align: justify;
   }
 }
 

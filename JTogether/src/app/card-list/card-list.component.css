@@ -4,35 +4,55 @@ ul#card-list {
 }
 
 :host ::ng-deep ul#card-list > li {
-  margin: 10px 0;
   display: inline-block;
   width: 100%;
+}
+:host ::ng-deep ul#card-list > li:not(:first-child) {
+  margin-top: 10px;
 }
 
 @media screen and (min-width: 480px) {
   :host ::ng-deep ul#card-list > li {
-    width: 48%;
+    width: 49%;
   }
-  :host ::ng-deep ul#card-list > li:nth-child(odd) {
+  :host ::ng-deep ul#card-list > li:nth-child(even) {
     margin-left: 2%;
   }
 }
 @media screen and (min-width: 768px) {
   :host ::ng-deep ul#card-list > li {
-    margin: 10px 0 0 1%;
+    margin-left: 2%;
     width: 32%;
+  }
+  :host ::ng-deep ul#card-list > li:nth-child(even) {
+    margin-left: 2%;
+  }
+  :host ::ng-deep ul#card-list > li:nth-child(3n+1) {
+    margin-left: 0;
   }
 }
 @media screen and (min-width: 1024px) {
   :host ::ng-deep ul#card-list > li {
-    margin: 10px 0 0 2%;
-    width: 22.5%;
+    margin-left: 2%;
+    width: 23.5%;
+  }
+  :host ::ng-deep ul#card-list > li:nth-child(3n+1) {
+    margin-left: 2%;
+  }
+  :host ::ng-deep ul#card-list > li:nth-child(4n+1) {
+    margin-left: 0;
   }
 }
 @media screen and (min-width: 1200px) {
   :host ::ng-deep ul#card-list > li {
-    margin: 10px 0 0 0.5%;
-    width: 19.4%;
+    margin-left: 2%;
+    width: 18.4%;
+  }
+  :host ::ng-deep ul#card-list > li:nth-child(even), :host ::ng-deep ul#card-list > li:nth-child(3n+1), :host ::ng-deep ul#card-list > li:nth-child(4n+1) {
+    margin-left: 2%;
+  }
+  :host ::ng-deep ul#card-list > li:nth-child(5n+1) {
+    margin-left: 0;
   }
 }
 

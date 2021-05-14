@@ -47,32 +47,13 @@ body {
     padding-left: 1%;
   }
 }
-mat-card-content {
-  margin: 0;
-}
-mat-card-content ul {
-  margin-left: 2%;
-  padding: 0;
-}
-mat-card-content ul li {
-  display: flex;
-  align-items: center;
-}
-mat-card-content ul li:not(:first-child) {
-  margin: 10px 0;
-}
-mat-card-content ul li mat-icon {
-  color: #66a377;
-}
-mat-card-content ul li span {
-  margin-left: 5%;
-}
-mat-card-content p {
-  text-align: justify;
-}
-
-mat-card-actions {
+footer {
+  padding: 20px;
   text-align: center;
 }
+footer a {
+  text-decoration: none;
+  color: #66a377;
+}
 
-/*# sourceMappingURL=home-card.component.css.map */
+/*# sourceMappingURL=footer.component.css.map */

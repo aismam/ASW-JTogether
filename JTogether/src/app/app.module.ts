@@ -21,6 +21,8 @@ import { LargeButtonComponent } from './large-button/large-button.component';
 import { CardListElementComponent } from './card-list-element/card-list-element.component';
 import { CardListComponent } from './card-list/card-list.component';
 import { HomeCardComponent } from './home-card/home-card.component';
+import { NavigationButtonsComponent } from './navigation-buttons/navigation-buttons.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { HomeCardComponent } from './home-card/home-card.component';
     LargeButtonComponent,
     CardListElementComponent,
     CardListComponent,
-    HomeCardComponent
+    HomeCardComponent,
+    NavigationButtonsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
