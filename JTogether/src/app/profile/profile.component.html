@@ -1,1 +1,58 @@
-<p>profile works!</p>
+<body>
+
+  <header>
+    <app-navbar [title]="'Profilo'">
+      riga
+      riga
+      riga
+      footer
+    </app-navbar>
+  </header>
+
+  <main>
+    <div class="profPic">
+      <img src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/w3css/img_avatar3.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="profNameEmail">
+      <span> {{utente}} </span>
+      <span> {{email}} </span>
+    </div>
+
+    <app-card-list>
+      <li *ngFor="let createdActivity of createdActivities"><app-home-card [imageUrl]="'https://material.angular.io/assets/img/examples/shiba2.jpg'"></app-home-card></li>
+    </app-card-list>
+  </main>
+
+  <footer class="footer">
+    <span>Powered By SpeedWagon Foundation</span>
+  </footer>
+
+</body>
+
+
+
+
+
+
+
+
+<!--<div class="contentDiv">
+  <mat-card>
+    <mat-card-header>
+      <img mat-card-avatar src="{{activities.imageUrl}}">
+      <mat-card-title> {{activities.name}} </mat-card-title>
+      <mat-card-subtitle> {{activities.creator}}</mat-card-subtitle>
+    </mat-card-header>
+    <div mat-card-image></div>
+    <mat-card-content>
+      <p> {{activities.description}} </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
+</div>-->
+
+
