@@ -13,10 +13,15 @@
     <div class="profPic">
       <img src="http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/w3css/img_avatar3.png" alt="Avatar" class="avatar">
     </div>
+
     <div class="profNameEmail">
       <span> {{utente}} </span>
       <span> {{email}} </span>
     </div>
+
+    <app-card-list>
+      <li *ngFor="let createdActivity of createdActivities"><app-home-card [imageUrl]="'https://material.angular.io/assets/img/examples/shiba2.jpg'"></app-home-card></li>
+    </app-card-list>
   </main>
 
   <footer class="footer">
