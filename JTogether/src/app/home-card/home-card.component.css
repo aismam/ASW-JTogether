@@ -1,14 +1,36 @@
-.example-card {
-  max-width: 400px;
+/* You can add global styles to this file, and also import other style files */
+html, body {
+  height: 100%;
 }
 
-.example-header-image {
-  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
-  background-size: cover;
-}
-
-.mat-card-title {
+body {
   margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #333;
+}
+
+.mat-raised-button {
+  color: white;
+  background-color: #66a377;
+}
+
+mat-card-content ul {
+  padding: 0;
+}
+mat-card-content ul li {
+  margin: 4px 0;
+  display: flex;
+  align-items: center;
+}
+mat-card-content ul li mat-icon {
+  color: #66a377;
+}
+mat-card-content ul li span {
+  margin-left: 10%;
+}
+
+mat-card-actions {
+  text-align: center;
 }
 
 /*# sourceMappingURL=home-card.component.css.map */

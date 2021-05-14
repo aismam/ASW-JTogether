@@ -1,8 +1,14 @@
-<app-navbar [title]="'Crea la tua attivita'">
-  riga
-  riga
-  riga
-  footer
-</app-navbar>
-<app-edit-text [placeholder]="'mannaggia'" [icon]="'people'" [hint]="'mannaggina mannaggetta'" ></app-edit-text>
-<app-home-card></app-home-card>
+
+<header>
+  <app-navbar [title]="'Crea la tua attivita'"></app-navbar>
+</header>
+<main>
+  <app-edit-text [placeholder]="'mannaggia'" [icon]="'people'" [hint]="'mannaggina mannaggetta'" ></app-edit-text>
+
+  <app-card-list>
+    <li *ngFor="let card of cards"><app-home-card [imageUrl]="'https://material.angular.io/assets/img/examples/shiba2.jpg'"></app-home-card></li>
+  </app-card-list>
+
+</main>
+
+

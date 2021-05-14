@@ -1,3 +1,15 @@
+@import "../../styles";
+
 mat-form-field{
   width: 100%;
+  mat-icon{
+    color: $primary;
+  }
+  input{
+    background-color: $tertiary;
+  }
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: white;
+  border-radius: 5px;
 }
