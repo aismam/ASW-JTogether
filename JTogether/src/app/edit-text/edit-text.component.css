@@ -1,13 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-html, body {
-  height: 100%;
-}
-
 body {
+  height: 100vh;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   font-size: 200%;
-  background-color: #333333;
+  background-color: #333;
 }
 
 .mat-raised-button {
@@ -15,46 +12,59 @@ body {
   background-color: #66a377;
 }
 
-.edit-text {
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+label {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+input {
+  width: 100%;
   outline: none;
   border-radius: 5px;
   box-sizing: border-box;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border: 2px solid darkgray;
-  padding: 10px 4%;
-  transition: all 0.3s;
+  transition: border-color 0.3s;
+  padding-left: 2%;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 }
-.edit-text:focus {
+input:focus {
   border-color: #66a377;
 }
-
 @media screen and (min-width: 480px) {
-  .edit-text {
-    padding-left: 3%;
-  }
-}
-@media screen and (min-width: 768px) {
-  .edit-text {
+  input {
     padding-left: 2%;
   }
 }
+@media screen and (min-width: 768px) {
+  input {
+    padding-left: 1.5%;
+  }
+}
 @media screen and (min-width: 1024px) {
-  .edit-text {
+  input {
     padding-left: 1%;
   }
 }
 @media screen and (min-width: 1200px) {
-  .edit-text {
+  input {
     padding-left: 1%;
   }
-}
-mat-form-field {
-  width: 100%;
-}
-mat-form-field mat-icon {
-  color: #66a377;
-}
-mat-form-field input {
-  background-color: white;
 }
 
 /*# sourceMappingURL=edit-text.component.css.map */

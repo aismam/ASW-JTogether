@@ -1,13 +1,11 @@
-
-<app-navbar [title]="'Crea la tua attivita'"></app-navbar>
+<app-navbar [title]="'JTogether'"></app-navbar>
 <main>
-  <input class="edit-text" placeholder="Cerca un’attività"/>
+  <app-edit-text [type]="'text'" [id]="'search'" [placeholder]="'Search'" [name]="'search'"></app-edit-text>
   <app-navigation-buttons></app-navigation-buttons>
   <app-card-list>
     <li *ngFor="let card of cards"><app-home-card [imageUrl]="'https://material.angular.io/assets/img/examples/shiba2.jpg'"></app-home-card></li>
   </app-card-list>
 </main>
-<app-footer></app-footer>
 
 
 

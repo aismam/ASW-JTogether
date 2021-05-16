@@ -2,19 +2,17 @@
 
 mat-toolbar{
   background-color: $secondary;
-  span#toolbar-title{
+  a,mat-icon{
     color: $primary;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+  .example-spacer {
+    flex: 1 1 auto;
   }
 }
 
-.example-spacer {
-  flex: 1 1 auto;
-}
-mat-icon{
-  color: $primary;
-  &:hover{
-    cursor: pointer;
-  }
-}
+
 
 

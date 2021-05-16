@@ -1,5 +1,16 @@
-<p>login works!</p>
-<app-signup></app-signup>
-<button (click)="random()">Premimi</button>
-<a routerLink="/home" >Ciao</a>
-
+<app-enter-page>
+  <ul class="body">
+    <li><h1>J Together</h1></li>
+    <li>
+      <form>
+        <ul>
+          <li><app-edit-text [type]="'text'" [name]="'username'" [id]="'username'" [placeholder]="'Username'"></app-edit-text></li>
+          <li><app-edit-text [type]="'password'" [name]="'password'" [id]="'password'" [placeholder]="'Password'"></app-edit-text></li>
+          <li><button mat-raised-button>Login</button></li>
+        </ul>
+      </form>
+    </li>
+    <li><a href="ismam sei un legno">Password dimenticata?</a></li>
+    <li><button mat-raised-button>Non hai un'account ? Registrati!</button></li>
+  </ul>
+</app-enter-page>

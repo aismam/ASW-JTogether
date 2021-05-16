@@ -1,0 +1,37 @@
+h1 {
+  color: #66a377;
+  -webkit-text-stroke: 1px #333;
+  /* width and color */
+  margin: 30px 0;
+  font-size: 400%;
+  font-weight: bold;
+}
+
+ul.body {
+  height: 60%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+li {
+  width: 100%;
+  text-align: center;
+}
+
+form li {
+  margin-top: 20px;
+}
+
+a {
+  color: #333;
+}
+
+button {
+  width: 100%;
+}
+
+/*# sourceMappingURL=login.component.css.map */

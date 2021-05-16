@@ -23,6 +23,7 @@ import { CardListComponent } from './card-list/card-list.component';
 import { HomeCardComponent } from './home-card/home-card.component';
 import { NavigationButtonsComponent } from './navigation-buttons/navigation-buttons.component';
 import { FooterComponent } from './footer/footer.component';
+import { EnterPageComponent } from './enter-page/enter-page.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { FooterComponent } from './footer/footer.component';
     CardListComponent,
     HomeCardComponent,
     NavigationButtonsComponent,
-    FooterComponent
+    FooterComponent,
+    EnterPageComponent
   ],
   imports: [
     BrowserModule,

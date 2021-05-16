@@ -1,13 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-html, body {
-  height: 100%;
-}
-
 body {
+  height: 100vh;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   font-size: 200%;
-  background-color: #333333;
+  background-color: #333;
 }
 
 .mat-raised-button {
@@ -15,54 +12,27 @@ body {
   background-color: #66a377;
 }
 
-.edit-text {
-  outline: none;
-  border-radius: 5px;
-  box-sizing: border-box;
-  border: 2px solid darkgray;
-  padding: 10px 4%;
-  transition: all 0.3s;
-}
-.edit-text:focus {
-  border-color: #66a377;
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
-@media screen and (min-width: 480px) {
-  .edit-text {
-    padding-left: 3%;
-  }
+a {
+  text-decoration: none;
 }
-@media screen and (min-width: 768px) {
-  .edit-text {
-    padding-left: 2%;
-  }
-}
-@media screen and (min-width: 1024px) {
-  .edit-text {
-    padding-left: 1%;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .edit-text {
-    padding-left: 1%;
-  }
-}
+
 mat-toolbar {
   background-color: #333;
 }
-mat-toolbar span#toolbar-title {
+mat-toolbar a, mat-toolbar mat-icon {
   color: #66a377;
 }
-
-.example-spacer {
-  flex: 1 1 auto;
-}
-
-mat-icon {
-  color: #66a377;
-}
-mat-icon:hover {
+mat-toolbar a:hover, mat-toolbar mat-icon:hover {
   cursor: pointer;
+}
+mat-toolbar .example-spacer {
+  flex: 1 1 auto;
 }
 
 /*# sourceMappingURL=navbar.component.css.map */

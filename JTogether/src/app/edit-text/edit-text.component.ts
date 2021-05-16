@@ -9,4 +9,7 @@ export class EditTextComponent {
   @Input() placeholder: string | undefined;
   @Input() icon: string | undefined;
   @Input() hint: string | undefined;
+  @Input() id: string | undefined;
+  @Input() type = 'text';
+  @Input() name: string | undefined;
 }

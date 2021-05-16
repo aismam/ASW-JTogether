@@ -1,0 +1,48 @@
+@import "variables";
+
+// flexbox row element
+@mixin flexRow{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+// flexbox column element
+@mixin flexCol{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+// for buttons and edit text elements
+@mixin fullWidthComponent{
+  width: 100%;
+  outline: none;
+  border-radius: $border-radius;
+  box-sizing: border-box;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+@mixin mobile{
+  @media screen and (min-width: 480px) {
+    @content;
+  }
+}
+@mixin tablet{
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+@mixin small-screen{
+  @media screen and (min-width: 1024px) {
+    @content;
+  }
+}
+@mixin desktop{
+  @media screen and (min-width: 1200px) {
+    @content;
+  }
+}

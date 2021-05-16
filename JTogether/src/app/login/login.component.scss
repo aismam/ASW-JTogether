@@ -1,0 +1,35 @@
+@import "../../mixins";
+@import "../../variables";
+
+h1{
+  color: $primary;
+  -webkit-text-stroke: 1px $secondary; /* width and color */
+  margin: 30px 0;
+  font-size: 400%;
+  font-weight: bold;
+}
+
+ul.body{
+  height: 60%;
+  width: 90%;
+  @include flexCol;
+  justify-content: space-between;
+}
+
+li{
+  width: 100%;
+  text-align: center;
+}
+
+form  li{
+  margin-top: 20px;
+}
+
+a{
+  color: $secondary;
+}
+
+button{
+  width: 100%;
+}
+
