@@ -1,6 +1,6 @@
 h1 {
   color: #66a377;
-  -webkit-text-stroke: 1px #333;
+  -webkit-text-stroke: 1px #e0e0e0;
   /* width and color */
   margin: 30px 0;
   font-size: 400%;
@@ -27,7 +27,7 @@ form li {
 }
 
 a {
-  color: #333;
+  color: #e0e0e0;
 }
 
 button {

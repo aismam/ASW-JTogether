@@ -1,29 +1,77 @@
-.profPic img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+/* You can add global styles to this file, and also import other style files */
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 200%;
+  background-color: #e0e0e0;
 }
 
-.footer span {
+.mat-raised-button {
+  color: white;
+  background-color: #66a377;
+  width: 100%;
+  height: 50px;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+main {
   display: flex;
-  align-items: center;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
-.profNameEmail {
+main .profPic, main .profNameEmail, main app-card-list {
   display: flex;
-  align-items: center;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+}
+@media screen and (min-width: 250px) {
+  main {
+    background-color: red;
+  }
+  main .profPic {
+    padding-bottom: 5px;
+    padding-top: 7px;
+  }
+  main .profPic img {
+    width: 120px;
+    border-radius: 120px;
+  }
+}
+@media screen and (min-width: 480px) {
+  main .profPic {
+    padding-bottom: 7px;
+    padding-top: 9px;
+  }
+  main .profPic img {
+    width: 140px;
+    border-radius: 140px;
+  }
 }
 
-@media only screen and (min-width: 0px) and (max-width: 320px) {
+/*
+
+@media only screen  and (min-width: 0px) and (max-width: 320px){
   .profPic {
     padding-bottom: 2px;
     padding-top: 4px;
-  }
-  .profPic img {
-    width: 100px;
-    border-radius: 100px;
+
+    img {
+      width: 100px;
+      border-radius: 100px;
+    }
   }
 
   .footer span {
@@ -33,15 +81,18 @@
   .profNameEmail span {
     font-size: small;
   }
+
 }
-@media only screen and (min-width: 321px) and (max-width: 481px) {
+
+@media only screen  and (min-width: 321px) and (max-width: 481px){
   .profPic {
     padding-bottom: 5px;
     padding-top: 7px;
-  }
-  .profPic img {
-    width: 120px;
-    border-radius: 120px;
+
+    img {
+      width: 120px;
+      border-radius: 120px;
+    }
   }
 
   .footer span {
@@ -51,15 +102,18 @@
   .profNameEmail {
     font-size: medium;
   }
+
 }
+
 @media only screen and (min-width: 482px) and (max-width: 769px) {
   .profPic {
     padding-bottom: 7px;
     padding-top: 9px;
-  }
-  .profPic img {
-    width: 140px;
-    border-radius: 140px;
+
+    img {
+      width: 140px;
+      border-radius: 140px;
+    }
   }
 
   .footer span {
@@ -72,14 +126,16 @@
     font-size: large;
   }
 }
+
 @media only screen and (min-width: 770px) and (max-width: 1201px) {
   .profPic {
     padding-bottom: 9px;
     padding-top: 11px;
-  }
-  .profPic img {
-    width: 160px;
-    border-radius: 160px;
+
+    img {
+      width: 160px;
+      border-radius: 160px;
+    }
   }
 
   .footer span {
@@ -92,14 +148,16 @@
     font-size: large;
   }
 }
-@media only screen and (min-width: 1202px) {
+
+@media only screen and (min-width: 1202px){
   .profPic {
     padding-bottom: 9px;
     padding-top: 11px;
-  }
-  .profPic img {
-    width: 200px;
-    border-radius: 200px;
+
+    img {
+      width: 200px;
+      border-radius: 200px;
+    }
   }
 
   .footer span {
@@ -110,11 +168,12 @@
     padding-bottom: 10px;
     padding-top: 3px;
     font-size: x-large;
+
+    span {
+      margin-bottom: 1%;
+    }
   }
-  .profNameEmail span {
-    margin-bottom: 1%;
-  }
-}
+} */
 /* // Card degli eventi
 .contentDiv mat-card {
   max-width: 200px;

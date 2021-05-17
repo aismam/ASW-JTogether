@@ -49,7 +49,15 @@ mat-card-content p {
 }
 
 mat-card-actions {
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-content: center;
+}
+mat-card-actions mat-icon {
+  color: #66a377;
+  transform: scale(2);
+  padding: 8%;
 }
 
-/*# sourceMappingURL=home-card.component.css.map */
+/*# sourceMappingURL=profile-card.component.css.map */

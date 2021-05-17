@@ -1,0 +1,35 @@
+@import "../../mixins";
+@import "../../variables";
+
+main {
+  @include flexCol;
+
+  .form-area {
+    width: 90%;
+
+    @include small-screen {
+      width: 80%;
+    }
+    @include desktop {
+      width: 70%;
+    }
+    @include large-desktop {
+      width: 50%;
+    }
+
+    p {
+      margin-top: 15px;
+      text-align: center;
+
+      mat-form-field {
+        width: 100%;
+      }
+
+      .time::-webkit-calendar-picker-indicator {
+        background: none;
+      }
+    }
+  }
+}
+
+

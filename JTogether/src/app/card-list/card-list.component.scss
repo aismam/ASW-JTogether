@@ -8,16 +8,16 @@ ul#card-list{
 :host ::ng-deep ul#card-list > li{
   width: 100%;
   margin-top: 20px;
-  @include mobile{
+  @include tablet {
     width: 48%;
   }
-  @include tablet{
+  @include small-screen {
     width: 32%;
   }
-  @include small-screen{
+  @include desktop {
     width: 23.5%;
   }
-  @include desktop{
+  @include large-desktop {
     width: 19%;
   }
 }
