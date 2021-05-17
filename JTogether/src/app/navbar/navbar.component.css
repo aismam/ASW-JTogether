@@ -25,7 +25,7 @@ a {
 }
 
 mat-toolbar {
-  background-color: #e0e0e0;
+  background-color: #333333;
 }
 mat-toolbar a, mat-toolbar mat-icon {
   color: #66a377;

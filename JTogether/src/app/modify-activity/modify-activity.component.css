@@ -1,3 +1,36 @@
-
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+main .form-area {
+  width: 90%;
+}
+@media screen and (min-width: 768px) {
+  main .form-area {
+    width: 80%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  main .form-area {
+    width: 70%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  main .form-area {
+    width: 50%;
+  }
+}
+main .form-area p {
+  margin-top: 15px;
+  text-align: center;
+}
+main .form-area p mat-form-field {
+  width: 100%;
+}
+main .form-area p .time::-webkit-calendar-picker-indicator {
+  background: none;
+}
 
 /*# sourceMappingURL=modify-activity.component.css.map */

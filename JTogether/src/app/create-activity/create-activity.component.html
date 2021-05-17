@@ -35,6 +35,7 @@
         <mat-label>Scegli una data</mat-label>
         <input matInput [matDatepicker]="picker">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-hint>Inserisci la data dell'attività</mat-hint>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </p>
@@ -43,6 +44,7 @@
       <mat-form-field appearance="outline" class="example-full-width">
         <mat-label>Aggiungi una descrizione</mat-label>
         <textarea matInput placeholder="Ex. Portatevi una barca, servirà per ..."></textarea>
+        <mat-hint>Inserisci una descrizione</mat-hint>
       </mat-form-field>
     </p>
 
