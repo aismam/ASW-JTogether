@@ -26,6 +26,12 @@
   padding-bottom: 10px;
 }
 
+@mixin mobile {
+  @media screen and (min-width: 250px) {
+    @content;
+  }
+}
+
 @mixin tablet {
   @media screen and (min-width: 480px) {
     @content;

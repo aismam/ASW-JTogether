@@ -8,6 +8,8 @@ import {Activities} from '../_Models/activities';
 })
 export class ProfileComponent implements OnInit {
 
+  cards: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
   activities: Activities = {
     imageUrl : 'http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/w3css/img_avatar3.png',
     id : '123',

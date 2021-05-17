@@ -1,20 +1,58 @@
-.profPic img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+@import "../../styles";
+@import "../../mixins.scss";
+
+main {
+
+  @include flexCol;
+
+
+  .profPic, .profNameEmail, app-card-list{
+    @include flexCol;
+    width: 90%;
+  }
+
+  @include mobile{
+
+    background-color: red;
+
+    .profPic {
+      padding-bottom: 5px;
+      padding-top: 7px;
+      img {
+        width: 120px;
+        border-radius: 120px;
+      }
+    }
+
+  }
+
+  @include tablet{
+    //background-color: green;
+
+    .profPic {
+      padding-bottom: 7px;
+      padding-top: 9px;
+      img {
+        width: 140px;
+        border-radius: 140px;
+      }
+    }
+  }
+
+
+
+
+
+
 }
 
-.footer span {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
 
-.profNameEmail {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
+
+
+
+
+
+/*
 
 @media only screen  and (min-width: 0px) and (max-width: 320px){
   .profPic {
@@ -126,11 +164,7 @@
       margin-bottom: 1%;
     }
   }
-}
-
-
-
-
+} */
 
 /* // Card degli eventi
 .contentDiv mat-card {
