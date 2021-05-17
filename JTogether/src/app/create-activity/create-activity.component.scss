@@ -5,7 +5,7 @@ main {
   justify-content: center;
 
   .form-area {
-    background-color: white;
+    //background-color: white;
     margin-top: 5%;
     border-radius: 15px;
     width: 530px;
@@ -17,8 +17,15 @@ main {
       mat-form-field {
         width: 500px;
       }
+
+      .time::-webkit-calendar-picker-indicator {
+        background: none;
+      }
+
     }
+
   }
+
 }
 
 

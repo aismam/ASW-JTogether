@@ -1,1 +1,53 @@
-<p>modify-profile works!</p>
+<app-navbar [title]="'Modifica profilo'"></app-navbar>
+
+<main>
+
+  <form class="form-area">
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Nuova e-mail</mat-label>
+        <input matInput placeholder="Ex. Jotaro.Kujo@jojo.it">
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-hint>Inserisci la tua nuova e-mail</mat-hint>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Nuovo nome</mat-label>
+        <input matInput placeholder="Ex. Jotaro">
+        <mat-icon matSuffix>account_circle</mat-icon>
+        <mat-hint>Inserisci il tuo nuovo nome</mat-hint>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Nuova password</mat-label>
+        <input matInput type="password">
+        <mat-icon matSuffix>password</mat-icon>
+        <mat-hint>Inserisci la tua nuova password</mat-hint>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Nuova numero di telefono</mat-label>
+        <input matInput placeholder="Ex. 342-2421697">
+        <mat-icon matSuffix>phone</mat-icon>
+        <mat-hint>Inserisci il tuo nuovo numero di telefono</mat-hint>
+      </mat-form-field>
+    </p>
+
+    <p class="update">
+      <button mat-raised-button>Modifica profilo</button>
+    </p>
+
+    <p class="delete">
+      <button mat-raised-button color="warn">Elimina profilo</button>
+    </p>
+
+
+  </form>
+</main>

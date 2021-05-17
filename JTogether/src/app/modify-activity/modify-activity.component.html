@@ -1,1 +1,55 @@
-<p>modify-activity works!</p>
+<app-navbar [title]="'Modifica attività'"></app-navbar>
+
+<main>
+
+  <form class="form-area">
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Nuovo Nome</mat-label>
+        <input matInput placeholder="Ex. Jojo Fight">
+        <mat-icon matSuffix>face</mat-icon>
+        <mat-hint>Inserisci il nome dell'attività</mat-hint>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Nuovo Luogo</mat-label>
+        <input matInput placeholder="Ex. Morio Cho">
+        <mat-icon matSuffix>place</mat-icon>
+        <mat-hint>Inserisci il luogo dell'attività</mat-hint>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Nuovo Orario</mat-label>
+        <input matInput type="time" class="time" placeholder="Ex. 14:30">
+        <mat-icon matSuffix>schedule</mat-icon>
+        <mat-hint>Inserisci l'orario dell'attività</mat-hint>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Scegli nuova una data</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Aggiungi nuova una descrizione</mat-label>
+        <textarea matInput placeholder="Ex. Portatevi una barca, servirà per ..."></textarea>
+      </mat-form-field>
+    </p>
+  </form>
+
+  <p class="create">
+    <button mat-raised-button>Modifica attività</button>
+  </p>
+
+</main>
+
