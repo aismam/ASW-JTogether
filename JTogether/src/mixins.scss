@@ -26,22 +26,22 @@
   padding-bottom: 10px;
 }
 
-@mixin mobile{
+@mixin tablet {
   @media screen and (min-width: 480px) {
     @content;
   }
 }
-@mixin tablet{
+@mixin small-screen {
   @media screen and (min-width: 768px) {
     @content;
   }
 }
-@mixin small-screen{
+@mixin desktop {
   @media screen and (min-width: 1024px) {
     @content;
   }
 }
-@mixin desktop{
+@mixin large-desktop {
   @media screen and (min-width: 1200px) {
     @content;
   }
