@@ -8,6 +8,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 const materialComponents = [
   MatFormFieldModule,
@@ -18,7 +20,9 @@ const materialComponents = [
   MatCardModule,
   MatGridListModule,
   MatDividerModule,
-  MatListModule
+  MatListModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
 ];
 
 @NgModule({
