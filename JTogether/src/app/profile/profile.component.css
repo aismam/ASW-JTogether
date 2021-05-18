@@ -25,40 +25,52 @@ a {
 }
 
 main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-main .profPic, main .profNameEmail, main app-card-list {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-}
-@media screen and (min-width: 250px) {
-  main {
+  /* @include flexCol;
+
+
+  .profPic, .profNameEmail, app-card-list{
+    @include flexCol;
+    width: 90%;
+  }
+
+  @include mobile{
+
     background-color: red;
+
+    .profPic {
+      padding-bottom: 5px;
+      padding-top: 7px;
+      img {
+        width: 120px;
+        border-radius: 120px;
+      }
+    }
+
   }
-  main .profPic {
-    padding-bottom: 5px;
-    padding-top: 7px;
-  }
-  main .profPic img {
-    width: 120px;
-    border-radius: 120px;
-  }
+
+  @include tablet{
+    //background-color: green;
+
+    .profPic {
+      padding-bottom: 7px;
+      padding-top: 9px;
+      img {
+        width: 140px;
+        border-radius: 140px;
+      }
+    }
+  }*/
 }
-@media screen and (min-width: 480px) {
-  main .profPic {
-    padding-bottom: 7px;
-    padding-top: 9px;
-  }
-  main .profPic img {
-    width: 140px;
-    border-radius: 140px;
-  }
+main .profPic {
+  padding-bottom: 2px;
+  padding-top: 4px;
+}
+main .profPic img {
+  width: 100px;
+  border-radius: 100px;
+}
+main .profNameEmail span {
+  font-size: small;
 }
 
 /*
