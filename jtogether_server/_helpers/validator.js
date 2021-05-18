@@ -1,7 +1,7 @@
 const { check, validationResult } = require('express-validator');
 
 
-const  validationRules = [
+const  userValidationRules = [
     check('username','Username must be at least 1 character').notEmpty(),
     check('password','Password must be at least 1 character').notEmpty()
 ]
@@ -19,6 +19,6 @@ function validate(req,res,next){
 }
 
 module.exports = {
-    validationRules,
+    validationRules: userValidationRules,
     validate
 }

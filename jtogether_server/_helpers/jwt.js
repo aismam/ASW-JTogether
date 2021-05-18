@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 const config = require('../config.json')
-const {forbiddenError,} = require('./error-handler')
 
 const EXPIRATION_TIME_ACCESS_TOKEN = '20m'
 const EXPIRATION_TIME_REFRESH_TOKEN = '120d'
@@ -12,7 +11,7 @@ module.exports = {
     getRefreshToken,
     pushRefreshToken,
     removeToken,
-    authenticateJwt,
+    authenticateJWT,
     refreshTokens
 }
 
@@ -35,27 +34,22 @@ async function refreshToken(res,req,next){
     })
 }
 
-function  authenticateJwt (err,req, res, next) {
-    if(err){
-        next(err)
-    }
-
+function authenticateJWT (req, res, next) {
     const authHeader = req.headers.authorization;
     if (authHeader) {
         const token = authHeader.split(' ')[1];
 
         jwt.verify(token, config.secret, (err, user) => {
             if (err) {
-                next(err)
+                return res.sendStatus(403);
             }
             req.user = user;
             next();
         });
     } else {
-        err.name = "UnauthorizedError"
-        next(err)
+        res.sendStatus(401);
     }
-};
+}
 
 function getAccessToken(user){
     return jwt.sign({ username: user.username},
