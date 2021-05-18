@@ -9,8 +9,8 @@ import {ModifyActivityComponent} from './modify-activity/modify-activity.compone
 import {ModifyProfileComponent} from './modify-profile/modify-profile.component';
 import {NotificationsComponent} from './notifications/notifications.component';
 import {SettingsComponent} from './settings/settings.component';
-import {PartecipatedActivityComponent} from './participated-activity/partecipated-activity.component';
 import {CreateActivityComponent} from './create-activity/create-activity.component';
+import {ParticipatedActivityComponent} from './participated-activity/participated-activity.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'modify-profile', component: ModifyProfileComponent},
   { path: 'notifications', component: NotificationsComponent},
   { path: 'settings', component: SettingsComponent},
-  { path: 'participated-activity', component: PartecipatedActivityComponent},
+  { path: 'participated-activity', component: ParticipatedActivityComponent},
   { path: 'create-activity', component: CreateActivityComponent}
 ];
 
