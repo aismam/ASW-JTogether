@@ -1,11 +1,12 @@
 const express = require('express');
 const app = express();
-const errorHandler = require('./_helpers/error-handler')
-
+const {resourceNotFoundHandler,errorHandler} = require('./_helpers/error-handler')
 
 app.use(express.json())// for json body parse
-    .use(require('./logic/auth-controller'))
+    .use(require('./controller/auth-controller'))
     .use(errorHandler)
+    .use(resourceNotFoundHandler)
+
 
 
 const port = 3000;

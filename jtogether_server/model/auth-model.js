@@ -22,8 +22,7 @@ async function signup(userParams){
         return bcrypt.hash(userParams.password, SALT_ROUNDS)
             .then(hash => {
                 userParams.hash = hash;
-                /*userService.saveUser(userParams)
-                    .then(()=> return 'user create successfully')*/
+                userService.saveUser(userParams)
             })
     }
     else {
@@ -32,9 +31,9 @@ async function signup(userParams){
 }
 
 async function login({username,password}) {
-    const user = {username: 'Lorenzo', hash: 'gianluca'}//await userService.getUser(username)
+    const user = await userService.getUser(username)
 
-    if (user && password == user.hash/*bcrypt.compareSync(password, user.hash)*/) {
+    if (bcrypt.compareSync(password, user.hash)) {
         const accessToken = jwt.getAccessToken(user)
         const refreshToken = jwt.getRefreshToken(user)
 
@@ -45,14 +44,12 @@ async function login({username,password}) {
             refresh_token : refreshToken
         }
     }
-    else throw LOGIN_FAILED
+    else {
+        throw LOGIN_FAILED
+    }
 }
 
 async function logout(token){
     jwt.removeToken(token)
-}
-
-async function throwError(error){
-    throw new Error(error)
 }
 

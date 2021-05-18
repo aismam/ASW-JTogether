@@ -1,31 +1,25 @@
 
-module.exports = errorHandler
+module.exports = {errorHandler,resourceNotFoundHandler}
 
-function errorHandler(req,res,err) {
+function errorHandler(err, req, res, notUsed) {
     if (typeof (err) === 'string') {
-        // custom application error
         return res.status(400).json({ message: err })
     }
 
     if (err.name === 'ValidationError') {
-        // mongoose validation error
-        console.log('mannaggia4')
-
         return res.status(400).json({ message: err.message })
     }
 
     if (err.name === 'UnauthorizedError') {
-        // jwt authentication error
-        console.log('mannaggia3')
-
         return res.status(401).json({ message: 'Invalid Token' })
     }
 
     if (err.name === 'PageNotFound') {
-        console.log('mannaggia2')
-        return res.status(404).json({ message: err.message })
     }
 
-    // default to 404 server error
-    return res.status(404).json({ message: 'Page not found' })
+    return res.status(500).json({ message: err.message })
+}
+
+function resourceNotFoundHandler(req, res){
+    return res.status(404).json({ message: 'Resource not found' })
 }

@@ -6,11 +6,11 @@ module.exports = {
 }
 
 async function getUser(username){
-    //return User.findOne({username: username});
+    return User.findOne({username: username});
 }
 
 function saveUser(userParams){
-    //return new User(userParams).save()
+    return new User(userParams).save()
 }
 
 
