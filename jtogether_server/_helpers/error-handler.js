@@ -14,9 +14,9 @@ function errorHandler(err, req, res, notUsed) {
         return res.status(401).json({ message: 'Invalid Token' })
     }
 
-    if (err.name === 'PageNotFound') {
+    if (err.name === 'UnprocessableEntity') {
+        return res.status(422).json({ message: err.message })
     }
-
     return res.status(500).json({ message: err.message })
 }
 

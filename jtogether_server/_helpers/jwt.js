@@ -12,6 +12,7 @@ module.exports = {
     getRefreshToken,
     pushRefreshToken,
     removeToken,
+    authenticateJwt,
     refreshTokens
 }
 
@@ -33,6 +34,28 @@ async function refreshToken(res,req,next){
         return getAccessToken(user);
     })
 }
+
+function  authenticateJwt (err,req, res, next) {
+    if(err){
+        next(err)
+    }
+
+    const authHeader = req.headers.authorization;
+    if (authHeader) {
+        const token = authHeader.split(' ')[1];
+
+        jwt.verify(token, config.secret, (err, user) => {
+            if (err) {
+                next(err)
+            }
+            req.user = user;
+            next();
+        });
+    } else {
+        err.name = "UnauthorizedError"
+        next(err)
+    }
+};
 
 function getAccessToken(user){
     return jwt.sign({ username: user.username},

@@ -5,7 +5,7 @@ const {resourceNotFoundHandler,errorHandler} = require('./_helpers/error-handler
 app.use(express.json())// for json body parse
     .use(require('./controller/auth-controller'))
     .use(errorHandler)
-    .use(resourceNotFoundHandler)
+    //.use(resourceNotFoundHandler)
 
 
 
