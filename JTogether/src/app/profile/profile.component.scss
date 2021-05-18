@@ -3,7 +3,21 @@
 
 main {
 
-  @include flexCol;
+  .profPic {
+    padding-bottom: 2px;
+    padding-top: 4px;
+
+    img {
+      width: 100px;
+      border-radius: 100px;
+    }
+  }
+
+  .profNameEmail span {
+    font-size: small;
+  }
+
+  /* @include flexCol;
 
 
   .profPic, .profNameEmail, app-card-list{
@@ -37,7 +51,7 @@ main {
         border-radius: 140px;
       }
     }
-  }
+  }*/
 
 
 

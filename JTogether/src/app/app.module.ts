@@ -12,7 +12,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { CreateActivityComponent } from './create-activity/create-activity.component';
-import { PartecipatedActivityComponent } from './participated-activity/partecipated-activity.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ModifyActivityComponent } from './modify-activity/modify-activity.component';
 import { ModifyProfileComponent } from './modify-profile/modify-profile.component';
@@ -25,6 +24,8 @@ import { NavigationButtonsComponent } from './navigation-buttons/navigation-butt
 import { FooterComponent } from './footer/footer.component';
 import { EnterPageComponent } from './enter-page/enter-page.component';
 import { ProfileCardComponent } from './profile-card/profile-card.component';
+import { ParticipatedActivityCardComponent } from './participated-activity-card/participated-activity-card.component';
+import { ParticipatedActivityComponent } from './participated-activity/participated-activity.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,6 @@ import { ProfileCardComponent } from './profile-card/profile-card.component';
     ProfileComponent,
     NotificationsComponent,
     CreateActivityComponent,
-    PartecipatedActivityComponent,
     SettingsComponent,
     ModifyActivityComponent,
     ModifyProfileComponent,
@@ -48,7 +48,9 @@ import { ProfileCardComponent } from './profile-card/profile-card.component';
     NavigationButtonsComponent,
     FooterComponent,
     EnterPageComponent,
-    ProfileCardComponent
+    ProfileCardComponent,
+    ParticipatedActivityCardComponent,
+    ParticipatedActivityComponent,
   ],
   imports: [
     BrowserModule,
