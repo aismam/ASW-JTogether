@@ -48,6 +48,10 @@ mat-card-content p {
   text-align: justify;
 }
 
+.vis {
+  background-color: #f44336;
+}
+
 mat-card-actions {
   text-align: center;
 }

@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"settings.component.css"}
+{"version":3,"sourceRoot":"","sources":["settings.component.scss","../../mixins.scss"],"names":[],"mappings":"AAGA;ECSE;EACA;EACA;EACA;;;ADRF;EACE;;;AAGF;EAEE;EACA;;AAEA;EACE;EACA;;;ACiBF;EDZA;IAEE;IACA;;EAEA;IACE;IACA;;EAEF;IACE;;;ACOJ;EDDA;IAEE;;;ACSF;EDJA;IAEE;IACA;;EAEA;IACE;IACA","file":"settings.component.css"}

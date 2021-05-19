@@ -1,0 +1,59 @@
+@import "../../mixins";
+@import "../../variables";
+
+main {
+  @include flexCol;
+}
+
+mat-icon {
+  margin-right: 10%;
+}
+
+mat-list {
+  //background-color: red;
+  width: 90%;
+  margin-top: 2%;
+
+  mat-divider{
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+}
+
+@include tablet{
+  mat-list {
+    //background-color: yellow;
+    width: 500px;
+    margin-top: 1.5%;
+
+    mat-divider{
+      margin-top: 1.5%;
+      margin-bottom: 1.5%;
+    }
+    mat-icon {
+      margin-right: 5%;
+    }
+  }
+}
+
+@include small-screen{
+  mat-list {
+    //background-color: cyan;
+    width: 600px;
+  }
+}
+
+@include large-desktop{
+  mat-list {
+    //background-color: green;
+    width: 700px;
+    margin-top: 1%;
+
+    mat-divider{
+      margin-top: 1%;
+      margin-bottom: 1%;
+    }
+  }
+}
+
+

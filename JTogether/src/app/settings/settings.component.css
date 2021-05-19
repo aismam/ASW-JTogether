@@ -1,3 +1,50 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+mat-icon {
+  margin-right: 10%;
+}
+
+mat-list {
+  width: 90%;
+  margin-top: 2%;
+}
+mat-list mat-divider {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+@media screen and (min-width: 480px) {
+  mat-list {
+    width: 500px;
+    margin-top: 1.5%;
+  }
+  mat-list mat-divider {
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+  }
+  mat-list mat-icon {
+    margin-right: 5%;
+  }
+}
+@media screen and (min-width: 768px) {
+  mat-list {
+    width: 600px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  mat-list {
+    width: 700px;
+    margin-top: 1%;
+  }
+  mat-list mat-divider {
+    margin-top: 1%;
+    margin-bottom: 1%;
+  }
+}
 
 /*# sourceMappingURL=settings.component.css.map */

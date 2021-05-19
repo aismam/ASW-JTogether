@@ -8,6 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ParticipatedActivityCardComponent implements OnInit {
 
   @Input() imageUrl: string | undefined;
+  ev = 'Biciclettata contro Brando';
   constructor() { }
 
   ngOnInit(): void {
