@@ -48,19 +48,12 @@ mat-card-content p {
   text-align: justify;
 }
 
-mat-card-actions {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-content: center;
-}
-mat-card-actions mat-icon {
-  color: #66a377;
-  transform: scale(2);
-  padding: 8%;
-}
-mat-card-actions .exit {
-  color: #f44336;
+.vis {
+  background-color: #f44336;
 }
 
-/*# sourceMappingURL=participated-activity-card.component.css.map */
+mat-card-actions {
+  text-align: center;
+}
+
+/*# sourceMappingURL=notifications-card.component.css.map */
