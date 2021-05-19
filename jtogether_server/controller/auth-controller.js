@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const authModel = require('../model/auth-model')
-const {userValidationRules,validate} = require('../_helpers/validator')
-const {authenticateJWT,refreshTokens} = require('../_helpers/jwt')
+const validator = require('../_helpers/validator')
+const jwt = require('../_helpers/jwt')
 
-router.get('/login',login)
-router.get('/signup',userValidationRules,validate,signup)
-router.get('/logout',authenticateJWT,logout)
-router.get('/token',refreshTokens)
+router.get('/login',validator.userValidationRules,validator.validate,login)
+router.get('/signup',validator.userValidationRules,validator.validate,signup)
+router.get('/logout',jwt.authenticateJWT,logout)
+router.get('/token',validator.tokenValidationRules,validator.validate,jwt.refreshToken)
 
 module.exports = router;
 

@@ -4,7 +4,7 @@ const config = require('../config.json')
 const EXPIRATION_TIME_ACCESS_TOKEN = '20m'
 const EXPIRATION_TIME_REFRESH_TOKEN = '120d'
 
-var refreshTokens = [];
+let refreshTokensList = [];
 
 module.exports = {
     getAccessToken,
@@ -12,29 +12,36 @@ module.exports = {
     pushRefreshToken,
     removeToken,
     authenticateJWT,
-    refreshTokens
+    clearTokens,
+    refreshToken
 }
 
-
-async function refreshToken(res,req,next){
-    const { token } = req.body;
+async function refreshToken(req,res){
+    const { token } = req.body
 
     if (!token) {
-        return res.sendStatus(401);
+        return res.sendStatus(401)
     }
-    if (!refreshTokens.includes(token)) {
-        return res.sendStatus(403);
+    if (!refreshTokensList.includes(token)) {
+        return res.sendStatus(403)
     }
 
-    jwt.verify(token, config.secret, (err, user) => {
-        if (err) {
-            return res.sendStatus(403);
-        }
-        return getAccessToken(user);
+    return jwt.verify(token, config.secret, (err, user) =>
+        err ? res.sendStatus(403) : res.json({token: getAccessToken(user)})
+    )
+}
+
+async function clearTokens(){
+    refreshTokensList.forEach(t =>{
+        jwt.verify(t,config.secret,(err)=> {
+            if (err) {
+                refreshTokensList = refreshTokensList.filter(e => e !== t)
+            }
+        })
     })
 }
 
-function authenticateJWT (req, res, next) {
+async function authenticateJWT (req, res, next) {
     const authHeader = req.headers.authorization;
     if (authHeader) {
         const token = authHeader.split(' ')[1];
@@ -62,11 +69,11 @@ function getRefreshToken(user) {
 }
 
 function pushRefreshToken(token){
-    refreshTokens.push(token)
+    refreshTokensList.push(token)
 }
 
 function removeToken(token){
-    refreshTokens = refreshTokens.filter(t => t !== token);
+    refreshTokensList = refreshTokensList.filter(t => t !== token);
 }
 
 

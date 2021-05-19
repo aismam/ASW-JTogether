@@ -38,7 +38,7 @@ async function login({username,password}) {
         const refreshToken = jwt.getRefreshToken(user)
 
         jwt.pushRefreshToken(refreshToken);
-
+        await jwt.clearTokens()
         return {
             access_token : accessToken,
             refresh_token : refreshToken
