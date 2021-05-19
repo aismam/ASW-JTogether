@@ -1,24 +1,23 @@
 const { check, validationResult } = require('express-validator');
 
 
-const  userValidationRules = [
+const userValidationRules = [
     check('username','Username must be at least 1 character').notEmpty(),
     check('password','Password must be at least 1 character').notEmpty()
 ]
 
+const tokenValidationRules = [
+    check('token','Username must be at least 1 character').notEmpty()
+]
+
+
 function validate(req,res,next){
     const err = validationResult(req)
-    if(err.isEmpty()){
-        next()
-    }
-    else{
-        err.message = err.errors
-        err.name = 'UnprocessableEntity'
-        next(err)
-    }
+    err.isEmpty() ? next() : res.status(422).json({ message: err.message })
 }
 
 module.exports = {
-    validationRules: userValidationRules,
+    userValidationRules,
+    tokenValidationRules,
     validate
 }
