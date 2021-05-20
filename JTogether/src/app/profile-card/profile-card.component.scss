@@ -32,7 +32,11 @@ mat-card-actions{
   mat-icon{
     color: $primary;
     transform: scale(2);
-    padding: 8%;
+    margin: 8%;
+  }
+
+  .del {
+    color: #f44336;
   }
 
 }

@@ -57,7 +57,10 @@ mat-card-actions {
 mat-card-actions mat-icon {
   color: #66a377;
   transform: scale(2);
-  padding: 8%;
+  margin: 8%;
+}
+mat-card-actions .del {
+  color: #f44336;
 }
 
 /*# sourceMappingURL=profile-card.component.css.map */
