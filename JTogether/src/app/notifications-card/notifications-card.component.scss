@@ -26,18 +26,11 @@ mat-card-content{
   }
 }
 
+.vis {
+  background-color: #f44336;
+}
+
 mat-card-actions{
-  @include flexRow;
-
-  mat-icon{
-    color: $primary;
-    transform: scale(2);
-    margin: 8%;
-  }
-
-  .del {
-    color: $red;
-  }
-
+  text-align: center;
 }
 

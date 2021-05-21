@@ -26,6 +26,7 @@ import { EnterPageComponent } from './enter-page/enter-page.component';
 import { ProfileCardComponent } from './profile-card/profile-card.component';
 import { ParticipatedActivityCardComponent } from './participated-activity-card/participated-activity-card.component';
 import { ParticipatedActivityComponent } from './participated-activity/participated-activity.component';
+import { NotificationsCardComponent } from './notifications-card/notifications-card.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ParticipatedActivityComponent } from './participated-activity/participa
     ProfileCardComponent,
     ParticipatedActivityCardComponent,
     ParticipatedActivityComponent,
+    NotificationsCardComponent,
   ],
   imports: [
     BrowserModule,

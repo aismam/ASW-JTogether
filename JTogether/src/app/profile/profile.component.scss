@@ -1,8 +1,16 @@
 @import "../../styles";
 @import "../../mixins.scss";
 
-main {
+main, .profPic, .profNameEmail, button {
 
+  @include flexCol();
+}
+
+.sup, app-card-list{
+  width: 90%;
+}
+
+@include mobile{
   .profPic {
     padding-bottom: 2px;
     padding-top: 4px;
@@ -12,105 +20,13 @@ main {
       border-radius: 100px;
     }
   }
-
-  .profNameEmail span {
-    font-size: small;
-  }
-
-  /* @include flexCol;
-
-
-  .profPic, .profNameEmail, app-card-list{
-    @include flexCol;
-    width: 90%;
-  }
-
-  @include mobile{
-
-    background-color: red;
-
-    .profPic {
-      padding-bottom: 5px;
-      padding-top: 7px;
-      img {
-        width: 120px;
-        border-radius: 120px;
-      }
-    }
-
-  }
-
-  @include tablet{
-    //background-color: green;
-
-    .profPic {
-      padding-bottom: 7px;
-      padding-top: 9px;
-      img {
-        width: 140px;
-        border-radius: 140px;
-      }
-    }
-  }*/
-
-
-
-
-
-
-}
-
-
-
-
-
-
-
-/*
-
-@media only screen  and (min-width: 0px) and (max-width: 320px){
-  .profPic {
-    padding-bottom: 2px;
-    padding-top: 4px;
-
-    img {
-      width: 100px;
-      border-radius: 100px;
-    }
-  }
-
-  .footer span {
-    font-size: x-small;
-  }
-
-  .profNameEmail span {
-    font-size: small;
-  }
-
-}
-
-@media only screen  and (min-width: 321px) and (max-width: 481px){
-  .profPic {
-    padding-bottom: 5px;
-    padding-top: 7px;
-
-    img {
-      width: 120px;
-      border-radius: 120px;
-    }
-  }
-
-  .footer span {
-    font-size: small;
-  }
-
   .profNameEmail {
-    font-size: medium;
+    padding-bottom: 4px;
+    font-size: small;
   }
-
 }
 
-@media only screen and (min-width: 482px) and (max-width: 769px) {
+@include tablet{
   .profPic {
     padding-bottom: 7px;
     padding-top: 9px;
@@ -120,11 +36,6 @@ main {
       border-radius: 140px;
     }
   }
-
-  .footer span {
-    font-size: medium;
-  }
-
   .profNameEmail {
     padding-bottom: 5px;
     padding-top: 1px;
@@ -132,29 +43,7 @@ main {
   }
 }
 
-@media only screen and (min-width: 770px) and (max-width: 1201px) {
-  .profPic {
-    padding-bottom: 9px;
-    padding-top: 11px;
-
-    img {
-      width: 160px;
-      border-radius: 160px;
-    }
-  }
-
-  .footer span {
-    font-size: medium;
-  }
-
-  .profNameEmail {
-    padding-bottom: 10px;
-    padding-top: 1px;
-    font-size: large;
-  }
-}
-
-@media only screen and (min-width: 1202px){
+@include large-desktop{
   .profPic {
     padding-bottom: 9px;
     padding-top: 11px;
@@ -163,10 +52,6 @@ main {
       width: 200px;
       border-radius: 200px;
     }
-  }
-
-  .footer span {
-    font-size: medium;
   }
 
   .profNameEmail {
@@ -178,10 +63,4 @@ main {
       margin-bottom: 1%;
     }
   }
-} */
-
-/* // Card degli eventi
-.contentDiv mat-card {
-  max-width: 200px;
-} */
-
+}

@@ -24,112 +24,40 @@ a {
   text-decoration: none;
 }
 
-main {
-  /* @include flexCol;
-
-
-  .profPic, .profNameEmail, app-card-list{
-    @include flexCol;
-    width: 90%;
-  }
-
-  @include mobile{
-
-    background-color: red;
-
-    .profPic {
-      padding-bottom: 5px;
-      padding-top: 7px;
-      img {
-        width: 120px;
-        border-radius: 120px;
-      }
-    }
-
-  }
-
-  @include tablet{
-    //background-color: green;
-
-    .profPic {
-      padding-bottom: 7px;
-      padding-top: 9px;
-      img {
-        width: 140px;
-        border-radius: 140px;
-      }
-    }
-  }*/
-}
-main .profPic {
-  padding-bottom: 2px;
-  padding-top: 4px;
-}
-main .profPic img {
-  width: 100px;
-  border-radius: 100px;
-}
-main .profNameEmail span {
-  font-size: small;
+main, .profPic, .profNameEmail, button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-/*
+.sup, app-card-list {
+  width: 90%;
+}
 
-@media only screen  and (min-width: 0px) and (max-width: 320px){
+@media screen and (min-width: 250px) {
   .profPic {
     padding-bottom: 2px;
     padding-top: 4px;
-
-    img {
-      width: 100px;
-      border-radius: 100px;
-    }
   }
-
-  .footer span {
-    font-size: x-small;
-  }
-
-  .profNameEmail span {
-    font-size: small;
-  }
-
-}
-
-@media only screen  and (min-width: 321px) and (max-width: 481px){
-  .profPic {
-    padding-bottom: 5px;
-    padding-top: 7px;
-
-    img {
-      width: 120px;
-      border-radius: 120px;
-    }
-  }
-
-  .footer span {
-    font-size: small;
+  .profPic img {
+    width: 100px;
+    border-radius: 100px;
   }
 
   .profNameEmail {
-    font-size: medium;
+    padding-bottom: 4px;
+    font-size: small;
   }
-
 }
-
-@media only screen and (min-width: 482px) and (max-width: 769px) {
+@media screen and (min-width: 480px) {
   .profPic {
     padding-bottom: 7px;
     padding-top: 9px;
-
-    img {
-      width: 140px;
-      border-radius: 140px;
-    }
   }
-
-  .footer span {
-    font-size: medium;
+  .profPic img {
+    width: 140px;
+    border-radius: 140px;
   }
 
   .profNameEmail {
@@ -138,57 +66,24 @@ main .profNameEmail span {
     font-size: large;
   }
 }
-
-@media only screen and (min-width: 770px) and (max-width: 1201px) {
+@media screen and (min-width: 1200px) {
   .profPic {
     padding-bottom: 9px;
     padding-top: 11px;
-
-    img {
-      width: 160px;
-      border-radius: 160px;
-    }
   }
-
-  .footer span {
-    font-size: medium;
-  }
-
-  .profNameEmail {
-    padding-bottom: 10px;
-    padding-top: 1px;
-    font-size: large;
-  }
-}
-
-@media only screen and (min-width: 1202px){
-  .profPic {
-    padding-bottom: 9px;
-    padding-top: 11px;
-
-    img {
-      width: 200px;
-      border-radius: 200px;
-    }
-  }
-
-  .footer span {
-    font-size: medium;
+  .profPic img {
+    width: 200px;
+    border-radius: 200px;
   }
 
   .profNameEmail {
     padding-bottom: 10px;
     padding-top: 3px;
     font-size: x-large;
-
-    span {
-      margin-bottom: 1%;
-    }
   }
-} */
-/* // Card degli eventi
-.contentDiv mat-card {
-  max-width: 200px;
-} */
+  .profNameEmail span {
+    margin-bottom: 1%;
+  }
+}
 
 /*# sourceMappingURL=profile.component.css.map */
