@@ -4,16 +4,16 @@ const authModel = require('../model/auth-model')
 const validator = require('../_helpers/validator')
 const jwt = require('../_helpers/jwt')
 
-router.get('/login',validator.userValidationRules,validator.validate,login)
-router.get('/signup',validator.userValidationRules,validator.validate,signup)
-router.get('/logout',jwt.authenticateJWT,logout)
+router.post('/login',validator.userLoginValidationRules,validator.validate,login)
+router.post('/signup',validator.userSignupValidationRules,validator.validate,signup)
+router.post('/logout',jwt.authenticateJWT,logout)
 router.get('/token',validator.tokenValidationRules,validator.validate,jwt.refreshToken)
 
 module.exports = router;
 
 async function signup(req,res,next){
     authModel.signup(req.body)
-        .then(() => sendMessage(res,'registration successful'))
+        .then(() => sendMessage(res,'Registrazione con successo'))
         .catch(err => next(err))
 }
 

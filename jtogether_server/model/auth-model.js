@@ -1,11 +1,10 @@
-const userService = require('../users/user-api');
+const userApi = require('../apis/user-api');
 const bcrypt = require('bcryptjs')
 const jwt = require('../_helpers/jwt')
 
 const SALT_ROUNDS = 12
-const USERNAME_ALREADY_TAKEN = 'Username already taken'
-const NO_PASSWORD = 'No password'
-const LOGIN_FAILED = 'Username or password incorrect'
+const USERNAME_ALREADY_TAKEN = 'Username già utilizzato'
+const LOGIN_FAILED = 'Username o password non corretti'
 
 
 module.exports = {
@@ -15,31 +14,28 @@ module.exports = {
 };
 
 async function signup(userParams){
-    if(await userService.getUser(userParams.username)){
+    if(await userApi.getUser(userParams.username)){
         throw USERNAME_ALREADY_TAKEN
     }
-    if(userParams.password) {
-        return bcrypt.hash(userParams.password, SALT_ROUNDS)
-            .then(hash => {
-                userParams.hash = hash;
-                userService.saveUser(userParams)
-            })
-    }
-    else {
-        throw NO_PASSWORD
-    }
+
+    return bcrypt.hash(userParams.password, SALT_ROUNDS)
+        .then(hash => {
+            userParams.hash = hash;
+            userApi.saveUser(userParams)
+        })
 }
 
 async function login({username,password}) {
-    const user = await userService.getUser(username)
+    const user = await userApi.getUser(username)
 
-    if (bcrypt.compareSync(password, user.hash)) {
+    if (user && bcrypt.compareSync(password, user.hash)) {
         const accessToken = jwt.getAccessToken(user)
         const refreshToken = jwt.getRefreshToken(user)
 
         jwt.pushRefreshToken(refreshToken);
         await jwt.clearTokens()
         return {
+            ...user.toJSON(),
             access_token : accessToken,
             refresh_token : refreshToken
         }
