@@ -1,20 +1,18 @@
-const express = require('express')
-const router = express.Router()
-
-module.exports = http => {
-    router.post('/mannaggia',((req, res) => {
-        const bo = new SocketIoController(http)
-        bo.notify('ismo sasso','sei un sasso')
-        res.send("mandato")
-    }))
-    return router
-}
-
 class SocketIoController{
     constructor(http) {
-        this.io = require('socket.io')(http)
+        this.io = require('socket.io')(http, {
+            cors: {
+                origin: "*",
+                methods: ["GET", "POST"]
+            }
+        })
+        this.io.on("connect_error", (err) => {
+            console.log(`connect_error due to ${err.message}`);
+        });
     }
     notify(userId,msg){
-        this.io.to(userId).emit(msg)
+        this.io.emit(userId,msg)
     }
 }
+
+module.exports = {SocketIoController}

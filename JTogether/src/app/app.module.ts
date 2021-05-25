@@ -29,7 +29,7 @@ import { ParticipatedActivityComponent } from './participated-activity/participa
 import { NotificationsCardComponent } from './notifications-card/notifications-card.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
-const config: SocketIoConfig = { url: 'http://localhost:3000'};
+const config: SocketIoConfig = { url: 'http://localhost:3000', options : {}};
 
 @NgModule({
   declarations: [

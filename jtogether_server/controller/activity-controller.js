@@ -9,13 +9,19 @@ const sendMessage = require('./controller-util')
 const DELETION_SUCCESSFUL_MESSAGE = 'Attività cancellata'
 const PARTICIPATION_DELETED_MESSAGE = 'Partecipazione cancellata'
 
-router.post('/create-activity',jwt.authenticateJWT,activityValidator.activityCreationRules,validator,createActivity)
-router.post('/modify-activity',jwt.authenticateJWT,activityValidator.activityCreationRules,validator,modifyActivity)
-router.post('/delete-activity',jwt.authenticateJWT,activityValidator.activityDeletionRules,validator,deleteActivity)
-router.post('/create-participation',jwt.authenticateJWT,activityValidator.activityCreationRules,validator,createParticipation)
-router.post('/delete-participation',jwt.authenticateJWT,activityValidator.activityCreationRules,validator,deleteParticipation)
 
-module.exports = router;
+module.exports = socketController => {
+    router.post('/create-activity',jwt.authenticateJWT,activityValidator.activityCreationRules,validator,createActivity)
+    router.post('/modify-activity',jwt.authenticateJWT,activityValidator.activityCreationRules,validator,modifyActivity)
+    router.post('/delete-activity',jwt.authenticateJWT,activityValidator.activityDeletionRules,validator,deleteActivity)
+    router.post('/create-participation',jwt.authenticateJWT,activityValidator.activityCreationRules,validator,createParticipation)
+    router.post('/delete-participation',jwt.authenticateJWT,activityValidator.activityCreationRules,validator,deleteParticipation)
+    router.post('/mannaggia',(req,res) => {
+        socketController.notify('giovanni','ismo sei uno scarso')
+        res.send("ciao")
+    })
+    return router;
+};
 
 async function createActivity(req,res,next){
     activityModel.createActivity(req.body,req.user)
