@@ -1,10 +1,12 @@
 const jwt = require('jsonwebtoken');
 const config = require('../config.json')
 
-const EXPIRATION_TIME_ACCESS_TOKEN = '20m'
+const EXPIRATION_TIME_ACCESS_TOKEN = '120d'//'20m'
 const EXPIRATION_TIME_REFRESH_TOKEN = '120d'
+const REFRESH_TOKEN_NOT_PRESENT = 'Refresh token non presente'
 
-let refreshTokensList = [];
+// TODO cava
+let refreshTokensList = ['eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdhcmRvMjkiLCJpYXQiOjE2MjE4Mzg3MjYsImV4cCI6MTYzMjIwNjcyNn0.dGSZW9KmdJOODlLLQptY05a2IIJlKZJxn045y83uKcY']
 
 module.exports = {
     getAccessToken,
@@ -27,15 +29,15 @@ async function refreshToken(req,res){
     }
 
     return jwt.verify(token, config.secret, (err, user) =>
-        err ? res.sendStatus(403) : res.json({token: getAccessToken(user)})
+        err ? res.sendStatus(403) : res.json({access_token: getAccessToken(user)})
     )
 }
 
 async function clearTokens(){
     refreshTokensList.forEach(t =>{
         jwt.verify(t,config.secret,(err)=> {
-            if (err) {
-                refreshTokensList = refreshTokensList.filter(e => e !== t)
+            if (!err) {
+                removeToken(t)
             }
         })
     })
@@ -73,6 +75,9 @@ function pushRefreshToken(token){
 }
 
 function removeToken(token){
+    if(!refreshTokensList.includes(token)){
+        throw REFRESH_TOKEN_NOT_PRESENT
+    }
     refreshTokensList = refreshTokensList.filter(t => t !== token);
 }
 

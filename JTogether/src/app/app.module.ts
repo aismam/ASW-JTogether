@@ -27,6 +27,9 @@ import { ProfileCardComponent } from './profile-card/profile-card.component';
 import { ParticipatedActivityCardComponent } from './participated-activity-card/participated-activity-card.component';
 import { ParticipatedActivityComponent } from './participated-activity/participated-activity.component';
 import { NotificationsCardComponent } from './notifications-card/notifications-card.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+const config: SocketIoConfig = { url: 'http://localhost:3000'};
 
 @NgModule({
   declarations: [
@@ -55,6 +58,7 @@ import { NotificationsCardComponent } from './notifications-card/notifications-c
     NotificationsCardComponent,
   ],
   imports: [
+    SocketIoModule.forRoot(config),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
