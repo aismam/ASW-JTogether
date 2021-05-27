@@ -4,6 +4,7 @@ const jwt = require('../_helpers/jwt')
 
 const SALT_ROUNDS = 12
 const USERNAME_ALREADY_TAKEN = 'Username già utilizzato'
+const EMAIL_ALREADY_TAKEN = 'Email già utilizzato'
 const LOGIN_FAILED = 'Username o password non corretti'
 const WRONG_TOKEN_MATCH = 'I token non sono dello stesso user'
 
@@ -16,6 +17,9 @@ module.exports = {
 async function signup(userParams){
     if(await userApi.getUserFromUsername(userParams.username)){
         throw USERNAME_ALREADY_TAKEN
+    }
+    if(await userApi.getUserFromEmail(userParams.email)){
+        throw EMAIL_ALREADY_TAKEN
     }
 
     return bcrypt.hash(userParams.password, SALT_ROUNDS)

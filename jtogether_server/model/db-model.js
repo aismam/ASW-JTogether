@@ -6,7 +6,8 @@ const activitySchema = new Schema({
     creator_username : { type: String, required : true},
     name : { type: String, required: true},
     description: { type: String, required: true},
-    date_time: { type: Date, required: true}
+    date_time: { type: Date, required: true},
+    participants : {type : [String], required:true }
 })
 
 activitySchema.set('toJSON', {
@@ -49,9 +50,9 @@ notificationSchema.set('toJSON', {
 const userSchema = new Schema({
     username : {type: String, unique: true, required: true},
     email : {type : String, unique : true, required : true},
-    chats : {type : [Number], default: [], required : true},
-    activity_created : {type : [Number], default: [], required : true},
-    activity_participated : {type : [Number], default: [], required : true},
+    chats : {type : [String], default: [], required : true},
+    activity_created : {type : [String], default: [], required : true},
+    activity_participated : {type : [String], default: [], required : true},
     hash : {type: String, required: true}
 })
 
