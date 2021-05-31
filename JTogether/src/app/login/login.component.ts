@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {DataService} from '../data.service';
+import {User} from '../_Models/User';
 
 @Component({
   selector: 'app-login',
@@ -25,12 +26,7 @@ export class LoginComponent implements OnInit {
 
   log($event: MouseEvent): void {
     $event.preventDefault();
-
-    this.dataService.getDataResponsefake();
-
-    /* this.dataService.logUser(
-      user => this.mannaaggia = user,
-      error => console.log(error)); */
+    this.dataService.logUser( {username : 'lorenzo', password : 'Giovanni98.'}, u => console.log(u), err => console.log(err));
   }
 
 }
