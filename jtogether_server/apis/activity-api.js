@@ -1,4 +1,4 @@
-const {Activity} = require('../_helpers/db')
+const {Activity,User} = require('../_helpers/db')
 
 module.exports = {
     createActivity,
@@ -11,27 +11,31 @@ module.exports = {
 
 
 async function createActivity(activityParams){
-    return new Activity(activityParams).save()
+    return new Activity(activityParams).save((err,activity) =>{
+        User.findByIdAndUpdate(activityParams.creator_username,{$addToSet: {activity_created : activity._id}})
+    })
 }
 
 async function modifyActivity(activityParams){
-    return Activity.findByIdAndUpdate({_id: activityParams.id}).exec()
+    return Activity.findByIdAndUpdate(activityParams.id,activityParams).exec()
 }
 
 async function deleteActivity(activityId){
-    return Activity.findOneAndDelete({_id: activityId}).exec()
+    return Activity.findByIdAndDelete(activityId).exec()
 }
 
-async function createParticipation(participationParams){
-    //return new User(participationParams).save()
+async function createParticipation({username,activity_id}){
+    User.findByIdAndUpdate(username,{$addToSet: {activity_participated : activity_id}})
+    return Activity.findByIdAndUpdate(activity_id,{$addToSet:{participants : username}})
 }
 
-async function deleteParticipation(participationParams){
-    //return new Activity(participationParams).save()
+async function deleteParticipation({username,activity_id}){
+    User.findByIdAndUpdate(username,{pull: {activity_participated : activity_id}})
+    return Activity.findByIdAndUpdate(username,{$pull :{participants : username}})
 }
 
-async function getActivity(id){ // TODO dunno how to handle ids
-    return Activity.findOne({id: id}).exec();
+async function getActivity(id){
+    return Activity.findById(id).exec();
 }
 
 
