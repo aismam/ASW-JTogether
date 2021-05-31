@@ -1,7 +1,7 @@
 const {check} = require('express-validator');
 
 const activityDeletionRules = [
-    check('id',`Inserire l'id di un'attività valida`)
+    check('activity_id',`Inserire l'id di un'attività valida`)
         .notEmpty(),
 ]
 
@@ -17,8 +17,19 @@ const activityCreationRules = [
         .toDate(),
 ]
 
+const activityModificationRules = [
+    ...activityDeletionRules,
+    ...activityCreationRules
+]
+const participationRules = [
+    ...activityDeletionRules,
+    check('activity_id',`Inserire un username valido`)
+        .notEmpty(),
+]
 
 module.exports = {
+    participationRules,
+    activityModificationRules,
     activityCreationRules,
     activityDeletionRules,
 }

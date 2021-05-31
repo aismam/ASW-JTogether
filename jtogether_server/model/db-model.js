@@ -7,7 +7,7 @@ const activitySchema = new Schema({
     name : { type: String, required: true},
     description: { type: String, required: true},
     date_time: { type: Date, required: true},
-    participants : {type : [String], required:true }
+    participants : {type : [String], default: [], required:true }
 })
 
 activitySchema.set('toJSON', {

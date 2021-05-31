@@ -5,10 +5,7 @@ const PASSWORD_LENGTH = 8
 const PASSWORD_REGEX = `^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[.!@#$%^&*()_+{}|"/?\\"]).{${PASSWORD_LENGTH},}$`
 
 const userLoginValidationRules = [
-    oneOf([
-        check('username').notEmpty(),
-        check('email').notEmpty()
-    ],"Inserire username o email per accedere"),
+    check('username','Inserire username o email per accedere').notEmpty(),
     check('password','Inserire la password').notEmpty()
 ]
 

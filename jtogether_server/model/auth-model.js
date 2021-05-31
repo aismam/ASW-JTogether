@@ -4,7 +4,7 @@ const jwt = require('../_helpers/jwt')
 
 const SALT_ROUNDS = 12
 const USERNAME_ALREADY_TAKEN = 'Username già utilizzato'
-const EMAIL_ALREADY_TAKEN = 'Email già utilizzato'
+const EMAIL_ALREADY_TAKEN = 'Email già utilizzata'
 const LOGIN_FAILED = 'Username o password non corretti'
 const WRONG_TOKEN_MATCH = 'I token non sono dello stesso user'
 
@@ -33,7 +33,7 @@ async function login(userParams) {
     const user = userParams.email ? await userApi.getUserFromEmail(userParams.email) :
                                     await userApi.getUserFromUsername(userParams.username)
 
-    if (bcrypt.compareSync(userParams.password, user.hash)) {
+    if (user && bcrypt.compareSync(userParams.password, user.hash)) {
         const accessToken = jwt.getAccessToken(user)
         const refreshToken = jwt.getRefreshToken(user)
 
@@ -51,9 +51,12 @@ async function login(userParams) {
 }
 
 async function logout({refresh_token},{username}){
-    if(refresh_token !== username){
-        throw WRONG_TOKEN_MATCH
-    }
-    jwt.removeToken(refresh_token)
+    jwt.verify(refresh_token)
+        .then(user => {
+            if(user.username !== username){
+                throw WRONG_TOKEN_MATCH
+            }
+            jwt.removeToken(refresh_token)
+        })
 }
 

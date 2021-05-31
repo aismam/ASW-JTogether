@@ -5,8 +5,7 @@ const EXPIRATION_TIME_ACCESS_TOKEN = '120d'//'20m'
 const EXPIRATION_TIME_REFRESH_TOKEN = '120d'
 const REFRESH_TOKEN_NOT_PRESENT = 'Refresh token non presente'
 
-// TODO cava
-let refreshTokensList = ['eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdhcmRvMjkiLCJpYXQiOjE2MjE4Mzg3MjYsImV4cCI6MTYzMjIwNjcyNn0.dGSZW9KmdJOODlLLQptY05a2IIJlKZJxn045y83uKcY']
+let refreshTokensList = ['eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvcmVuem8iLCJpYXQiOjE2MjI0NzM2OTEsImV4cCI6MTYzMjg0MTY5MX0.MRuQeBShjT-feUA9mKLgGqoQUCw4R1G_kPnOeAMAFAs']
 
 module.exports = {
     getAccessToken,
@@ -15,7 +14,13 @@ module.exports = {
     removeToken,
     authenticateJWT,
     clearTokens,
-    refreshToken
+    refreshToken,
+    verify,
+}
+async function verify(token){
+    return new Promise((resolve, reject) =>
+        jwt.verify(token,config.secret,(err,user) => user ? resolve(user) : reject(err))
+    )
 }
 
 async function refreshToken(req,res){

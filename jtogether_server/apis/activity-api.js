@@ -1,5 +1,5 @@
-const {Activity,User} = require('../_helpers/db')
-
+const {Activity} = require('../_helpers/db')
+const userApi = require('./user-api')
 module.exports = {
     createActivity,
     deleteParticipation,
@@ -11,27 +11,33 @@ module.exports = {
 
 
 async function createActivity(activityParams){
-    return new Activity(activityParams).save((err,activity) =>{
-        User.findByIdAndUpdate(activityParams.creator_username,{$addToSet: {activity_created : activity._id}})
+    const activityId = await new Promise((resolve) => {
+        new Activity(activityParams).save((err,activity) =>{
+                userApi.addActivity(activityParams.creator_username,activity._id)
+                resolve(activity._id)
+            }
+        )
     })
+    return Activity.findById(activityId)
 }
 
 async function modifyActivity(activityParams){
-    return Activity.findByIdAndUpdate(activityParams.id,activityParams).exec()
+    return Activity.findByIdAndUpdate(activityParams.activity_id,activityParams,{new: true}).exec()
 }
 
-async function deleteActivity(activityId){
-    return Activity.findByIdAndDelete(activityId).exec()
+async function deleteActivity(activity_id,username){
+    await userApi.deleteActivity(username,activity_id)
+    return Activity.findByIdAndDelete(activity_id).exec()
 }
 
-async function createParticipation({username,activity_id}){
-    User.findByIdAndUpdate(username,{$addToSet: {activity_participated : activity_id}})
-    return Activity.findByIdAndUpdate(activity_id,{$addToSet:{participants : username}})
+async function createParticipation(activity_id,username){
+    await userApi.addParticipation(username, activity_id)
+    return Activity.findByIdAndUpdate(activity_id,{$addToSet:{participants : username}},{new : true}).exec()
 }
 
-async function deleteParticipation({username,activity_id}){
-    User.findByIdAndUpdate(username,{pull: {activity_participated : activity_id}})
-    return Activity.findByIdAndUpdate(username,{$pull :{participants : username}})
+async function deleteParticipation(activity_id,username){
+    await userApi.deleteParticipation(username, activity_id)
+    return Activity.findByIdAndUpdate(activity_id,{$pull :{participants : username}},{new : true}).exec()
 }
 
 async function getActivity(id){
