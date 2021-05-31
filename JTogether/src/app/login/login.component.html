@@ -6,7 +6,7 @@
         <ul>
           <li><app-edit-text [type]="'text'" [name]="'username'" [id]="'username'" [placeholder]="'Username'"></app-edit-text></li>
           <li><app-edit-text [type]="'password'" [name]="'password'" [id]="'password'" [placeholder]="'Password'"></app-edit-text></li>
-          <li><button mat-raised-button>Login</button></li>
+          <li><button mat-raised-button (click)="log($event)">Login</button></li>
         </ul>
       </form>
     </li>
