@@ -9,27 +9,55 @@ h1{
   font-weight: bold;
 }
 
-ul.body{
-  height: 60%;
-  width: 90%;
+/* main {
   @include flexCol;
-  justify-content: space-between;
+
+  .main-content{
+    @include flexCol;
+  }
+
+  .form-area {
+    width: 80%;
+
+    @include small-screen {
+      width: 85%;
+    }
+
+    @include desktop {
+      width: 90%;
+    }
+
+    @include large-desktop {
+      width: 95%;
+    }
+
+    p {
+      margin-top: 15px;
+      text-align: center;
+
+      mat-form-field {
+        width: 100%;
+      }
+
+      .time::-webkit-calendar-picker-indicator {
+        background: none;
+      }
+    }
+
+  }
+} */
+
+main {
+  @include flexCol;
+  *{width: 90%}
+
+  form{
+    @include flexCol;
+    *{width: 100%}
+  }
+
+
+
 }
 
-li{
-  width: 100%;
-  text-align: center;
-}
-
-form  li{
-  margin-top: 20px;
-}
-
-a{
-  color: $secondary;
-}
-
-button{
-  width: 100%;
-}
 

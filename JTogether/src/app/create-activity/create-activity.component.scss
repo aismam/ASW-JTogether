@@ -10,9 +10,11 @@ main {
     @include small-screen {
       width: 80%;
     }
+
     @include desktop {
       width: 70%;
     }
+
     @include large-desktop {
       width: 50%;
     }

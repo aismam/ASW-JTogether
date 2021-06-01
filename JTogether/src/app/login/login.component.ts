@@ -10,7 +10,8 @@ import {User} from '../_Models/User';
 })
 export class LoginComponent implements OnInit {
 
-  mannaaggia = '';
+  username = undefined;
+  password = undefined;
 
   constructor(
     private route: Router,
@@ -26,7 +27,10 @@ export class LoginComponent implements OnInit {
 
   log($event: MouseEvent): void {
     $event.preventDefault();
-    this.dataService.logUser( {username : 'lorenzo', password : 'Giovanni98.'}, u => console.log(u), err => console.log(err));
+    this.dataService.logUser(
+      {username : this.username, password : this.password},
+      u => console.log(u),
+      err => console.log(err));
   }
 
 }

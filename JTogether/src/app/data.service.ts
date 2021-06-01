@@ -33,7 +33,7 @@ export class DataService {
 
   getDataResponse(): void {
     this.httpClient.post<string>(this.url + 'login/', {
-      username: 'lorenzo',
+      username: 'ismam',
       password: 'Ismam.1997'},
       { headers : {
         Authorization : 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImlzbWFtIiwiaWF0IjoxNjIyMTI2NDE4LCJleHAiOjE2MzI0OTQ0MTh9.LC_yQSoWvApX_-X_Ew7Ykwi-6jDhKCGOO0fwRYATOzo'
