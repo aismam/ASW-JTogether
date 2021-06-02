@@ -25,7 +25,12 @@ a{
   text-decoration: none;
 }
 
-
+simple-snack-bar {
+  color: $tertiary;
+  .mat-simple-snackbar-action {
+    color: $primary;
+  }
+}
 
 
 

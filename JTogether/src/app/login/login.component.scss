@@ -58,11 +58,3 @@ main {
 
 }
 
-/* Serve per lo snackbar */
-::ng-deep .login-snackbar  {
-  color: $tertiary;
-  .mat-simple-snackbar-action {
-    color: $primary;
-  }
-}
-

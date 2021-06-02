@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {DataService} from '../data.service';
+import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signup',
@@ -16,6 +17,7 @@ export class SignupComponent implements OnInit {
   constructor(
     private route: Router,
     private dataService: DataService,
+    private snackBar: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
@@ -31,10 +33,13 @@ export class SignupComponent implements OnInit {
     this.dataService.signUpUser(
       { username : this.username, email : this.email, password : this.password},
       c => {
-        console.log(c); /* TODO pensavo di mettere una snackbar per dire che hai creato con successo */
+        console.log(c);
+        this.snackBar.open('Registrazione avvenuta con successo!', 'Chiudi');
+        this.route.navigate(['/login']);
       },
       e => {
-        console.log(e); /* TODO bisogna vedere cosa fare quando fallisce il signup */
+        console.log(e);
+        this.snackBar.open(e.error.message, 'Chiudi');
       }
     );
   }

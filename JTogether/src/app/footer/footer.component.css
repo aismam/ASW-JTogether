@@ -24,6 +24,13 @@ a {
   text-decoration: none;
 }
 
+simple-snack-bar {
+  color: white;
+}
+simple-snack-bar .mat-simple-snackbar-action {
+  color: #66a377;
+}
+
 footer {
   padding: 20px;
   text-align: center;

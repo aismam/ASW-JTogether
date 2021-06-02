@@ -36,17 +36,13 @@ export class LoginComponent implements OnInit {
       },
       err => {
         console.log(err);
-        this.snackBar.open(err.error.message, 'Chiudi', this.configError());
+        this.snackBar.open(err.error.message, 'Chiudi');
       });
   }
 
   signup($event: MouseEvent): void {
     $event.preventDefault();
     this.route.navigate(['/signup']);
-  }
-
-  private configError(): MatSnackBarConfig{
-    return {panelClass: ['login-snackbar']};
   }
 
 }
