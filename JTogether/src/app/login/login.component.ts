@@ -21,16 +21,15 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  random(): void {
-    this.route.navigate(['/home']);
-  }
-
   log($event: MouseEvent): void {
     $event.preventDefault();
     this.dataService.logUser(
       {username : this.username, password : this.password},
-      u => console.log(u),
-      err => console.log(err));
+      u => {
+        console.log(u);
+        this.route.navigate(['/home']);
+      },
+      err => console.log(err)); /* TODO bisogna decidere cosa fare se arriviamo qui */
   }
 
 }
