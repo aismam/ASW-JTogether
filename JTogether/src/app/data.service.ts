@@ -31,6 +31,10 @@ export class DataService {
     this.doPost<User>(this.url + 'login/', user, callback, errorCallback);
   }
 
+  signUpUser(user: object, callback: (_: User) => void, errorCallback: (_: any) => void): void {
+    this.doPost<User>(this.url + 'signup/', user, callback, errorCallback);
+  }
+
   getDataResponse(): void {
     this.httpClient.post<string>(this.url + 'login/', {
       username: 'ismam',

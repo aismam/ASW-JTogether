@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {DataService} from '../data.service';
-import {User} from '../_Models/User';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +18,10 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  forgottenPassword($event: MouseEvent): void {
+    this.route.navigate(['/login']); /* TODO */
   }
 
   log($event: MouseEvent): void {
