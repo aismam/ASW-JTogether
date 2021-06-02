@@ -24,9 +24,9 @@
 
         <p><button mat-raised-button (click)="log($event)">Login</button></p>
 
-        <p><a class="txt" href="Lorenzo sei un legno">Password dimenticata?</a></p>
+        <p><a class="txt"(click)="forgottenPassword($event)">Password dimenticata?</a></p>
 
-        <p><button mat-raised-button (click)="forgottenPassword($event)">Non hai un'account ? Registrati!</button></p>
+        <p><button mat-raised-button (click)="signup($event)">Non hai un'account ? Registrati!</button></p>
 
       </form>
     </div>

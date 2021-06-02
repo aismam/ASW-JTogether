@@ -59,6 +59,7 @@ main .main-content {
   width: 90%;
 }
 
+/* Serve per lo snackbar */
 ::ng-deep .login-snackbar {
   color: white;
 }

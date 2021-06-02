@@ -40,6 +40,11 @@ export class LoginComponent implements OnInit {
       });
   }
 
+  signup($event: MouseEvent): void {
+    $event.preventDefault();
+    this.route.navigate(['/signup']);
+  }
+
   private configError(): MatSnackBarConfig{
     return {panelClass: ['login-snackbar']};
   }
