@@ -9,53 +9,51 @@ h1{
   font-weight: bold;
 }
 
-/* main {
+main {
   @include flexCol;
+  width: 100%;
 
-  .main-content{
+  form{
     @include flexCol;
-  }
 
-  .form-area {
-    width: 80%;
+    p,  {
+      @include mobile {
+        width: 90%;
+      }
 
-    @include small-screen {
-      width: 85%;
-    }
+      @include mobile {
+        width: 85%;
+      }
 
-    @include desktop {
-      width: 90%;
-    }
+      @include small-screen {
+        width: 50%;
+      }
 
-    @include large-desktop {
-      width: 95%;
-    }
+      @include desktop {
+        width: 50%;
+      }
 
-    p {
-      margin-top: 15px;
-      text-align: center;
+      @include large-desktop {
+        width: 40%;
+      }
 
       mat-form-field {
         width: 100%;
       }
-
-      .time::-webkit-calendar-picker-indicator {
-        background: none;
-      }
     }
 
-  }
-} */
+    .txt {
+      @include flexCol;
+      color: $primary;
+    }
 
-main {
-  @include flexCol;
-  *{width: 90%}
 
-  form{
-    @include flexCol;
-    *{width: 100%}
   }
 
+  .main-content{
+     // background-color: red;
+    width: 90%;
+  }
 
 
 }
