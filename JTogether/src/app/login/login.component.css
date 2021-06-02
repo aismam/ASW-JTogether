@@ -59,4 +59,11 @@ main .main-content {
   width: 90%;
 }
 
+::ng-deep .login-snackbar {
+  color: white;
+}
+::ng-deep .login-snackbar .mat-simple-snackbar-action {
+  color: #66a377 !important;
+}
+
 /*# sourceMappingURL=login.component.css.map */

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {DataService} from '../data.service';
+import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private route: Router,
     private dataService: DataService,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +34,14 @@ export class LoginComponent implements OnInit {
         console.log(u);
         this.route.navigate(['/home']);
       },
-      err => console.log(err)); /* TODO bisogna decidere cosa fare se arriviamo qui */
+      err => {
+        console.log(err);
+        this.snackBar.open(err.error.message, 'Chiudi', this.configError());
+      });
+  }
+
+  private configError(): MatSnackBarConfig{
+    return {panelClass: ['login-snackbar']};
   }
 
 }

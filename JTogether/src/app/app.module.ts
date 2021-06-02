@@ -30,7 +30,6 @@ import { NotificationsCardComponent } from './notifications-card/notifications-c
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
-
 const config: SocketIoConfig = { url: 'http://localhost:3000', options : {}};
 
 @NgModule({

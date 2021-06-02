@@ -58,4 +58,10 @@ main {
 
 }
 
+::ng-deep .login-snackbar  {
+  color: $tertiary;
+  .mat-simple-snackbar-action {
+    color: $primary !important;
+  }
+}
 

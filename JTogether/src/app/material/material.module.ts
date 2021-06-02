@@ -10,6 +10,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 const materialComponents = [
   MatFormFieldModule,
@@ -23,6 +24,7 @@ const materialComponents = [
   MatListModule,
   MatDatepickerModule,
   MatNativeDateModule,
+  MatSnackBarModule
 ];
 
 @NgModule({
