@@ -33,13 +33,11 @@ export class SignupComponent implements OnInit {
     this.dataService.signUpUser(
       { username : this.username, email : this.email, password : this.password},
       c => {
-        console.log(c);
         this.snackBar.open('Registrazione avvenuta con successo!', 'Chiudi');
         this.route.navigate(['/login']);
       },
       e => {
-        console.log(e);
-        this.snackBar.open(e.error.message, 'Chiudi');
+        this.snackBar.open(e.error.message, 'Chiudi', {panelClass: 'snackbar-error'});
       }
     );
   }

@@ -31,12 +31,12 @@ export class LoginComponent implements OnInit {
     this.dataService.logUser(
       {username : this.username, password : this.password},
       u => {
-        console.log(u);
+        localStorage.setItem('access_token', u.access_token.toString());
+        localStorage.setItem('refresh_Token', u.refresh_token.toString());
         this.route.navigate(['/home']);
       },
       err => {
-        console.log(err);
-        this.snackBar.open(err.error.message, 'Chiudi');
+        this.snackBar.open(err.error.message, 'Chiudi', {panelClass: 'snackbar-error'});
       });
   }
 

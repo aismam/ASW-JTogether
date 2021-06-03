@@ -32,6 +32,13 @@ simple-snack-bar {
   }
 }
 
+.snackbar-error {
+  background-color: $red;
+  .mat-simple-snackbar-action {
+    color: $tertiary;
+  }
+}
+
 
 
 

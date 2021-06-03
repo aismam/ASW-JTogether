@@ -31,6 +31,13 @@ simple-snack-bar .mat-simple-snackbar-action {
   color: #66a377;
 }
 
+.snackbar-error {
+  background-color: #f44336;
+}
+.snackbar-error .mat-simple-snackbar-action {
+  color: white;
+}
+
 label {
   position: absolute;
   left: -10000px;
