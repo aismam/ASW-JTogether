@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   forgottenPassword($event: MouseEvent): void {
+    $event.preventDefault();
     this.route.navigate(['/login']); /* TODO */
   }
 
@@ -30,9 +31,9 @@ export class LoginComponent implements OnInit {
     $event.preventDefault();
     this.dataService.logUser(
       {username : this.username, password : this.password},
-      u => {
-        localStorage.setItem('access_token', u.access_token.toString());
-        localStorage.setItem('refresh_Token', u.refresh_token.toString());
+      c => {
+        localStorage.setItem('access_token', c.access_token.toString());
+        localStorage.setItem('refresh_Token', c.refresh_token.toString());
         this.route.navigate(['/home']);
       },
       err => {
