@@ -4,7 +4,7 @@
     <p>
       <mat-form-field appearance="outline">
         <mat-label>Nickname</mat-label>
-        <input matInput placeholder="Ex. Jotaro">
+        <input [(ngModel)]="username" name="username" matInput placeholder="Ex. Jotaro">
         <mat-icon matSuffix>badge</mat-icon>
         <mat-hint>Inserisci il tuo nome</mat-hint>
       </mat-form-field>
@@ -13,7 +13,7 @@
     <p>
       <mat-form-field appearance="outline">
         <mat-label>E-Mail</mat-label>
-        <input matInput placeholder="Ex. Jotaro.Kujo@JoJo.jp">
+        <input [(ngModel)]="email" name="email" matInput placeholder="Ex. Jotaro.Kujo@JoJo.jp">
         <mat-icon matSuffix>email</mat-icon>
         <mat-hint>Inserisci la tua mail</mat-hint>
       </mat-form-field>
@@ -22,7 +22,7 @@
     <p>
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input matInput type="password" class="pw">
+        <input [(ngModel)]="password" name="password" matInput type="password" class="pw">
         <mat-icon matSuffix>password</mat-icon>
         <mat-hint>Inserisci la tua password</mat-hint>
       </mat-form-field>
@@ -38,8 +38,8 @@
     </p>
 
     <p>
-      <button mat-raised-button>Crea profilo</button>
-      <button mat-raised-button>Effettua login</button>
+      <button mat-raised-button (click)="sign($event)">Crea profilo</button>
+      <button mat-raised-button (click)="goLogin($event)">Effettua login</button>
     </p>
 
   </form>

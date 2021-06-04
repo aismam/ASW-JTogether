@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Activities} from '../_Models/activities';
+import {Activity} from '../_Models/activity';
 
 @Component({
   selector: 'app-profile',
@@ -10,7 +10,7 @@ export class ProfileComponent implements OnInit {
 
   cards: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-  activities: Activities = {
+  activities: Activity = {
     imageUrl : 'http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/w3css/img_avatar3.png',
     id : '123',
     name: 'Biciclettata contro Dio Brando',

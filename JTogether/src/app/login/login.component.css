@@ -7,31 +7,56 @@ h1 {
   font-weight: bold;
 }
 
-ul.body {
-  height: 60%;
-  width: 90%;
+main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  justify-content: space-between;
-}
-
-li {
   width: 100%;
-  text-align: center;
 }
-
-form li {
-  margin-top: 20px;
+main form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
-a {
-  color: #e0e0e0;
+@media screen and (min-width: 250px) {
+  main form p {
+    width: 90%;
+  }
 }
-
-button {
+@media screen and (min-width: 250px) {
+  main form p {
+    width: 85%;
+  }
+}
+@media screen and (min-width: 768px) {
+  main form p {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  main form p {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  main form p {
+    width: 40%;
+  }
+}
+main form p mat-form-field {
   width: 100%;
+}
+main form .txt {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #66a377;
+}
+main .main-content {
+  width: 90%;
 }
 
 /*# sourceMappingURL=login.component.css.map */

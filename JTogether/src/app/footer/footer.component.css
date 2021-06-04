@@ -24,6 +24,20 @@ a {
   text-decoration: none;
 }
 
+simple-snack-bar {
+  color: white;
+}
+simple-snack-bar .mat-simple-snackbar-action {
+  color: #66a377;
+}
+
+.snackbar-error {
+  background-color: #f44336;
+}
+.snackbar-error .mat-simple-snackbar-action {
+  color: white;
+}
+
 footer {
   padding: 20px;
   text-align: center;

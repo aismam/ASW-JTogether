@@ -1,16 +1,35 @@
 <app-enter-page>
-  <ul class="body">
-    <li><h1>J Together</h1></li>
-    <li>
+  <main>
+    <h1>J Together</h1>
+
+    <div class="main-content">
       <form>
-        <ul>
-          <li><app-edit-text [type]="'text'" [name]="'username'" [id]="'username'" [placeholder]="'Username'"></app-edit-text></li>
-          <li><app-edit-text [type]="'password'" [name]="'password'" [id]="'password'" [placeholder]="'Password'"></app-edit-text></li>
-          <li><button mat-raised-button (click)="log($event)">Login</button></li>
-        </ul>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Username o e-mail</mat-label>
+            <input [(ngModel)]="username" name="username" matInput placeholder="Ex. TurboJotaro">
+            <mat-icon matSuffix>account_circle</mat-icon>
+            <mat-hint>Inserisci il tuo nickname o la tua e-mail</mat-hint>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input [(ngModel)]="password" name="password" matInput placeholder="* * * *">
+            <mat-icon matSuffix>password</mat-icon>
+            <mat-hint>Inserisci la tua password</mat-hint>
+          </mat-form-field>
+        </p>
+
+        <p><button mat-raised-button (click)="log($event)">Login</button></p>
+
+        <p><a class="txt"(click)="forgottenPassword($event)">Password dimenticata?</a></p>
+
+        <p><button mat-raised-button (click)="signup($event)">Non hai un'account ? Registrati!</button></p>
+
       </form>
-    </li>
-    <li><a href="Lorenzo sei un legno">Password dimenticata?</a></li>
-    <li><button mat-raised-button>Non hai un'account ? Registrati!</button></li>
-  </ul>
+    </div>
+
+  </main>
 </app-enter-page>

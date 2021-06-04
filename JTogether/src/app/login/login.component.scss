@@ -9,27 +9,52 @@ h1{
   font-weight: bold;
 }
 
-ul.body{
-  height: 60%;
-  width: 90%;
+main {
   @include flexCol;
-  justify-content: space-between;
-}
-
-li{
   width: 100%;
-  text-align: center;
-}
 
-form  li{
-  margin-top: 20px;
-}
+  form{
+    @include flexCol;
 
-a{
-  color: $secondary;
-}
+    p,  {
+      @include mobile {
+        width: 90%;
+      }
 
-button{
-  width: 100%;
+      @include mobile {
+        width: 85%;
+      }
+
+      @include small-screen {
+        width: 50%;
+      }
+
+      @include desktop {
+        width: 50%;
+      }
+
+      @include large-desktop {
+        width: 40%;
+      }
+
+      mat-form-field {
+        width: 100%;
+      }
+    }
+
+    .txt {
+      @include flexCol;
+      color: $primary;
+    }
+
+
+  }
+
+  .main-content{
+     // background-color: red;
+    width: 90%;
+  }
+
+
 }
 

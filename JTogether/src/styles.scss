@@ -25,7 +25,19 @@ a{
   text-decoration: none;
 }
 
+simple-snack-bar {
+  color: $tertiary;
+  .mat-simple-snackbar-action {
+    color: $primary;
+  }
+}
 
+.snackbar-error {
+  background-color: $red;
+  .mat-simple-snackbar-action {
+    color: $tertiary;
+  }
+}
 
 
 
