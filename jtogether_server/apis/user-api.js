@@ -6,9 +6,9 @@ module.exports = {
     getUserFromEmail,
     updateUser,
     deleteUser,
-    addParticipation,
+    createParticipation,
     deleteParticipation,
-    addActivity,
+    createActivity,
     deleteActivity,
 }
 
@@ -16,23 +16,27 @@ async function createUser(userParams){
     return new User(userParams).save()
 }
 
-async function addActivity(username,activity_id){
-    return User.findOneAndUpdate({username:username},{$addToSet: {activity_created : activity_id}},{new : true}).exec()
+async function createActivity(username,activity_id){
+    return User.findOneAndUpdate({username:username},{$addToSet: {activities_created : activity_id}},{new : true}).exec()
 }
+
 async function deleteActivity(username,activity_id){
-    return User.findOneAndUpdate({username:username},{$pull: {activity_created : activity_id}},{new : true}).exec()
+    await User.findOneAndUpdate({username : username},{$pull: {activities_created : activity_id}}).exec()
+    const users = await User.find({activities_participated: activity_id}).exec()
+    users.forEach(user => this.deleteParticipation(user.username,activity_id))
+    return users
 }
 
 async function updateUser(userParams){
     return User.findOneAndUpdate({username:userParams.username},userParams).exec()
 }
 
-async function addParticipation(username,activity_id){
-    return User.findOneAndUpdate({username : username},{$addToSet: {activity_participated : activity_id}},{new : true}).exec()
+async function createParticipation(username,activity_id){
+    return User.findOneAndUpdate({username : username},{$addToSet: {activities_participated : activity_id}},{new : true}).exec()
 }
 
 async function deleteParticipation(username,activity_id){
-    return User.findOneAndUpdate({username : username},{$pull: {activity_participated : activity_id}},{new : true}).exec()
+    return User.findOneAndUpdate({username : username},{$pull: {activities_participated : activity_id}},{new : true}).exec()
 }
 
 async function deleteUser(username){

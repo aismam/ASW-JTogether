@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userModel = require('../model/user-model')
+const activityModel = require('../model/activity-model')
 const authModel = require('../model/auth-model')
 const validator = require('../validators/validator')
 const authValidator = require('../validators/validator-auth')
@@ -16,9 +17,10 @@ module.exports = router;
 
 async function deleteUser(req,res,next){
     authModel.logout(req.body,req.user)
-        .then(() => userModel.deleteUser(req.user)
-            .then(() => sendMessage(res,USER_DELETED_MESSAGE))
-            .catch(err => next(err)))
+        .then(() => userModel.deleteUser(req.user))
+        .then(activitiesParticipated =>
+            activitiesParticipated.forEach(a => activityModel.deleteParticipation({activity_id: a},req.user)))
+        .then(() => sendMessage(res,USER_DELETED_MESSAGE))
         .catch(err => next(err))
 }
 async function updateUser(req,res,next){

@@ -1,39 +1,36 @@
 const activityApi = require('../apis/activity-api');
-const userApi = require('../apis/user-api');
 
 const ACTIVITY_NOT_FOUND_ERROR = 'Attività non trovata'
 const NOT_ALLOWED_ERROR = 'Utente non autorizzato'
 
 module.exports = {
     createActivity,
-    creationParticipation,
+    createParticipation,
     deleteParticipation,
     deleteActivity,
     modifyActivity
 }
 async function createActivity(activityParams,{username}){
     activityParams.creator_username = username
-    return (await activityApi.createActivity(activityParams)).toJSON()
+    return activityApi.createActivity(activityParams)
 }
 
 async function modifyActivity(activityParams,{username}){
     await checkUserAndActivity(activityParams.activity_id,username)
-    return (await activityApi.modifyActivity(activityParams)).toJSON()
+    return activityApi.modifyActivity(activityParams)
 }
 
 async function deleteActivity({activity_id},{username}){
     await checkUserAndActivity(activity_id,username)
-    return activityApi.deleteActivity(activity_id) //TODO notifica tutti e togli le partecipazioni
+    return activityApi.deleteActivity(activity_id)
 }
 
-async function creationParticipation({activity_id},{username}){
-    await checkUserAndActivity(activity_id,username)
-    return (await activityApi.createParticipation(activity_id,username)).toJSON()
+async function createParticipation({activity_id},{username}){
+    return activityApi.createParticipation(activity_id,username)
 }
 
 async function deleteParticipation({activity_id},{username}){
-    await checkUserAndActivity(activity_id,username)
-    return (await activityApi.deleteParticipation(activity_id,username)).toJSON()
+    return activityApi.deleteParticipation(activity_id,username)
 }
 
 async function checkUserAndActivity(activityId,username){

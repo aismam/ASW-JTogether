@@ -5,3 +5,4 @@ mongoose.connect('mongodb://localhost:27017/JTogether',
 
 module.exports = require('../model/db-model')
 
+

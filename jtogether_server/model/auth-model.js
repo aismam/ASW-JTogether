@@ -1,4 +1,4 @@
-const userApi = require('../apis/user-api');
+const userModel = require('../model/user-model');
 const bcrypt = require('bcryptjs')
 const jwt = require('../_helpers/jwt')
 
@@ -11,27 +11,28 @@ const WRONG_TOKEN_MATCH = 'I token non sono dello stesso user'
 module.exports = {
     signup,
     login,
-    logout
+    logout,
+    logToken
 };
 
 async function signup(userParams){
-    if(await userApi.getUserFromUsername(userParams.username)){
+    if(await userModel.getUserFromUsername(userParams)){
         throw USERNAME_ALREADY_TAKEN
     }
-    if(await userApi.getUserFromEmail(userParams.email)){
+    if(await userModel.getUserFromEmail(userParams)){
         throw EMAIL_ALREADY_TAKEN
     }
 
     return bcrypt.hash(userParams.password, SALT_ROUNDS)
         .then(hash => {
             userParams.hash = hash;
-            userApi.createUser(userParams)
+            userModel.createUser(userParams)
         })
 }
 
 async function login(userParams) {
-    const user = userParams.email ? await userApi.getUserFromEmail(userParams.email) :
-                                    await userApi.getUserFromUsername(userParams.username)
+    const user = userParams.email ? await userModel.getUserFromEmail(userParams) :
+                                    await userModel.getUserFromUsername(userParams)
 
     if (user && bcrypt.compareSync(userParams.password, user.hash)) {
         const accessToken = jwt.getAccessToken(user)
@@ -50,8 +51,13 @@ async function login(userParams) {
     }
 }
 
+async function logToken({refresh_token}){
+    const user = await jwt.verify(refresh_token)
+    return userModel.getUserFromUsername(user);
+}
+
 async function logout({refresh_token},{username}){
-    jwt.verify(refresh_token)
+    return jwt.verify(refresh_token)
         .then(user => {
             if(user.username !== username){
                 throw WRONG_TOKEN_MATCH

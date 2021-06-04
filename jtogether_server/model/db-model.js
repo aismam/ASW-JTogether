@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-const {Schema} = mongoose;
 
 /*       Activity        */
-const activitySchema = new Schema({
+const activitySchema = mongoose.Schema({
     creator_username : { type: String, required : true},
     name : { type: String, required: true},
     description: { type: String, required: true},
@@ -16,7 +15,7 @@ activitySchema.set('toJSON', {
 })
 
 /*       Message        */
-const messageSchema = new Schema({
+const messageSchema = mongoose.Schema({
     message : { type: String, required : true},
 })
 
@@ -26,7 +25,7 @@ messageSchema.set('toJSON', {
 })
 
 /*       Chat        */
-const chatSchema = new Schema({
+const chatSchema = mongoose.Schema({
     activity_id : {type : Number , required : true},
     messages : {type : [messageSchema], required : true}
 })
@@ -37,7 +36,7 @@ chatSchema.set('toJSON', {
 })
 
 /*       Notification        */
-const notificationSchema = new Schema({
+const notificationSchema = mongoose.Schema({
     message : { type: String, required : true}
 })
 
@@ -47,12 +46,12 @@ notificationSchema.set('toJSON', {
 })
 
 /*       User        */
-const userSchema = new Schema({
+const userSchema = mongoose.Schema({
     username : {type: String, unique: true, required: true},
     email : {type : String, unique : true, required : true},
     chats : {type : [String], default: [], required : true},
-    activity_created : {type : [String], default: [], required : true},
-    activity_participated : {type : [String], default: [], required : true},
+    activities_created : {type : [String], default: [], required : true},
+    activities_participated : {type : [String], default: [], required : true},
     hash : {type: String, required: true}
 })
 

@@ -41,7 +41,7 @@ async function refreshToken(req,res){
 async function clearTokens(){
     refreshTokensList.forEach(t =>{
         jwt.verify(t,config.secret,(err)=> {
-            if (!err) {
+            if (err) {
                 removeToken(t)
             }
         })
