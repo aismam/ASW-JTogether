@@ -21,10 +21,9 @@ const activityModificationRules = [
     ...activityDeletionRules,
     ...activityCreationRules
 ]
+
 const participationRules = [
-    ...activityDeletionRules,
-    check('activity_id',`Inserire un username valido`)
-        .notEmpty(),
+    ...activityDeletionRules
 ]
 
 const getActivitiesRules = [
