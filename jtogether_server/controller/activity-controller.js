@@ -7,9 +7,8 @@ const activityValidator = require('../validators/validator-activity')
 const jwt = require('../_helpers/jwt')
 const sendMessage = require('./controller-util')
 
-const DELETION_SUCCESSFUL_MESSAGE = 'Attività cancellata'
+const DELETION_SUCCESSFUL_MESSAGE = name => `L'attività ${name} è stata cancellata`
 const ACTIVITY_MODIFIED_MESSAGE = name => `L'attività ${name} è stata modificata`
-const ACTIVITY_DELETED_MESSAGE = name => `L'attività ${name} è stata cancellata`
 
 module.exports = socketController => {
     router.post('/create-activity',jwt.authenticateJWT,activityValidator.activityCreationRules,validator,createActivity)
@@ -17,6 +16,7 @@ module.exports = socketController => {
     router.post('/delete-activity',jwt.authenticateJWT,activityValidator.activityDeletionRules,validator,deleteActivity)
     router.post('/create-participation',jwt.authenticateJWT,activityValidator.participationRules,validator,createParticipation)
     router.post('/delete-participation',jwt.authenticateJWT,activityValidator.participationRules,validator,deleteParticipation)
+    router.get('/get-activities',jwt.authenticateJWT,activityValidator.getActivitiesRules,validator,getActivities)
 
     return router;
 
@@ -26,6 +26,12 @@ module.exports = socketController => {
                 userModel.createActivity(req.user,{activity_id : activity._id})
                 res.json(activity.toJSON())
             })
+            .catch(err => next(err))
+    }
+
+    async function getActivities(req,res,next){
+        activityModel.getActivities(req.body)
+            .then(activities => res.json(activities.map(a => a.toJSON())))
             .catch(err => next(err))
     }
 
@@ -44,8 +50,9 @@ module.exports = socketController => {
                 const users = values[0]
                 const deletedActivity = values[1]
                 users.forEach(user => socketController.notify(user.username,ACTIVITY_MODIFIED_MESSAGE(deletedActivity.name)))
+                return deletedActivity
             })
-            .then(() => sendMessage(res,DELETION_SUCCESSFUL_MESSAGE))
+            .then( deletedActivity => sendMessage(res,DELETION_SUCCESSFUL_MESSAGE(deletedActivity.name)))
             .catch(err => next(err))
     }
 

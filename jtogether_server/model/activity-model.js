@@ -8,8 +8,14 @@ module.exports = {
     createParticipation,
     deleteParticipation,
     deleteActivity,
-    modifyActivity
+    modifyActivity,
+    getActivities
 }
+
+async function getActivities({activities_id}){
+    return activityApi.getActivities(activities_id)
+}
+
 async function createActivity(activityParams,{username}){
     activityParams.creator_username = username
     return activityApi.createActivity(activityParams)

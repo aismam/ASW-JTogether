@@ -27,7 +27,13 @@ const participationRules = [
         .notEmpty(),
 ]
 
+const getActivitiesRules = [
+    check('activities_id','Inserire id di attività validi')
+        .isArray()
+]
+
 module.exports = {
+    getActivitiesRules,
     participationRules,
     activityModificationRules,
     activityCreationRules,
