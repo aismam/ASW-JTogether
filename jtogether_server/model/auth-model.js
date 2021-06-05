@@ -7,6 +7,7 @@ const USERNAME_ALREADY_TAKEN = 'Username già utilizzato'
 const EMAIL_ALREADY_TAKEN = 'Email già utilizzata'
 const LOGIN_FAILED = 'Username o password non corretti'
 const WRONG_TOKEN_MATCH = 'I token non sono dello stesso user'
+const REFRESH_TOKEN_NOT_PRESENT = "Refresh token non presente"
 
 module.exports = {
     signup,
@@ -51,8 +52,10 @@ async function login(userParams) {
     }
 }
 
-async function logToken({refresh_token}){
-    const user = await jwt.verify(refresh_token)
+async function logToken({user}, {token}){
+    if(!jwt.registeredTokenCheck(token)){
+        throw REFRESH_TOKEN_NOT_PRESENT
+    }
     return userModel.getUserFromUsername(user);
 }
 

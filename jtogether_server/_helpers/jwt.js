@@ -5,7 +5,7 @@ const EXPIRATION_TIME_ACCESS_TOKEN = '120d'//'20m'
 const EXPIRATION_TIME_REFRESH_TOKEN = '120d'
 const REFRESH_TOKEN_NOT_PRESENT = 'Refresh token non presente'
 
-let refreshTokensList = ['eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvcmVuem8iLCJpYXQiOjE2MjI0NzM2OTEsImV4cCI6MTYzMjg0MTY5MX0.MRuQeBShjT-feUA9mKLgGqoQUCw4R1G_kPnOeAMAFAs']
+let refreshTokensList = []
 
 module.exports = {
     getAccessToken,
@@ -16,6 +16,7 @@ module.exports = {
     clearTokens,
     refreshToken,
     verify,
+    registeredTokenCheck
 }
 async function verify(token){
     return new Promise((resolve, reject) =>
@@ -58,6 +59,7 @@ async function authenticateJWT (req, res, next) {
                 return res.sendStatus(403);
             }
             req.user = user;
+            req.token = token
             next();
         });
     } else {
@@ -80,10 +82,14 @@ function pushRefreshToken(token){
 }
 
 function removeToken(token){
-    if(!refreshTokensList.includes(token)){
+    if(!this.registeredTokenCheck(token)){
         throw REFRESH_TOKEN_NOT_PRESENT
     }
     refreshTokensList = refreshTokensList.filter(t => t !== token);
+}
+
+function registeredTokenCheck(token){
+    return refreshTokensList.includes(token)
 }
 
 

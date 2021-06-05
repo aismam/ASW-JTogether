@@ -13,20 +13,18 @@ router.post('/login',authValidator.userLoginValidationRules,validator,login)
 router.post('/signup',authValidator.userSignupValidationRules,validator,signup)
 router.post('/logout',jwt.authenticateJWT,logout)
 router.get('/token',authValidator.tokenValidationRules,validator,jwt.refreshToken)
-router.get('/logToken',authValidator.tokenValidationRules,validator,logToken)
+router.get('/log-token',jwt.authenticateJWT,logToken)
 
 module.exports = router;
 
 async function signup(req,res,next){
     authModel.signup(req.body)
-        .then(() => {
-            return sendMessage(res, SIGNUP_SUCCESSFUL_MESSAGE);
-        })
+        .then(() => sendMessage(res, SIGNUP_SUCCESSFUL_MESSAGE))
         .catch(err => next(err))
 }
 
 async function logToken(req,res,next){
-    authModel.logToken(req.body)
+    authModel.logToken(req,req)
         .then(user => res.json(user.toJSON()))
         .catch(err => next(err))
 }
