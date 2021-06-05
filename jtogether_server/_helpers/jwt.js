@@ -25,7 +25,7 @@ async function verify(token){
 }
 
 async function refreshToken(req,res){
-    const { token } = req.body
+    const token = req.query.refresh_token
 
     if (!token) {
         return res.sendStatus(401)

@@ -52,10 +52,12 @@ async function login(userParams) {
     }
 }
 
-async function logToken({user}, {token}){
-    if(!jwt.registeredTokenCheck(token)){
+async function logToken({refresh_token}){
+    console.log(refresh_token)
+    if(!jwt.registeredTokenCheck(refresh_token)){
         throw REFRESH_TOKEN_NOT_PRESENT
     }
+    const user = await jwt.verify(refresh_token)
     return userModel.getUserFromUsername(user);
 }
 

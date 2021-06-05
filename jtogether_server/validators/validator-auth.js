@@ -1,4 +1,4 @@
-const { check,oneOf} = require('express-validator');
+const { check,query} = require('express-validator');
 
 const USERNAME_LENGTH = 3
 const PASSWORD_LENGTH = 8
@@ -24,7 +24,7 @@ const userSignupValidationRules = [
 ]
 
 const tokenValidationRules = [
-    check('refresh_token','Inserire il refresh token').notEmpty()
+    query('refresh_token','Inserire il refresh token').notEmpty()
 ]
 
 module.exports = {

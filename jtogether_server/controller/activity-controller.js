@@ -16,7 +16,7 @@ module.exports = socketController => {
     router.post('/delete-activity',jwt.authenticateJWT,activityValidator.activityDeletionRules,validator,deleteActivity)
     router.post('/create-participation',jwt.authenticateJWT,activityValidator.participationRules,validator,createParticipation)
     router.post('/delete-participation',jwt.authenticateJWT,activityValidator.participationRules,validator,deleteParticipation)
-    router.get('/get-activities',jwt.authenticateJWT,activityValidator.getActivitiesRules,validator,getActivities)
+    router.post('/get-activities',jwt.authenticateJWT,activityValidator.getActivitiesRules,validator,getActivities)
 
     return router;
 

@@ -12,8 +12,8 @@ const LOGOUT_SUCCESSFUL_MESSAGE = 'Logout effettuato con successo'
 router.post('/login',authValidator.userLoginValidationRules,validator,login)
 router.post('/signup',authValidator.userSignupValidationRules,validator,signup)
 router.post('/logout',jwt.authenticateJWT,logout)
-router.get('/token',authValidator.tokenValidationRules,validator,jwt.refreshToken)
-router.get('/log-token',jwt.authenticateJWT,logToken)
+router.get('/access-token',authValidator.tokenValidationRules,validator,jwt.refreshToken)
+router.get('/log-token',authValidator.tokenValidationRules,validator,logToken)
 
 module.exports = router;
 
@@ -24,7 +24,7 @@ async function signup(req,res,next){
 }
 
 async function logToken(req,res,next){
-    authModel.logToken(req,req)
+    authModel.logToken(req.query)
         .then(user => res.json(user.toJSON()))
         .catch(err => next(err))
 }
