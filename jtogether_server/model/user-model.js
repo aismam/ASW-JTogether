@@ -22,11 +22,11 @@ async function deleteUser({username}){
     if(!user){
         throw USER_NOT_FOUND + username
     }
-    if(user.activities_created.length > 0){
+    if(user.created_activities.length > 0){
         throw USER_MUST_DELETE_ACTIVITIES
     }
     await userApi.deleteUser(username)
-    return user.activities_participated
+    return user.participated_activities
 }
 
 async function createUser(userParams){

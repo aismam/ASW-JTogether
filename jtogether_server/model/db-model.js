@@ -50,8 +50,8 @@ const userSchema = mongoose.Schema({
     username : {type: String, unique: true, required: true},
     email : {type : String, unique : true, required : true},
     chats : {type : [String], default: [], required : true},
-    activities_created : {type : [String], default: [], required : true},
-    activities_participated : {type : [String], default: [], required : true},
+    created_activities : {type : [String], default: [], required : true},
+    participated_activities : {type : [String], default: [], required : true},
     hash : {type: String, required: true}
 })
 
