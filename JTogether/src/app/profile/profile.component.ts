@@ -11,6 +11,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class ProfileComponent implements OnInit {
 
+  cards: Activity[] = [];
+
   constructor(
     private route: Router,
     private dataService: DataService,
@@ -23,7 +25,6 @@ export class ProfileComponent implements OnInit {
       { refresh_token : localStorage.getItem('refresh_Token')},
       c => {
         this.snackBar.open('OnInit con successo!', 'Chiudi');
-        console.log(c);
         this.generatePage(c.created_activities);
       },
       e => {
@@ -37,15 +38,13 @@ export class ProfileComponent implements OnInit {
       { activities_id : activities },
       localStorage.getItem('refresh_Token'),
       c => {
-        console.log('generate page successo ' + c.length);
         c.forEach(e => {
-          console.log(e);
+          this.cards.push(e);
         });
-        console.log(c.toString());
+        // console.log(this.cards);
       },
       e => {
-        console.log('generate page Fallito come te');
-        // console.log('[' + activities.toString() + ']');
+        this.snackBar.open('Qualcosa é fallito!', 'Chiudi');
       });
   }
 

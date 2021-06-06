@@ -14,7 +14,6 @@ export class ProfileCardComponent implements OnInit {
   @Input() dateTime = undefined;
   @Input() description = undefined;
 
-
   constructor() { }
 
   ngOnInit(): void {
