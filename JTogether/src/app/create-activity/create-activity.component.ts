@@ -50,6 +50,7 @@ export class CreateActivityComponent implements OnInit {
       // @ts-ignore
       this.dateTime = this.date.toISOString() + ' ' + this.time;
     }
+    // TODO sistema qui sotto, che sopra fa schifo
     /* this.dateTime = this.date === undefined || this.time === undefined ?
       this.dateTime = today.toISOString() + ' ' + today.getHours() + ':00' : this.dateTime = this.date.toISOString() + ' ' + this.time; */
     // console.log(this.dateTime);

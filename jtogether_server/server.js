@@ -6,7 +6,7 @@ const cors = require('cors')
 const {SocketIoController} = require('./controller/socket-io-controller')
 const USER_PATH = '/user'
 
-//fillDisagio()
+// fillDisagio()
 
 app.use(express.json())// for json body parse
     .use(cors())
@@ -31,7 +31,11 @@ async function fillDisagio(){
         await authModel.signup({username: 'gardo',email : 'bellarega@gmail.com', password: 'ritardato vero'})
 
         const ismoActivity = await activityModel.createActivity(
-            {name : 'sesso non protetto', description: 'sesso gay ovviamente', date_time: '2021-05-23 13:45'},{username : 'ismo'})
+            {name : 'sesso non protetto', description: 'Marco é il nuovo re del server disord, Ismam abdica', date_time: '2021-05-23 12:45'},{username : 'ismo'})
+        const ismo2Activity = await activityModel.createActivity(
+            {name : 'Turbo Jojo', description: 'A Ismam piacciono i gatti, apprezza molto anche rocket league e la programmazione funzionale', date_time: '2021-05-23 17:12'},{username : 'ismo'})
+        const ismo3Activity = await activityModel.createActivity(
+            {name : 'Pillar man', description: 'A vlad sta bene il reggiseno della chiara, Lorenzo apprezza', date_time: '2021-05-23 10:41'},{username : 'ismo'})
 
         await activityModel.createParticipation({activity_id : ismoActivity._id},{username : 'gardo'})
         await userModel.createParticipation({username : 'gardo'},{activity_id : ismoActivity._id})
