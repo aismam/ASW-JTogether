@@ -20,35 +20,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dataService.logToken(
-      localStorage.getItem('refresh_Token'),
-      { refresh_token : localStorage.getItem('refresh_Token')},
-      c => {
-        this.snackBar.open('OnInit con successo!', 'Chiudi');
-        console.log(c);
-        this.generatePage(c.activities_created);
-      },
-      e => {
-        this.snackBar.open(e.error.message, 'Chiudi');
-      }
-    );
   }
 
-  private generatePage(activities: string[]): void {
-    this.dataService.getActivities(
-      { activities_id : activities },
-      localStorage.getItem('refresh_Token'),
-      c => {
-        console.log('generate page successo ' + c.length);
-        c.forEach(e => {
-          console.log(e);
-        });
-        console.log(c.toString());
-      },
-      e => {
-        console.log('generate page Fallito come te');
-        // console.log('[' + activities.toString() + ']');
-      });
-  }
 
 }

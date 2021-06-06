@@ -8,6 +8,12 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ProfileCardComponent implements OnInit {
 
   @Input() imageUrl: string | undefined;
+  @Input() name = undefined;
+  @Input() creator: string | undefined;
+  @Input() place = undefined;
+  @Input() dateTime = undefined;
+  @Input() description = undefined;
+
 
   constructor() { }
 

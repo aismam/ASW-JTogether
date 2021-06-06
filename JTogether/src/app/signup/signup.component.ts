@@ -28,7 +28,7 @@ export class SignupComponent implements OnInit {
     this.route.navigate(['/login']);
   }
 
-  sign($event: MouseEvent): void {
+  signup($event: MouseEvent): void {
     $event.preventDefault();
     this.dataService.signUpUser(
       { username : this.username, email : this.email, password : this.password},

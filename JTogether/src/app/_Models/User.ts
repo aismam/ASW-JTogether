@@ -1,7 +1,7 @@
 export interface User{
   chats: string[];
-  activities_created: string[];
-  activities_participated: string[];
+  created_activities: string[];
+  participated_activities: string[];
   username: string;
   email: string;
   access_token: string;

@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     this.route.navigate(['/login']); /* TODO */
   }
 
-  log($event: MouseEvent): void {
+  doLogin($event: MouseEvent): void {
     $event.preventDefault();
     this.dataService.logUser(
       {username : this.username, password : this.password},
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  signup($event: MouseEvent): void {
+  doSignup($event: MouseEvent): void {
     $event.preventDefault();
     this.route.navigate(['/signup']);
   }
