@@ -1,10 +1,14 @@
 main {
   margin: 0 auto;
+  width: 95%;
   display: flex;
-  align-content: center;
   flex-direction: column;
   justify-content: center;
-  width: 95%;
+  align-items: center;
+  align-items: normal;
+}
+main * {
+  margin-top: 10px;
 }
 
 /*# sourceMappingURL=home.component.css.map */

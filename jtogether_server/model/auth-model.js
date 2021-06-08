@@ -53,7 +53,6 @@ async function login(userParams) {
 }
 
 async function logToken({refresh_token}){
-    console.log(refresh_token)
     if(!jwt.registeredTokenCheck(refresh_token)){
         throw REFRESH_TOKEN_NOT_PRESENT
     }

@@ -1,26 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from '../data.service';
-import {Router} from '@angular/router';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import {JRouter} from '../jrouter.service';
+import {SnackBarService} from '../snack-bar.service';
+import {Activity} from '../_Models/Activity';
+import {LocalStorageService} from '../local-storage.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
-  cards: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  // cards: Activity[] = [];
-
+export class HomeComponent implements OnInit{
+  activities: Activity[] = [];
 
   constructor(
-    private route: Router,
     private dataService: DataService,
-    private snackBar: MatSnackBar,
+    private snackBar: SnackBarService,
+    private router: JRouter,
+    private localStorage: LocalStorageService,
   ) { }
 
   ngOnInit(): void {
+    if (!this.localStorage.getRefreshToken()){
+      this.router.goLogin();
+      return;
+    }
+    this.dataService.loginToken(this.localStorage.getRefreshToken() as string)
+      .then(u => this.dataService.getActivities({activities_id: u.created_activities}, this.localStorage.getAccessToken() as string))
+      .then(as => this.activities = as)
+      .catch(e => {
+        this.snackBar.errorSnack(e.error.message);
+        this.router.goLogin();
+      });
   }
-
-
 }

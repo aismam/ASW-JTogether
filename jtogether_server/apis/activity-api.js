@@ -1,5 +1,4 @@
 const {Activity} = require('../_helpers/db')
-const userApi = require('./user-api')
 
 module.exports = {
     createActivity,

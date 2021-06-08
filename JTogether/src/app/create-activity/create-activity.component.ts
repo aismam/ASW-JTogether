@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {DataService} from '../data.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
+import {JRouter} from "../jrouter.service";
+import {SnackBarService} from "../snack-bar.service";
+import {LocalStorageService} from "../local-storage.service";
 
 @Component({
   selector: 'app-create-activity',
@@ -18,9 +21,10 @@ export class CreateActivityComponent implements OnInit {
   description = undefined;
 
   constructor(
-    private route: Router,
+    private router: JRouter,
     private dataService: DataService,
-    private snackBar: MatSnackBar,
+    private snackBar: SnackBarService,
+    private localStorage: LocalStorageService
   ) { }
 
   ngOnInit(): void {
@@ -31,15 +35,12 @@ export class CreateActivityComponent implements OnInit {
     this.dateTimeChecker();
     this.dataService.createActivity(
       { name: this.name, description: this.description, date_time: this.dateTime },
-      localStorage.getItem('access_token'),
-      c => {
-        this.snackBar.open('Evento aggiunto con successo!', 'Chiudi');
-        this.route.navigate(['/home']);
-      },
-      e => {
-        this.snackBar.open(e.error.message, 'Chiudi', {panelClass: 'snackbar-error'});
-      }
-    );
+      this.localStorage.getAccessToken() as string)
+      .then(a => {
+        this.snackBar.normalSnack('Evento aggiunto con successo!');
+        this.router.goHome();
+      })
+      .catch(e => this.snackBar.errorSnack(e.error.message));
   }
 
   private dateTimeChecker(): void{

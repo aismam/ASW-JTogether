@@ -1,8 +1,10 @@
+@import "../../mixins";
 main{
   margin: 0 auto;
-  display: flex;
-  align-content: center;
-  flex-direction: column;
-  justify-content: center;
   width: 95%;
+  @include flexCol;
+  align-items: normal;
+  *{
+    margin-top: 10px;
+  }
 }

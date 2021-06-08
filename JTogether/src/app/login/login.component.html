@@ -7,24 +7,26 @@
         <p>
           <mat-form-field appearance="outline">
             <mat-label>Username o e-mail</mat-label>
-            <input [(ngModel)]="username" name="username" matInput placeholder="Ex. TurboJotaro">
+            <input [(ngModel)]="username" name="username" matInput >
             <mat-icon matSuffix>account_circle</mat-icon>
-            <mat-hint>Inserisci il tuo nickname o la tua e-mail</mat-hint>
+            <mat-hint>Inserisci il tuo username o la tua email</mat-hint>
           </mat-form-field>
         </p>
 
         <p>
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input [(ngModel)]="password" name="password" matInput placeholder="* * * *">
-            <mat-icon matSuffix>password</mat-icon>
+            <input matInput name="password" [(ngModel)]="password"  [type]="hide ? 'password' : 'text'" placeholder="Password">
             <mat-hint>Inserisci la tua password</mat-hint>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
           </mat-form-field>
         </p>
 
         <p><button mat-raised-button (click)="doLogin($event)">Login</button></p>
 
-        <p><a class="txt"(click)="forgottenPassword($event)">Password dimenticata?</a></p>
+        <p><a class="txt" (click)="forgottenPassword($event)">Password dimenticata?</a></p>
 
         <p><button mat-raised-button (click)="doSignup($event)">Non hai un'account ? Registrati!</button></p>
 

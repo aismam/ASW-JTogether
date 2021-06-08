@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
 import {DataService} from '../data.service';
-import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
+import {SnackBarService} from '../snack-bar.service';
+import {JRouter} from '../jrouter.service';
+
+const SUCCESSFUL_REGISTRATION = 'Registrazione avvenuta con successo!';
 
 @Component({
   selector: 'app-signup',
@@ -15,9 +17,9 @@ export class SignupComponent implements OnInit {
   password = undefined;
 
   constructor(
-    private route: Router,
+    private route: JRouter,
     private dataService: DataService,
-    private snackBar: MatSnackBar,
+    private snackBar: SnackBarService,
   ) { }
 
   ngOnInit(): void {
@@ -25,21 +27,17 @@ export class SignupComponent implements OnInit {
 
   goLogin($event: MouseEvent): void {
     $event.preventDefault();
-    this.route.navigate(['/login']);
+    this.route.goLogin();
   }
 
   signup($event: MouseEvent): void {
     $event.preventDefault();
-    this.dataService.signUpUser(
-      { username : this.username, email : this.email, password : this.password},
-      c => {
-        this.snackBar.open('Registrazione avvenuta con successo!', 'Chiudi');
-        this.route.navigate(['/login']);
-      },
-      e => {
-        this.snackBar.open(e.error.message, 'Chiudi', {panelClass: 'snackbar-error'});
-      }
-    );
+    this.dataService.signup({ username : this.username, email : this.email, password : this.password})
+      .then(_ => {
+        this.snackBar.normalSnack(SUCCESSFUL_REGISTRATION);
+        this.route.goLogin();
+      })
+      .catch(e => this.snackBar.errorSnack(e.error.message)); // TODO do something else
   }
 
 }

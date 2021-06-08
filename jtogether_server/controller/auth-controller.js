@@ -13,7 +13,7 @@ router.post('/login',authValidator.userLoginValidationRules,validator,login)
 router.post('/signup',authValidator.userSignupValidationRules,validator,signup)
 router.post('/logout',jwt.authenticateJWT,logout)
 router.get('/access-token',authValidator.tokenValidationRules,validator,jwt.refreshToken)
-router.get('/log-token',authValidator.tokenValidationRules,validator,logToken)
+router.get('/login-token',authValidator.tokenValidationRules,validator,logToken)
 
 module.exports = router;
 
