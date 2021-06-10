@@ -6,7 +6,7 @@ const cors = require('cors')
 const {SocketIoController} = require('./controller/socket-io-controller')
 const USER_PATH = '/user'
 
-// fillDisagio()
+//fillDisagio()
 app.use(express.json())// for json body parse
     .use(cors())
     .use(require('./controller/auth-controller'))
@@ -48,12 +48,6 @@ async function fillDisagio(){
         const ismo5Activity = await activityModel.createActivity(
             {name : 'Faenza City Bois', description: 'Faenza è un comune italiano di 58 335 abitanti della provincia di Ravenna in Emilia-Romagna.', date_time: '2021-06-11 09:12'},{username : 'ismo'})
         await userModel.createActivity({username : 'ismo'},{activity_id: ismo5Activity._id})
-
-        await userModel.createActivity( {username: 'ismo'}, (await ismoActivity)._id)
-        await userModel.createActivity( {username: 'ismo'}, ismo2Activity._id)
-        await userModel.createActivity( {username: 'ismo'}, ismo3Activity._id)
-        await userModel.createActivity( {username: 'ismo'}, ismo4Activity._id)
-        await userModel.createActivity( {username: 'ismo'}, ismo5Activity._id)
 
         await activityModel.createParticipation({activity_id : ismoActivity._id},{username : 'gardo'})
         await userModel.createParticipation({username : 'gardo'},{activity_id : ismoActivity._id})

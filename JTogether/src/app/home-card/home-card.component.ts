@@ -11,18 +11,18 @@ import {Router} from '@angular/router';
 export class HomeCardComponent {
 
   @Input() imageUrl: string | undefined;
-  @Input() name = undefined;
+  @Input() name: string | undefined;
   @Input() creator: string | undefined;
-  @Input() place = undefined;
-  @Input() dateTime = undefined;
-  @Input() description = undefined;
+  @Input() place: string | undefined;
+  @Input() dateTime: string | undefined;
+  @Input() description: string | undefined;
+  mouseOver = false;
 
   constructor(
     private route: Router,
     private snackBar: MatSnackBar,
     private dataService: DataService,
   ) { }
-
   random($event: MouseEvent): void{
     $event.preventDefault();
     /*this.dataService.logToken(

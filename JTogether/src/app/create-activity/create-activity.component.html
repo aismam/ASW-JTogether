@@ -2,55 +2,46 @@
 
 <main>
 
-  <form class="form-area">
-    <p>
+  <form class="form-area" #create_activity_form='ngForm' (ngSubmit)='onSubmit(create_activity_form.value)'>
+
       <mat-form-field appearance="outline">
         <mat-label>Nome</mat-label>
         <input [(ngModel)]="name" name="name" matInput placeholder="Ex. Jojo Fight">
         <mat-icon matSuffix>face</mat-icon>
         <mat-hint>Inserisci il nome dell'attività</mat-hint>
       </mat-form-field>
-    </p>
 
-    <p>
       <mat-form-field appearance="outline">
         <mat-label>Luogo</mat-label>
         <input [(ngModel)]="place" name="place" matInput placeholder="Ex. Morio Cho">
         <mat-icon matSuffix>place</mat-icon>
         <mat-hint>Inserisci il luogo dell'attività</mat-hint>
       </mat-form-field>
-    </p>
 
-    <p>
       <mat-form-field appearance="outline">
         <mat-label>Orario</mat-label>
-        <input [(ngModel)]="time" name="time" matInput type="time" class="time" placeholder="Ex. 14:30">
+        <input id="time" [(ngModel)]="time" name="time" type="time" matInput class="time" placeholder="Ex. 14:30">
         <mat-icon matSuffix>schedule</mat-icon>
         <mat-hint>Inserisci l'orario dell'attività</mat-hint>
       </mat-form-field>
-    </p>
 
-    <p>
       <mat-form-field appearance="outline">
         <mat-label>Scegli una data</mat-label>
-        <input [(ngModel)]="date" name="date" matInput [matDatepicker]="picker">
+        <input id="date" [(ngModel)]="date" name="date" matInput [matDatepicker]="picker">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-hint>Inserisci la data dell'attività</mat-hint>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-    </p>
 
-    <p>
+
       <mat-form-field appearance="outline" class="example-full-width">
         <mat-label>Aggiungi una descrizione</mat-label>
         <textarea [(ngModel)]="description" name="description" matInput placeholder="Ex. Portatevi una barca, servirà per ..."></textarea>
         <mat-hint>Inserisci una descrizione</mat-hint>
       </mat-form-field>
-    </p>
 
-    <p>
-      <button mat-raised-button (click)="createActivity($event)">Crea attività</button>
-    </p>
+      <button mat-raised-button>Crea attività</button>
+
   </form>
 
 

@@ -19,17 +19,13 @@ main {
       width: 50%;
     }
 
-    p {
+    mat-form-field {
+      width: 100%;
       margin-top: 15px;
-      text-align: center;
+    }
 
-      mat-form-field {
-        width: 100%;
-      }
-
-      .time::-webkit-calendar-picker-indicator {
-        background: none;
-      }
+    .time::-webkit-calendar-picker-indicator {
+      background: none;
     }
   }
 }

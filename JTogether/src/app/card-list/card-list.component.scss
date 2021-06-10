@@ -2,6 +2,7 @@
 
 ul#card-list{
   @include flexRow;
+  align-content: stretch;
   justify-content: space-between;
 }
 
