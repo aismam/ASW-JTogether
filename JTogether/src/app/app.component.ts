@@ -9,14 +9,7 @@ import {JRouter} from './jrouter.service';
 })
 export class AppComponent implements OnInit{
   title = 'JTogether';
-  constructor(private notificationService: NotificationService, private router: JRouter) {}
 
   ngOnInit(): void {
-    /*Notification.requestPermission().then(r => {
-      if (r === 'granted'){
-        this.notificationService.createSocket('giovanni')
-          .subscribe(n => new Notification(n));
-      }
-    });*/
   }
 }

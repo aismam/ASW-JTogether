@@ -5,6 +5,8 @@ import {SnackBarService} from '../snack-bar.service';
 import {LocalStorageService} from '../local-storage.service';
 import {User} from '../_Models/User';
 import {AccessTokenUpdaterService} from '../access-token-updater.service';
+import { GeolocationService } from '../geolocation-service';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -22,15 +24,28 @@ export class LoginComponent implements OnInit{
     private dataService: DataService,
     private snackBar: SnackBarService,
     private localStorage: LocalStorageService,
-    private accessTokenUpdater: AccessTokenUpdaterService
+    private accessTokenUpdater: AccessTokenUpdaterService,
+    private locationService: GeolocationService,
+    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
+    this.locationService.getLocation()
+      .then(p => this.localStorage.setPosition(p))
+      .catch(_ => this.localStorage.setPosition(null));
+
     if (this.localStorage.getRefreshToken()){
       this.dataService.loginToken(this.localStorage.getRefreshToken() as string)
         .then(u => this.finalizeLogin(u))
         .catch(_ => this.localStorage.removeRefreshToken());
     }
+
+    /*Notification.requestPermission().then(r => {
+      if (r === 'granted'){
+        this.notificationService.createSocket('giovanni')
+          .subscribe(n => new Notification(n));
+      }
+    });*/
   }
 
   forgottenPassword($event: MouseEvent): void {

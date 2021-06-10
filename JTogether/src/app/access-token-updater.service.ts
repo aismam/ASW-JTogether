@@ -32,7 +32,6 @@ export class AccessTokenUpdaterService{
       }else if (this.isUpdating){
         this.dataService.accessToken(this.localStorage.getRefreshToken() as string)
           .then(t => {
-              console.log('refreshooooooooooooo');
               const updateTime = new JwtHelperService().getTokenExpirationDate(t.access_token)?.getTime() as number
                 - Date.now()
                 - DELTA_EXPIRATION_TIME_MILLIS;

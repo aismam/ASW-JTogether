@@ -21,16 +21,19 @@ export class HomeComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-    if (!this.localStorage.getRefreshToken()){
+    /*if (!this.localStorage.getRefreshToken()){
       this.router.goLogin();
       return;
+    }*/
+    const position = this.localStorage.getPosition();
+    if (position){
+      this.dataService.loginToken(this.localStorage.getRefreshToken() as string)
+        .then(u => this.dataService.getActivities({activities_id: u.created_activities}, this.localStorage.getAccessToken() as string))
+        .then(as => this.activities = as)
+        .catch(e => {
+          this.snackBar.errorSnack(e.error.message);
+          this.router.goLogin();
+        });
     }
-    this.dataService.loginToken(this.localStorage.getRefreshToken() as string)
-      .then(u => this.dataService.getActivities({activities_id: u.created_activities}, this.localStorage.getAccessToken() as string))
-      .then(as => this.activities = as)
-      .catch(e => {
-        this.snackBar.errorSnack(e.error.message);
-        this.router.goLogin();
-      });
   }
 }

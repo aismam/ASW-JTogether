@@ -3,6 +3,7 @@ ul#card-list {
   justify-content: space-between;
   flex-wrap: wrap;
   align-content: center;
+  align-content: stretch;
   justify-content: space-between;
 }
 

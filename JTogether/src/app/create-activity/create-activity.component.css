@@ -22,14 +22,11 @@ main .form-area {
     width: 50%;
   }
 }
-main .form-area p {
-  margin-top: 15px;
-  text-align: center;
-}
-main .form-area p mat-form-field {
+main .form-area mat-form-field {
   width: 100%;
+  margin-top: 15px;
 }
-main .form-area p .time::-webkit-calendar-picker-indicator {
+main .form-area .time::-webkit-calendar-picker-indicator {
   background: none;
 }
 
