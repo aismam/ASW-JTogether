@@ -10,8 +10,11 @@ const activitySchema = mongoose.Schema({
 })
 
 activitySchema.set('toJSON', {
-    virtuals: false,
-    versionKey: false
+    virtuals: true,
+    versionKey: false,
+    transform: (_, ret) => {
+        delete ret._id;
+    }
 })
 
 /*       Message        */

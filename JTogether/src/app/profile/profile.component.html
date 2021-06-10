@@ -8,24 +8,25 @@
     </div>
 
     <div class="profNameEmail">
-      <!-- <span> {{utente}} </span>
-      <span> {{email}} </span> -->
+      <span> {{name}} </span>
+      <span> {{email}} </span>
     </div>
 
     <button mat-raised-button>Modifica profilo</button>
   </div>
 
   <app-card-list>
-    <!-- <li *ngFor="let card of cards">
+    <li *ngFor="let card of cards">
       <app-profile-card
         [imageUrl]="'https://material.angular.io/assets/img/examples/shiba2.jpg'"
-        [name]=""
-        [creator]=""
-        [place]=""
-        [dateTime]=""
-        [description]=""
+        [name]="card.name"
+        [creator]="card.creator"
+        [place]="card.place"
+        [dateTime]="card.date_time"
+        [description]="card.description"
+        [id]="card.id"
       ></app-profile-card>
-    </li> -->
+    </li>
   </app-card-list>
 
 </main>

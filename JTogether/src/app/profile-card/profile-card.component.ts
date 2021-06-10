@@ -1,4 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {JRouter} from '../jrouter.service';
+import {SnackBarService} from '../snack-bar.service';
+import {DataService} from '../data.service';
+import {LocalStorageService} from '../local-storage.service';
 
 @Component({
   selector: 'app-profile-card',
@@ -8,15 +12,31 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ProfileCardComponent implements OnInit {
 
   @Input() imageUrl: string | undefined;
-  @Input() name = undefined;
+  @Input() name: string | undefined;
   @Input() creator: string | undefined;
-  @Input() place = undefined;
-  @Input() dateTime = undefined;
-  @Input() description = undefined;
+  @Input() place: string | undefined;
+  @Input() dateTime: string | undefined;
+  @Input() description: string | undefined;
+  @Input() id: string | undefined;
 
-  constructor() { }
+  constructor(
+    private route: JRouter,
+    private dataService: DataService,
+    private snackBar: SnackBarService,
+    private localStorage: LocalStorageService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  delete(): void {
+    this.dataService.removeActivity(
+      { activity_id: this.id},
+      this.localStorage.getRefreshToken())
+      .then( () => {
+        this.snackBar.normalSnack('L\'attività è stata eliminata!');
+      })
+      .catch( e => this.snackBar.errorSnack(e.message));
   }
 
 }

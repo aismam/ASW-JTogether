@@ -13,30 +13,35 @@ import {LocalStorageService} from '../local-storage.service';
 export class ProfileComponent implements OnInit {
 
   cards: Activity[] = [];
-  activitiesID: string[] = [];
+  check: boolean;
+  name: string | undefined;
+  email: string | undefined;
 
   constructor(
     private route: JRouter,
     private dataService: DataService,
     private snackBar: SnackBarService,
     private localStorage: LocalStorageService
-  ) { }
+  ) { this.check = true; }
 
   ngOnInit(): void {
+    this.setUserInfo();
+    // TODO Fixa il refreshToken mettendoci ACCESSTOKEN
     this.dataService.loginToken(this.localStorage.getRefreshToken() as string)
       .then(u => this.dataService.getActivities({ activities_id : u.created_activities },
-                                              this.localStorage.getAccessToken()))
+                                              this.localStorage.getRefreshToken()))
       .then(as => this.cards = as)
       .catch(e => this.snackBar.errorSnack(e.error.message));
-    this.updateData();
   }
 
-  private updateData(): void {
-    this.dataService.loginToken(this.localStorage.getRefreshToken() as string)
-      .then(e => {
-        /*this.dataService.getActivities( {activities_id: [ e.created_activities ]}, this.localStorage.getRefreshToken())
-          .then(a => console.log(a));*/
-        console.log(e.created_activities);
+  private setUserInfo(): void {
+    if (this.check) {
+      this.dataService.loginToken(this.localStorage.getRefreshToken() as string).then( u => {
+        this.name = u.username;
+        this.email = u.email;
       });
+      this.check = false;
+    }
   }
+
 }

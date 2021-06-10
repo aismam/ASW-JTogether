@@ -61,4 +61,8 @@ export class DataService {
   geolocation(address: string): Promise<any> {
     return this.doGet<any>(`https://eu1.locationiq.com/v1/search.php?key=pk.c7c99c10cf697dedb99068474806aab4&q=${encodeURI(address)}&format=json`);
   }
+
+  removeActivity(body: object, refreshToken: string | null): Promise<string> {
+    return this.doPost<string>(this.url + 'user/delete-activity', body, refreshToken);
+  }
 }
