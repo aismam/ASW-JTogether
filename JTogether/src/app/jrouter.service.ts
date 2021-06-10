@@ -4,6 +4,7 @@ import {Injectable} from '@angular/core';
 const LOGIN = '/login';
 const HOME = '/home';
 const SIGNUP = '/signup';
+const PROFILE = '/profile';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,8 @@ export class JRouter {
   }
   public signup(): void{
     this.router.navigate([SIGNUP]);
+  }
+  public goProfile(): void{
+    this.router.navigate([PROFILE]);
   }
 }

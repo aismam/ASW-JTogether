@@ -46,8 +46,8 @@ export class DataService {
     return this.doPost<Activity>(this.url + 'user/create-activity', activity, accessToken);
   }
 
-  getActivities(body: object, accessToken: string | null): Promise<Activity[]>{
-    return this.doPost<Activity[]>(this.url + 'user/get-activities', body, accessToken);
+  getActivities(body: object, refreshToken: string | null): Promise<Activity[]>{
+    return this.doPost<Activity[]>(this.url + 'user/get-activities', body, refreshToken);
   }
 
   loginToken(refreshToken: string): Promise<User> {

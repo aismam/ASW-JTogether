@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {JRouter} from '../jrouter.service';
 
 @Component({
   selector: 'app-navigation-buttons',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationButtonsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: JRouter,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  toProfile(): void{
+    this.router.goProfile();
   }
 
 }

@@ -13,6 +13,7 @@ import {LocalStorageService} from '../local-storage.service';
 export class ProfileComponent implements OnInit {
 
   cards: Activity[] = [];
+  activitiesID: string[] = [];
 
   constructor(
     private route: JRouter,
@@ -27,5 +28,15 @@ export class ProfileComponent implements OnInit {
                                               this.localStorage.getAccessToken()))
       .then(as => this.cards = as)
       .catch(e => this.snackBar.errorSnack(e.error.message));
+    this.updateData();
+  }
+
+  private updateData(): void {
+    this.dataService.loginToken(this.localStorage.getRefreshToken() as string)
+      .then(e => {
+        /*this.dataService.getActivities( {activities_id: [ e.created_activities ]}, this.localStorage.getRefreshToken())
+          .then(a => console.log(a));*/
+        console.log(e.created_activities);
+      });
   }
 }
