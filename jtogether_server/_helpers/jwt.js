@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const config = require('../config.json')
 
-const EXPIRATION_TIME_ACCESS_TOKEN = '10s'//'120d'//
+const EXPIRATION_TIME_ACCESS_TOKEN = '20m'
 const EXPIRATION_TIME_REFRESH_TOKEN = '120d'
 const REFRESH_TOKEN_NOT_PRESENT = 'Refresh token non presente'
 
