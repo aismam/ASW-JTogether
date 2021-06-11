@@ -11,4 +11,5 @@ export class NotificationService {
   createSocket(username: string): Observable<string>{
     return this.socket.fromEvent<string>(username);
   }
+  
 }

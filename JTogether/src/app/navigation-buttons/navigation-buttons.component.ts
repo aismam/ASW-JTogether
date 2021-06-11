@@ -19,4 +19,7 @@ export class NavigationButtonsComponent implements OnInit {
     this.router.goProfile();
   }
 
+  toCreateActivity(): void{
+    this.router.goCreateActivity();
+  }
 }

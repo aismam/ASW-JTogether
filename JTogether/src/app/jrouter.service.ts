@@ -5,6 +5,8 @@ const LOGIN = '/login';
 const HOME = '/home';
 const SIGNUP = '/signup';
 const PROFILE = '/profile';
+const MODIFY_ACTIVITY = '/modify-activity';
+const CREATE_ACTIVITY = '/create-activity';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +25,11 @@ export class JRouter {
   }
   public goProfile(): void{
     this.router.navigate([PROFILE]);
+  }
+  public goModifyActivity(): void{
+    this.router.navigate([MODIFY_ACTIVITY]);
+  }
+  public goCreateActivity(): void{
+    this.router.navigate([CREATE_ACTIVITY]);
   }
 }

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {GeolibGeoJSONPoint, GeolibInputCoordinates} from "geolib/es/types";
+import {GeolibGeoJSONPoint, GeolibInputCoordinates} from 'geolib/es/types';
 
 const REFRESH_TOKEN = 'refresh_token';
 const ACCESS_TOKEN = 'access_token';

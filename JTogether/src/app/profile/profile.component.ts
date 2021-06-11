@@ -13,7 +13,7 @@ import {LocalStorageService} from '../local-storage.service';
 export class ProfileComponent implements OnInit {
 
   cards: Activity[] = [];
-  check: boolean;
+  check: boolean; // Serve per settare il nickname solo una volta
   name: string | undefined;
   email: string | undefined;
 
@@ -26,7 +26,6 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.setUserInfo();
-    // TODO Fixa il refreshToken mettendoci ACCESSTOKEN
     this.dataService.loginToken(this.localStorage.getRefreshToken() as string)
       .then(u => this.dataService.getActivities({ activities_id : u.created_activities },
                                               this.localStorage.getRefreshToken()))
