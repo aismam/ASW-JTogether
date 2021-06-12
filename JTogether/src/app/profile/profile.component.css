@@ -44,6 +44,10 @@ main, .profPic, .profNameEmail, button {
   align-items: center;
 }
 
+.modify {
+  box-shadow: 2px 2px 10px #333333;
+}
+
 .sup, app-card-list {
   width: 90%;
 }
@@ -64,6 +68,16 @@ main, .profPic, .profNameEmail, button {
   }
 }
 @media screen and (min-width: 480px) {
+  .sup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .sup .modify {
+    width: 50%;
+  }
+
   .profPic {
     padding-bottom: 7px;
     padding-top: 9px;
@@ -80,6 +94,16 @@ main, .profPic, .profNameEmail, button {
   }
 }
 @media screen and (min-width: 1200px) {
+  .sup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .sup .modify {
+    width: 30%;
+  }
+
   .profPic {
     padding-bottom: 9px;
     padding-top: 11px;
@@ -95,7 +119,7 @@ main, .profPic, .profNameEmail, button {
     font-size: x-large;
   }
   .profNameEmail span {
-    margin-bottom: 1%;
+    margin-bottom: 3%;
   }
 }
 

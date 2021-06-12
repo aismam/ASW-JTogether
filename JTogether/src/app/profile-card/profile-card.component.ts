@@ -18,6 +18,7 @@ export class ProfileCardComponent implements OnInit {
   @Input() dateTime: string | undefined;
   @Input() description: string | undefined;
   @Input() id: string | undefined;
+  cardSide = false;
 
   constructor(
     private route: JRouter,
@@ -44,4 +45,7 @@ export class ProfileCardComponent implements OnInit {
     this.route.goModifyActivity();
   }
 
+  flipCard(): void {
+    this.cardSide = !this.cardSide;
+  }
 }
