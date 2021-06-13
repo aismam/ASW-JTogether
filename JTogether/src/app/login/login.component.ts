@@ -25,16 +25,14 @@ export class LoginComponent implements OnInit{
     private snackBar: SnackBarService,
     private localStorage: LocalStorageService,
     private accessTokenUpdater: AccessTokenUpdaterService,
-    private locationService: GeolocationService,
-    private http: HttpClient
-  ) { }
+    private locationService: GeolocationService) { }
 
   ngOnInit(): void {
     this.locationService.getLocation()
       .then(p => this.localStorage.setPosition(p))
       .catch(_ => this.localStorage.setPosition(null));
 
-    if (this.localStorage.getRefreshToken()){
+    if (this.localStorage.getRefreshToken()) {
       this.dataService.loginToken(this.localStorage.getRefreshToken() as string)
         .then(u => this.finalizeLogin(u))
         .catch(_ => this.localStorage.removeRefreshToken());

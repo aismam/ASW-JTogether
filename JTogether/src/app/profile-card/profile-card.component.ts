@@ -32,7 +32,7 @@ export class ProfileCardComponent implements OnInit {
   delete(): void {
     this.dataService.removeActivity(
       { activity_id: this.id},
-      this.localStorage.getAccessToken())
+      this.localStorage.getAccessToken() as string)
       .then( () => {
         this.snackBar.normalSnack('L\'attività è stata eliminata!');
         // TODO metti qui il metodo per autodistruggerti

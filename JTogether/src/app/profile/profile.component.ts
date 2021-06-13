@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
     this.setUserInfo();
     this.dataService.loginToken(this.localStorage.getRefreshToken() as string)
       .then(u => this.dataService.getActivities({ activities_id : u.created_activities },
-                                              this.localStorage.getRefreshToken()))
+                                              this.localStorage.getAccessToken() as string))
       .then(as => this.cards = as)
       .catch(e => this.snackBar.errorSnack(e.error.message));
   }

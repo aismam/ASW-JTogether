@@ -34,13 +34,13 @@ async function createUser(userParams){
 }
 
 async function updateUser(userParams){
-    const userFromUsername = userApi.getUserFromUsername(userParams.username)
-    const userFromEmail = userApi.getUserFromUsername(userParams.email)
+    const userFromUsername = await userApi.getUserFromUsername(userParams.username)
+    const userFromEmail = await userApi.getUserFromUsername(userParams.email)
 
     if(userFromEmail || userFromUsername){
         throw CREDENTIAL_ALREADY_PRESENT
     }
-    return (await userApi.updateUser(userParams)).toJSON()
+    return userApi.updateUser(userParams)
 }
 
 async function deleteParticipation({username},{activity_id}){

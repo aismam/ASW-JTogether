@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {GeolibGeoJSONPoint, GeolibInputCoordinates} from 'geolib/es/types';
+import {Geolocation} from "./_Models/Geolocation";
 
 const REFRESH_TOKEN = 'refresh_token';
 const ACCESS_TOKEN = 'access_token';
@@ -34,11 +35,11 @@ export class LocalStorageService {
     return localStorage.removeItem(ACCESS_TOKEN);
   }
 
-  public setPosition(position: GeolibInputCoordinates | null): void {
+  public setPosition(position: Geolocation | null): void {
     localStorage.setItem(POSITION, JSON.stringify(position));
   }
 
-  public getPosition(): GeolibInputCoordinates | null {
+  public getPosition(): Geolocation | null {
     return localStorage.getItem(POSITION) ? JSON.parse(localStorage.getItem(POSITION) as string) : null;
   }
 }

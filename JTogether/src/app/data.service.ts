@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {User} from './_Models/User';
 import {Activity} from './_Models/Activity';
+import {Geolocation} from "./_Models/Geolocation";
+import {longitudeKeys} from "geolib";
 
 const NULL_TOKEN = null;
 
@@ -9,7 +11,8 @@ const NULL_TOKEN = null;
   providedIn: 'root'
 })
 export class DataService {
-  private url = 'http://localhost:3000/';
+  private serverUrl = 'http://localhost:3000/';
+  private userPath = 'user/';
 
   constructor(private httpClient: HttpClient) { }
   private static refreshHeader(refreshToken: string): HttpParams{
@@ -30,39 +33,44 @@ export class DataService {
         .toPromise();
   }
 
-  private doGet<X>(url: string, params?: HttpParams): Promise<X> {
-    return this.httpClient.get<X>(url, {params}).toPromise();
+  private doGet<X>(url: string, token: string | null, params?: HttpParams): Promise<X> {
+    return this.httpClient.get<X>(url, {params, headers : { Authorization : 'bearer ' + token}}).toPromise();
   }
 
   login(user: object): Promise<User> {
-    return this.doPost<User>(this.url + 'login/', user, NULL_TOKEN);
+    return this.doPost<User>(this.serverUrl + 'login/', user, NULL_TOKEN);
   }
 
   signup(user: object): Promise<User>{
-    return this.doPost<User>(this.url + 'signup/', user, NULL_TOKEN);
+    return this.doPost<User>(this.serverUrl + 'signup/', user, NULL_TOKEN);
   }
 
-  createActivity(activity: object, accessToken: string | null): Promise<Activity>{
-    return this.doPost<Activity>(this.url + 'user/create-activity', activity, accessToken);
+  createActivity(activity: object, accessToken: string): Promise<Activity>{
+    return this.doPost<Activity>(this.serverUrl + this.userPath + 'create-activity', activity, accessToken);
   }
 
-  getActivities(body: object, refreshToken: string | null): Promise<Activity[]>{
-    return this.doPost<Activity[]>(this.url + 'user/get-activities', body, refreshToken);
+  getActivities(body: object, refreshToken: string ): Promise<Activity[]>{
+    return this.doPost<Activity[]>(this.serverUrl + this.userPath + 'get-activities', body, refreshToken);
   }
 
   loginToken(refreshToken: string): Promise<User> {
-    return this.doGet<User>(this.url + 'login-token', DataService.refreshHeader(refreshToken));
+    return this.doGet<User>(this.serverUrl + 'login-token', NULL_TOKEN, DataService.refreshHeader(refreshToken));
   }
 
   accessToken(refreshToken: string): Promise<{ access_token: string }> {
-    return this.doGet<{ access_token: string }>(this.url + 'access-token', DataService.refreshHeader(refreshToken));
+    return this.doGet<{ access_token: string }>(this.serverUrl + 'access-token', NULL_TOKEN, DataService.refreshHeader(refreshToken));
   }
 
   geolocation(address: string): Promise<any> {
-    return this.doGet<any>(`https://eu1.locationiq.com/v1/search.php?key=pk.c7c99c10cf697dedb99068474806aab4&q=${encodeURI(address)}&format=json`);
+    return this.doGet<any>(`https://eu1.locationiq.com/v1/search.php?key=pk.c7c99c10cf697dedb99068474806aab4&q=${encodeURI(address)}&format=json`, NULL_TOKEN);
   }
 
-  removeActivity(body: object, refreshToken: string | null): Promise<string> {
-    return this.doPost<string>(this.url + 'user/delete-activity', body, refreshToken);
+  getNearActivities(position: Geolocation, accessToken: string): Promise<Activity[]> {
+    return this.doGet<Activity[]>(this.serverUrl + this.userPath + 'get-near-activities', accessToken,
+      new HttpParams().append('longitude', position.longitude.toString()).append('latitude', position.latitude.toString()));
+  }
+
+  removeActivity(body: object, refreshToken: string): Promise<string> {
+    return this.doPost<string>(this.serverUrl + 'user/delete-activity', body, refreshToken);
   }
 }

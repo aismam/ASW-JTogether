@@ -2,17 +2,19 @@ const mongoose = require('mongoose');
 
 /*       Activity        */
 const activitySchema = mongoose.Schema({
-    creator_username : { type: String, required : true},
-    name : { type: String, required: true},
-    description: { type: String, required: true},
+    creator_username : { type: String, required : true, index: 'text'},
+    name: { type: String, required: true, index: 'text'},
+    description: { type: String, required: true, index: 'text'},
     date_time: { type: Date, required: true},
-    participants : {type : [String], default: [], required:true }
+    participants : {type : [String], default: [], required:true },
+    location: {type: String, required: true, index: 'text'},
+    geolocation: {type: [Number], index: '2dsphere', required: true}
 })
 
 activitySchema.set('toJSON', {
-    virtuals: true,
+    virtuals: false,
     versionKey: false,
-    transform: (_, ret) => {
+    transform: function (_, ret) {
         delete ret._id;
     }
 })

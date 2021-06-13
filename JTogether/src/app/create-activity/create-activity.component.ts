@@ -3,6 +3,7 @@ import {DataService} from '../data.service';
 import {JRouter} from '../jrouter.service';
 import {SnackBarService} from '../snack-bar.service';
 import {LocalStorageService} from '../local-storage.service';
+import {GeolocationService} from "../geolocation-service";
 
 @Component({
   selector: 'app-create-activity',
@@ -12,7 +13,7 @@ import {LocalStorageService} from '../local-storage.service';
 export class CreateActivityComponent{
 
   name: string | null = null;
-  place: string | null = null;
+  location: string | null = null;
   date = new Date();
   time = this.date.getHours() + ':' + this.date.getMinutes();
   dateTime: string | undefined;
@@ -22,18 +23,19 @@ export class CreateActivityComponent{
     private router: JRouter,
     private dataService: DataService,
     private snackBar: SnackBarService,
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService,
+    private geolocationService: GeolocationService
   ) {}
 
   onSubmit(value: any): void {
-    value.date_time = this.date.toLocaleDateString() + ' ' + value.time;
-    if (Object.entries(value).filter(([_, v]) => v === undefined) || new Date(value.date_time).getTime() < Date.now() ){
+    value.date_time = this.date.toISOString().split('T')[0] + ' ' + value.time;
+    if (Object.entries(value).find(([_, v]) => v === undefined) || new Date(value.date_time).getTime() < Date.now() ){
       this.snackBar.errorSnack('Immettere valori validi');
     }else{
-      this.dataService.createActivity(
-        { name: this.name, description: this.description, date_time: this.dateTime },
-        this.localStorage.getAccessToken() as string)
-        .then(a => {
+      this.geolocationService.getGeoCoordinates(value.location as string)
+        .then(l => value.geolocation = [l.longitude, l.latitude])
+        .then(_ => this.dataService.createActivity(value, this.localStorage.getAccessToken() as string))
+        .then(_ => {
           this.snackBar.normalSnack('Evento aggiunto con successo!');
           this.router.goHome();
         })

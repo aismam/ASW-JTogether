@@ -17,7 +17,8 @@ module.exports = socketController => {
     router.post('/create-participation',jwt.authenticateJWT,activityValidator.participationRules,validator,createParticipation)
     router.post('/delete-participation',jwt.authenticateJWT,activityValidator.participationRules,validator,deleteParticipation)
     router.post('/get-activities',jwt.authenticateJWT,activityValidator.getActivitiesRules,validator,getActivities)
-
+    router.get('/get-near-activities',jwt.authenticateJWT,activityValidator.getNearActivitiesRules,validator,getNearActivities)
+    router.get('/search-activities',jwt.authenticateJWT,activityValidator.searchActivityRules,validator,searchActivities)
     return router;
 
     async function createActivity(req,res,next){
@@ -26,6 +27,18 @@ module.exports = socketController => {
                 userModel.createActivity(req.user,{activity_id : activity._id})
                 res.json(activity.toJSON())
             })
+            .catch(err => next(err))
+    }
+
+    async function getNearActivities(req,res,next){
+        activityModel.getNearActivities(req.query)
+            .then(activities => res.json(activities.map(a => a.toJSON())))
+            .catch(err => next(err))
+    }
+
+    async function searchActivities(req,res,next){
+        activityModel.searchActivities(req.query)
+            .then(activities => res.json(activities.map(a => a.toJSON())))
             .catch(err => next(err))
     }
 
