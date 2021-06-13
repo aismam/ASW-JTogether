@@ -37,8 +37,19 @@ simple-snack-bar .mat-simple-snackbar-action {
   color: white;
 }
 
+/* HEADER */
+mat-card-header {
+  margin: 1%;
+  padding: 2%;
+}
+mat-card-header img {
+  box-shadow: 2px 2px 10px #333333;
+}
+
+/* CONTENUTO */
 mat-card-content {
-  margin: 0;
+  margin: 1%;
+  padding: 2%;
 }
 mat-card-content ul {
   margin-left: 2%;
@@ -61,19 +72,49 @@ mat-card-content p {
   text-align: justify;
 }
 
+/* ICONE - BOTTONI*/
+/* mat-card-actions{
+  //background-color: yellow;
+  margin: 1%;
+  padding: 2%;
+  @include flexRow;
+
+  mat-icon{
+    cursor: pointer;
+    color: $primary;
+    transform: scale(2);
+    margin: 8%;
+  }
+
+  .del {
+    color: $red;
+  }
+} */
 mat-card-actions {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   align-content: center;
 }
-mat-card-actions mat-icon {
-  color: #66a377;
-  transform: scale(2);
-  margin: 8%;
+mat-card-actions #f {
+  margin: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-mat-card-actions .del {
-  color: #f44336;
+mat-card-actions button {
+  width: 29%;
+  margin: 2%;
+  box-shadow: 2px 2px 10px #333333;
+}
+mat-card-actions .remove {
+  background-color: #f44336;
+}
+
+/* ANIMAZIONI CARDS */
+.mat-card:hover {
+  transform: scale(1.1);
 }
 
 /*# sourceMappingURL=profile-card.component.css.map */
