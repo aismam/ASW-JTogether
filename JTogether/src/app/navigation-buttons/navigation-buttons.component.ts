@@ -22,4 +22,11 @@ export class NavigationButtonsComponent implements OnInit {
   toCreateActivity(): void{
     this.router.goCreateActivity();
   }
+
+  toParticipatedActivities(): void{
+    this.router.goParticipatedActivities();
+  }
+  toNotifications(): void{
+    this.router.goNotifications();
+  }
 }

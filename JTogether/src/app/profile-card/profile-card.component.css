@@ -113,8 +113,8 @@ mat-card-actions .remove {
 }
 
 /* ANIMAZIONI CARDS */
-.mat-card:hover {
+/*.mat-card:hover{
   transform: scale(1.1);
-}
+}*/
 
 /*# sourceMappingURL=profile-card.component.css.map */

@@ -7,6 +7,8 @@ const SIGNUP = '/signup';
 const PROFILE = '/profile';
 const MODIFY_ACTIVITY = '/modify-activity';
 const CREATE_ACTIVITY = '/create-activity';
+const PARTICIPATED_ACTIVITIES = '/participated-activity';
+const NOTIFICATIONS = '/notifications';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +33,11 @@ export class JRouter {
   }
   public goCreateActivity(): void{
     this.router.navigate([CREATE_ACTIVITY]);
+  }
+  public goParticipatedActivities(): void{
+    this.router.navigate([PARTICIPATED_ACTIVITIES]);
+  }
+  public goNotifications(): void{
+    this.router.navigate([NOTIFICATIONS]);
   }
 }
