@@ -43,4 +43,8 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  toModifyProfile(): void{
+    this.route.goModifyProfile();
+  }
+
 }

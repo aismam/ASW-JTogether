@@ -5,6 +5,7 @@ const LOGIN = '/login';
 const HOME = '/home';
 const SIGNUP = '/signup';
 const PROFILE = '/profile';
+const MODIFY_PROFILE = '/modify-profile';
 const MODIFY_ACTIVITY = '/modify-activity';
 const CREATE_ACTIVITY = '/create-activity';
 const PARTICIPATED_ACTIVITIES = '/participated-activity';
@@ -27,6 +28,9 @@ export class JRouter {
   }
   public goProfile(): void{
     this.router.navigate([PROFILE]);
+  }
+  public goModifyProfile(): void{
+    this.router.navigate([MODIFY_PROFILE]);
   }
   public goModifyActivity(): void{
     this.router.navigate([MODIFY_ACTIVITY]);
