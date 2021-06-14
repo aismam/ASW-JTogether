@@ -30,6 +30,7 @@ async function getActivities({activities_id}){
 
 async function createActivity(activityParams,{username}){
     activityParams.creator_username = username
+    activityParams.geolocation = [activityParams.longitude, activityParams.latitude]
     return activityApi.createActivity(activityParams)
 }
 

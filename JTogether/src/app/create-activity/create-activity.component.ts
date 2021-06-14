@@ -2,8 +2,11 @@ import { Component } from '@angular/core';
 import {DataService} from '../data.service';
 import {JRouter} from '../jrouter.service';
 import {SnackBarService} from '../snack-bar.service';
-import {LocalStorageService} from '../local-storage.service';
-import {GeolocationService} from "../geolocation-service";
+import {GeolocationService} from '../geolocation-service';
+import {TokensManagerService} from '../tokens-manager.service';
+
+const LOCATION = 0;
+const ACCESS_TOKEN = 1;
 
 @Component({
   selector: 'app-create-activity',
@@ -23,8 +26,8 @@ export class CreateActivityComponent{
     private router: JRouter,
     private dataService: DataService,
     private snackBar: SnackBarService,
-    private localStorage: LocalStorageService,
-    private geolocationService: GeolocationService
+    private geolocationService: GeolocationService,
+    private tokenManagerService: TokensManagerService
   ) {}
 
   onSubmit(value: any): void {
@@ -32,9 +35,12 @@ export class CreateActivityComponent{
     if (Object.entries(value).find(([_, v]) => v === undefined) || new Date(value.date_time).getTime() < Date.now() ){
       this.snackBar.errorSnack('Immettere valori validi');
     }else{
-      this.geolocationService.getGeoCoordinates(value.location as string)
-        .then(l => value.geolocation = [l.longitude, l.latitude])
-        .then(_ => this.dataService.createActivity(value, this.localStorage.getAccessToken() as string))
+      Promise.all([this.geolocationService.getGeoCoordinates(value.location as string), this.tokenManagerService.getAccessToken()])
+        .then(r => {
+          value.latitude = r[LOCATION].latitude;
+          value.longitude = r[LOCATION].longitude;
+          return this.dataService.createActivity(value, r[ACCESS_TOKEN]);
+        })
         .then(_ => {
           this.snackBar.normalSnack('Evento aggiunto con successo!');
           this.router.goHome();

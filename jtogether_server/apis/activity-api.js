@@ -1,6 +1,6 @@
 const {Activity} = require('../_helpers/db')
 
-const MAX_DISTANCE_METERS = 20_000
+const MAX_DISTANCE_METERS = 50_000
 
 module.exports = {
     createActivity,
@@ -23,6 +23,7 @@ async function getNearActivities(longitude,latitude){
         {
             $geoNear: {
                 near: {type: "Point", coordinates: [longitude,latitude]},
+                spherical: true,
                 maxDistance: MAX_DISTANCE_METERS,
                 distanceField: "distance",
             }
@@ -31,7 +32,8 @@ async function getNearActivities(longitude,latitude){
 }
 
 async function searchActivities(text) {
-    return Activity.find({$text : { $search : text }}).exec()
+    const regex = new RegExp(text, 'ig');
+    return Activity.find( {$or: [{name: regex}, {description: regex}, {location: regex}, {creator_username: regex}]}).exec()
 }
 
 async function modifyActivity(activityParams){

@@ -10,6 +10,8 @@ const activityValidator = require('../validators/validator-activity')
 const jwt = require('../_helpers/jwt')
 const sendMessage = require('./controller-util')
 
+const DELETED_ACTIVITY = 0;
+const USERS = 1;
 const DELETION_SUCCESSFUL_MESSAGE = name => `L'attività ${name} è stata cancellata`
 const ACTIVITY_MODIFIED_MESSAGE = name => `L'attività ${name} è stata modificata`
 
@@ -27,14 +29,11 @@ module.exports = socketController => {
     async function createActivity(req,res,next){
         activityModel.createActivity(req.body,req.user)
             .then(activity => {
-                chatModel.createChat(req.body)
-                    .then(chat => {
-
-                    })
-
                 userModel.createActivity(req.user,{activity_id : activity._id})
                 res.json(activity.toJSON())
             })
+            .then(() => chatModel.createChat(req.body))
+            .then(c => userModel.createChat(req.user,{chat_id: c._id}))
             .catch(err => next(err))
     }
 
@@ -68,10 +67,8 @@ module.exports = socketController => {
     async function deleteActivity(req,res,next){
         Promise.all([userModel.deleteActivity(req.user, req.body),activityModel.deleteActivity(req.body,req.user)])
             .then(values => {
-                const users = values[0]
-                const deletedActivity = values[1]
-                users.forEach(user => socketController.notify(user.username,ACTIVITY_MODIFIED_MESSAGE(deletedActivity.name)))
-                return deletedActivity
+                values[DELETED_ACTIVITY].forEach(user => socketController.notify(user.username,ACTIVITY_MODIFIED_MESSAGE(values[1].name)))
+                return values[USERS]
             })
             .then( deletedActivity => sendMessage(res,DELETION_SUCCESSFUL_MESSAGE(deletedActivity.name)))
             .catch(err => next(err))

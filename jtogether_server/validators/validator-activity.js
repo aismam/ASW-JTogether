@@ -25,19 +25,16 @@ const activityCreationRules = [
     check('description', `La descrizione non può essere vuota`)
         .notEmpty(),
 
-    check('location', 'Inserire un luogo')
-        .notEmpty(),
-
-    check('geolocation', 'Inserire coordinate valide')
-        .notEmpty()
-        .isArray({max: 2, min: 2}),
-
-
     check('date_time', 'Inserire una data ed un orario validi')
         .isISO8601()
         .toDate(),
-    ...getNearActivitiesRules
-];
+
+    check('latitude', 'Inserire una latitudine valida')
+        .isNumeric(),
+
+    check('longitude', 'Inserire una longitudine valida')
+        .isNumeric(),
+]
 
 const activityModificationRules = [
     ...activityDeletionRules,

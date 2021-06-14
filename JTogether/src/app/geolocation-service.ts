@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {getDistance} from 'geolib';
-import {GeolibDistanceFn, GeolibInputCoordinates} from 'geolib/es/types';
 import {DataService} from './data.service';
 import {Geolocation} from './_Models/Geolocation';
 
@@ -12,19 +11,13 @@ const ACCURACY_METER = 1;
   providedIn: 'root'
 })
 export class GeolocationService{
+  private geolocation: Geolocation | undefined;
 
   constructor(private dataService: DataService) {
   }
 
-  public getLocation(): Promise<Geolocation> {
-    return new Promise((resolve, reject) => {
-      if (!navigator.geolocation){
-        reject(new Error(LOCALIZATION_ERROR));
-      }
-      navigator.geolocation.getCurrentPosition(
-        p => resolve(this.toGeoCoordinates(p.coords.latitude, p.coords.longitude)),
-          e => reject(e));
-    });
+  public getGeolocation(): Promise<Geolocation> {
+    return this.tryGetGeolocation().then(g => this.geolocation = g);
   }
 
   public toGeoCoordinates(latitude: number, longitude: number): Geolocation{
@@ -36,5 +29,19 @@ export class GeolocationService{
   public getGeoCoordinates(address: string): Promise<Geolocation>{
     return this.dataService.geolocation(address)
       .then(j => this.toGeoCoordinates(j[FIRST_RESULT].lat, j[FIRST_RESULT].lon));
+  }
+
+  private tryGetGeolocation(): Promise<Geolocation> {
+    if (this.geolocation){
+      return Promise.resolve(this.geolocation);
+    }
+    return new Promise((resolve, reject) => {
+      if (!navigator.geolocation){
+        return reject(new Error(LOCALIZATION_ERROR));
+      }
+      navigator.geolocation.getCurrentPosition(
+        p => resolve(this.toGeoCoordinates(p.coords.latitude, p.coords.longitude)),
+        e => reject(e));
+    });
   }
 }

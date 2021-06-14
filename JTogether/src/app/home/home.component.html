@@ -1,6 +1,10 @@
 <app-navbar [title]="'JTogether'"></app-navbar>
 <main>
-  <app-edit-text [type]="'text'" [id]="'search'" [placeholder]="'Search'" [name]="'search'"></app-edit-text>
+  <mat-form-field appearance="outline">
+    <mat-label>Ricerca</mat-label>
+    <input name="location" matInput [(ngModel)]="searchValue" placeholder="E.g. chiara scarsa" (keyup.enter)="search()">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
   <app-navigation-buttons></app-navigation-buttons>
 
   <app-card-list>
@@ -12,9 +16,6 @@
         [dateTime]="activity.date_time"
         [imageUrl]="'https://material.angular.io/assets/img/examples/shiba2.jpg'"></app-home-card></li>
   </app-card-list>
-  <!--<app-card-list>
-    <li *ngFor="let card of cards"></li>
-  </app-card-list> -->
 </main>
 
 
