@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
+
 const activityModel = require('../model/activity-model')
 const userModel = require('../model/user-model')
+const chatModel = require('../model/chat-model')
+
 const validator = require('../validators/validator')
 const activityValidator = require('../validators/validator-activity')
 const jwt = require('../_helpers/jwt')
@@ -24,6 +27,11 @@ module.exports = socketController => {
     async function createActivity(req,res,next){
         activityModel.createActivity(req.body,req.user)
             .then(activity => {
+                chatModel.createChat(req.body)
+                    .then(chat => {
+
+                    })
+
                 userModel.createActivity(req.user,{activity_id : activity._id})
                 res.json(activity.toJSON())
             })

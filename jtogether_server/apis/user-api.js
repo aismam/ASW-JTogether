@@ -10,6 +10,7 @@ module.exports = {
     deleteParticipation,
     createActivity,
     deleteActivity,
+    createChat,
 }
 
 async function createUser(userParams){
@@ -49,4 +50,8 @@ async function getUserFromUsername(username){
 
 async function getUserFromEmail(email){
     return User.findOne({email: email}).exec()
+}
+
+async function createChat(username, chat_id){
+    return User.findOneAndUpdate({username:username}, {$addToSet: {chats: chat_id}}, {new : true}).exec()
 }

@@ -13,7 +13,8 @@ module.exports = {
     createActivity,
     getUserFromUsername,
     getUserFromEmail,
-    createUser
+    createUser,
+    createChat,
 }
 
 async function deleteUser({username}){
@@ -65,4 +66,8 @@ async function getUserFromUsername({username}){
 
 async function getUserFromEmail({email}){
     return userApi.getUserFromEmail(email)
+}
+
+async function createChat({username}, {chat_id}){
+    return userApi.createChat(username, chat_id)
 }
