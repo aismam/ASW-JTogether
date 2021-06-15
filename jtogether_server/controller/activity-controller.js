@@ -27,14 +27,14 @@ module.exports = socketController => {
     return router;
 
     async function createActivity(req,res,next){
+        let activity = undefined;
         activityModel.createActivity(req.body,req.user)
-            .then(activity => {
-                userModel.createActivity(req.user,{activity_id : activity._id})
-                res.json(activity.toJSON())
-            })
-            .then(() => chatModel.createChat(req.body))
-            .then(c => userModel.createChat(req.user,{chat_id: c._id}))
-            .catch(err => next(err))
+        .then(a => activity = a)
+        .then(() => userModel.createActivity(req.user,{activity_id : activity._id}))
+        .then(() => chatModel.createChat({activity_id: activity._id}))
+        .then(c => userModel.createChat(req.user,{chat_id: c._id}))
+        .then(() => res.json(activity.toJSON()))
+        .catch(err => next(err))
     }
 
     async function getNearActivities(req,res,next){

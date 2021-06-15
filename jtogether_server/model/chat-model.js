@@ -5,10 +5,10 @@ module.exports = {
     createMessage
 }
 
-async function createChat({activity_id}){
-    return chatApi.createChat(activity_id);
+async function createChat(activity_id){
+    return chatApi.createChat(activity_id)
 }
 
 async function createMessage(messageParams){
-    return chatApi.createMessage(messageParams);
+    return chatApi.createMessage(messageParams)
 }

@@ -31,8 +31,8 @@ messageSchema.set('toJSON', {
 
 /*       Chat        */
 const chatSchema = mongoose.Schema({
-    activity_id : {type : Number , required : true},
-    messages : {type : [messageSchema], required : true}
+    activity_id : {type : String , required : true},
+    messages : {type : [messageSchema],default: [], required : true}
 })
 
 chatSchema.set('toJSON', {
@@ -40,15 +40,6 @@ chatSchema.set('toJSON', {
     versionKey: false
 })
 
-/*       Notification        */
-const notificationSchema = mongoose.Schema({
-    message : { type: String, required : true}
-})
-
-notificationSchema.set('toJSON', {
-    virtuals: false,
-    versionKey: false
-})
 
 /*       User        */
 const userSchema = mongoose.Schema({
@@ -72,7 +63,6 @@ userSchema.set('toJSON', {
 module.exports = {
     User: mongoose.model('User',userSchema),
     Activity : mongoose.model('Activity',activitySchema),
-    Notification : mongoose.model('Notification',notificationSchema),
     Chat : mongoose.model('Chat',chatSchema),
     Message: mongoose.model('Message',messageSchema)
 }
