@@ -1,25 +1,40 @@
 @import "../../mixins";
 
+@mixin space($width,$cards_for_line){
+  width: $width;
+  @for $before from 1 through $cards_for_line {
+    &:not(:nth-child(#{$before}N + 1)) {
+      margin-left: 0;
+    }
+  }
+  &:not(:nth-child(#{$cards_for_line}N + 1)){ margin-left: (100% - ($width * $cards_for_line))/($cards_for_line - 1) }
+}
+
 ul#card-list{
   @include flexRow;
   align-content: stretch;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 :host ::ng-deep ul#card-list > li{
   width: 100%;
   margin-top: 20px;
+
   @include tablet {
-    width: 48%;
+    $width: 48%;
+    @include space($width,2);
   }
   @include small-screen {
-    width: 32%;
+    $width: 32%;
+    @include space($width,3);
   }
   @include desktop {
-    width: 23.5%;
+    $width: 23.5%;
+    @include space($width,4);
   }
   @include large-desktop {
-    width: 19%;
+    $width: 19%;
+    @include space($width,5);
   }
 }
 

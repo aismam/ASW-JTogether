@@ -4,7 +4,7 @@ ul#card-list {
   flex-wrap: wrap;
   align-content: center;
   align-content: stretch;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 :host ::ng-deep ul#card-list > li {
@@ -15,20 +15,74 @@ ul#card-list {
   :host ::ng-deep ul#card-list > li {
     width: 48%;
   }
+  :host ::ng-deep ul#card-list > li:not(:nth-child(1n+1)) {
+    margin-left: 0;
+  }
+  :host ::ng-deep ul#card-list > li:not(:nth-child(2n+1)) {
+    margin-left: 0;
+  }
+  :host ::ng-deep ul#card-list > li:not(:nth-child(2n+1)) {
+    margin-left: 4%;
+  }
 }
 @media screen and (min-width: 768px) {
   :host ::ng-deep ul#card-list > li {
     width: 32%;
+  }
+  :host ::ng-deep ul#card-list > li:not(:nth-child(1n+1)) {
+    margin-left: 0;
+  }
+  :host ::ng-deep ul#card-list > li:not(:nth-child(2n+1)) {
+    margin-left: 0;
+  }
+  :host ::ng-deep ul#card-list > li:not(:nth-child(3n+1)) {
+    margin-left: 0;
+  }
+  :host ::ng-deep ul#card-list > li:not(:nth-child(3n+1)) {
+    margin-left: 2%;
   }
 }
 @media screen and (min-width: 1024px) {
   :host ::ng-deep ul#card-list > li {
     width: 23.5%;
   }
+  :host ::ng-deep ul#card-list > li:not(:nth-child(1n+1)) {
+    margin-left: 0;
+  }
+  :host ::ng-deep ul#card-list > li:not(:nth-child(2n+1)) {
+    margin-left: 0;
+  }
+  :host ::ng-deep ul#card-list > li:not(:nth-child(3n+1)) {
+    margin-left: 0;
+  }
+  :host ::ng-deep ul#card-list > li:not(:nth-child(4n+1)) {
+    margin-left: 0;
+  }
+  :host ::ng-deep ul#card-list > li:not(:nth-child(4n+1)) {
+    margin-left: 2%;
+  }
 }
 @media screen and (min-width: 1200px) {
   :host ::ng-deep ul#card-list > li {
     width: 19%;
+  }
+  :host ::ng-deep ul#card-list > li:not(:nth-child(1n+1)) {
+    margin-left: 0;
+  }
+  :host ::ng-deep ul#card-list > li:not(:nth-child(2n+1)) {
+    margin-left: 0;
+  }
+  :host ::ng-deep ul#card-list > li:not(:nth-child(3n+1)) {
+    margin-left: 0;
+  }
+  :host ::ng-deep ul#card-list > li:not(:nth-child(4n+1)) {
+    margin-left: 0;
+  }
+  :host ::ng-deep ul#card-list > li:not(:nth-child(5n+1)) {
+    margin-left: 0;
+  }
+  :host ::ng-deep ul#card-list > li:not(:nth-child(5n+1)) {
+    margin-left: 1.25%;
   }
 }
 

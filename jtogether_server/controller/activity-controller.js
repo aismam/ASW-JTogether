@@ -1,10 +1,8 @@
 const express = require('express');
 const router = express.Router();
-
+const axios = require('axios').default;
 const activityModel = require('../model/activity-model')
 const userModel = require('../model/user-model')
-const chatModel = require('../model/chat-model')
-
 const validator = require('../validators/validator')
 const activityValidator = require('../validators/validator-activity')
 const jwt = require('../_helpers/jwt')
@@ -14,6 +12,7 @@ const DELETED_ACTIVITY = 0;
 const USERS = 1;
 const DELETION_SUCCESSFUL_MESSAGE = name => `L'attività ${name} è stata cancellata`
 const ACTIVITY_MODIFIED_MESSAGE = name => `L'attività ${name} è stata modificata`
+const GEOLOCATION_URL = location => `https://eu1.locationiq.com/v1/search.php?key=pk.c7c99c10cf697dedb99068474806aab4&q=${encodeURI(location)}&format=json`
 
 module.exports = socketController => {
     router.post('/create-activity',jwt.authenticateJWT,activityValidator.activityCreationRules,validator,createActivity)
@@ -28,13 +27,16 @@ module.exports = socketController => {
 
     async function createActivity(req,res,next){
         let activity = undefined;
-        activityModel.createActivity(req.body,req.user)
-        .then(a => activity = a)
-        .then(() => userModel.createActivity(req.user,{activity_id : activity._id}))
-        .then(() => chatModel.createChat({activity_id: activity._id}))
-        .then(c => userModel.createChat(req.user,{chat_id: c._id}))
-        .then(() => res.json(activity.toJSON()))
-        .catch(err => next(err))
+        getGeolocation(req.body.location)
+            .then(g => {
+                req.body.latitude = g.latitude
+                req.body.longitude = g.longitude
+            })
+            .then(() => activityModel.createActivity(req.body,req.user))
+            .then(a => activity = a)
+            .then(() => userModel.createActivity(req.user,{activity_id : activity._id}))
+            .then(() => res.json(activity.toJSON()))
+            .catch(err => next(err))
     }
 
     async function getNearActivities(req,res,next){
@@ -67,7 +69,7 @@ module.exports = socketController => {
     async function deleteActivity(req,res,next){
         Promise.all([userModel.deleteActivity(req.user, req.body),activityModel.deleteActivity(req.body,req.user)])
             .then(values => {
-                values[DELETED_ACTIVITY].forEach(user => socketController.notify(user.username,ACTIVITY_MODIFIED_MESSAGE(values[1].name)))
+                values[DELETED_ACTIVITY].forEach(user => socketController.notify(user.username,ACTIVITY_MODIFIED_MESSAGE(values[USERS].name)))
                 return values[USERS]
             })
             .then( deletedActivity => sendMessage(res,DELETION_SUCCESSFUL_MESSAGE(deletedActivity.name)))
@@ -86,5 +88,20 @@ module.exports = socketController => {
             .then(() => activityModel.deleteParticipation(req.body,req.user))
             .then(activity => res.json(activity.toJSON()))
             .catch(err => next(err))
+    }
+
+    async function getGeolocation(location){
+        const FIRST_RESULT = 0
+        return axios.get(GEOLOCATION_URL(location))
+            .then(g => {
+                if(g.data.length){
+                    return {
+                        latitude: parseFloat(g.data[FIRST_RESULT].lat),
+                        longitude : parseFloat(g.data[FIRST_RESULT].lon)
+                    }
+                }else{
+                    throw new Error('Luogo immesso non valido')
+                }
+            })
     }
 };

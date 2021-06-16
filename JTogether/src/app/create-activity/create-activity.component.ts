@@ -35,12 +35,8 @@ export class CreateActivityComponent{
     if (Object.entries(value).find(([_, v]) => v === undefined) || new Date(value.date_time).getTime() < Date.now() ){
       this.snackBar.errorSnack('Immettere valori validi');
     }else{
-      Promise.all([this.geolocationService.getGeoCoordinates(value.location as string), this.tokenManagerService.getAccessToken()])
-        .then(r => {
-          value.latitude = r[LOCATION].latitude;
-          value.longitude = r[LOCATION].longitude;
-          return this.dataService.createActivity(value, r[ACCESS_TOKEN]);
-        })
+      this.tokenManagerService.getAccessToken()
+        .then(r => this.dataService.createActivity(value, r))
         .then(_ => {
           this.snackBar.normalSnack('Evento aggiunto con successo!');
           this.router.goHome();

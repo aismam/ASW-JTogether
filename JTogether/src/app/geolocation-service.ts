@@ -26,10 +26,6 @@ export class GeolocationService{
   public getDistance(from: Geolocation, to: Geolocation): number{
     return getDistance(from, to, ACCURACY_METER);
   }
-  public getGeoCoordinates(address: string): Promise<Geolocation>{
-    return this.dataService.geolocation(address)
-      .then(j => this.toGeoCoordinates(j[FIRST_RESULT].lat, j[FIRST_RESULT].lon));
-  }
 
   private tryGetGeolocation(): Promise<Geolocation> {
     if (this.geolocation){

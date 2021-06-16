@@ -59,10 +59,6 @@ export class DataService {
     return this.doGet<{ access_token: string }>(this.serverUrl + 'access-token', null, DataService.refreshHeader(refreshToken));
   }
 
-  geolocation(address: string): Promise<any> {
-    return this.doGet<any>(`https://eu1.locationiq.com/v1/search.php?key=pk.c7c99c10cf697dedb99068474806aab4&q=${encodeURI(address)}&format=json`, null);
-  }
-
   getNearActivities(position: Geolocation, accessToken: string): Promise<Activity[]> {
     return this.doGet<Activity[]>(
       this.serverUrl + this.userPath + 'get-near-activities',

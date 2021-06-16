@@ -29,10 +29,9 @@ export class HomeComponent implements OnInit{
   ngOnInit(): void {
     Promise.all([this.geolocationService.getGeolocation(), this.tokenService.getAccessToken()])
       .then(r => this.dataService.getNearActivities(r[COORDINATES], r[ACCESS_TOKEN]))
-      .then(as => this.activities = as)
+      .then(as => this.activities = as.concat(as).concat(as).concat(as))
       .catch(e => {
-        // this.snackBar.errorSnack(e.error.message);
-        console.log(e);
+        this.snackBar.errorSnack(e.error.message);
         this.router.goLogin();
       });
   }
@@ -42,7 +41,6 @@ export class HomeComponent implements OnInit{
       this.tokenService.getAccessToken()
         .then(t => this.dataService.searchActivities(this.searchValue, t))
         .then(as => this.activities = as)
-        .then(a => console.log(a))
         .catch(e => this.snackBar.errorSnack(e));
     }
   }

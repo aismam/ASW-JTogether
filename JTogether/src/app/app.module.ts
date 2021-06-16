@@ -17,7 +17,6 @@ import { ModifyActivityComponent } from './modify-activity/modify-activity.compo
 import { ModifyProfileComponent } from './modify-profile/modify-profile.component';
 import { EditTextComponent } from './edit-text/edit-text.component';
 import { LargeButtonComponent } from './large-button/large-button.component';
-import { CardListElementComponent } from './card-list-element/card-list-element.component';
 import { CardListComponent } from './card-list/card-list.component';
 import { HomeCardComponent } from './home-card/home-card.component';
 import { NavigationButtonsComponent } from './navigation-buttons/navigation-buttons.component';
@@ -52,7 +51,6 @@ import { ChatMessageCardComponent } from './chat-message-card/chat-message-card.
     ModifyProfileComponent,
     EditTextComponent,
     LargeButtonComponent,
-    CardListElementComponent,
     CardListComponent,
     HomeCardComponent,
     NavigationButtonsComponent,

@@ -29,11 +29,8 @@ const activityCreationRules = [
         .isISO8601()
         .toDate(),
 
-    check('latitude', 'Inserire una latitudine valida')
-        .isNumeric(),
-
-    check('longitude', 'Inserire una longitudine valida')
-        .isNumeric(),
+    check('location', 'Inserire un luogo valido')
+        .notEmpty(),
 ]
 
 const activityModificationRules = [
