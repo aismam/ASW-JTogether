@@ -1,0 +1,22 @@
+<app-navbar [title]="'Chat'"></app-navbar>
+
+<main>
+
+  <div class="chatlist">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Ricerca Chat</mat-label>
+      <input name="location" matInput placeholder="E.g. Gardo gay">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <li *ngFor="let number of numbers" style="list-style-type:none;">
+      <app-chat-card></app-chat-card>
+    </li>
+  </div>
+
+  <div class="singlechat">
+    <app-chat-message-list>Ciaone</app-chat-message-list>
+  </div>
+
+</main>

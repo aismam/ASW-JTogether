@@ -1,0 +1,18 @@
+main {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.chatlist {
+  width: 50%;
+  background-color: #66a377;
+}
+
+.singlechat {
+  width: 50%;
+  background-color: #f44336;
+}
+
+/*# sourceMappingURL=chat.component.css.map */

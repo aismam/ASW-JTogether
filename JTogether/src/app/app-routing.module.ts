@@ -11,6 +11,7 @@ import {NotificationsComponent} from './notifications/notifications.component';
 import {SettingsComponent} from './settings/settings.component';
 import {CreateActivityComponent} from './create-activity/create-activity.component';
 import {ParticipatedActivityComponent} from './participated-activity/participated-activity.component';
+import {ChatComponent} from './chat/chat.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'notifications', component: NotificationsComponent},
   { path: 'settings', component: SettingsComponent},
   { path: 'participated-activity', component: ParticipatedActivityComponent},
-  { path: 'create-activity', component: CreateActivityComponent}
+  { path: 'create-activity', component: CreateActivityComponent},
+  { path: 'chat', component: ChatComponent}
 ];
 
 @NgModule({

@@ -31,6 +31,10 @@ import { NotificationsCardComponent } from './notifications-card/notifications-c
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {JwtModule} from '@auth0/angular-jwt';
+import { ChatComponent } from './chat/chat.component';
+import { ChatCardComponent } from './chat-card/chat-card.component';
+import { ChatMessageListComponent } from './chat-message-list/chat-message-list.component';
+import { ChatMessageCardComponent } from './chat-message-card/chat-message-card.component';
 // const config: SocketIoConfig = { url: 'http://localhost:3000', options : {}};
 
 @NgModule({
@@ -58,6 +62,10 @@ import {JwtModule} from '@auth0/angular-jwt';
     ParticipatedActivityCardComponent,
     ParticipatedActivityComponent,
     NotificationsCardComponent,
+    ChatComponent,
+    ChatCardComponent,
+    ChatMessageListComponent,
+    ChatMessageCardComponent,
   ],
     imports: [
         JwtModule,

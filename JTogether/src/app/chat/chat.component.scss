@@ -1,0 +1,15 @@
+@import "../../mixins";
+
+main {
+  @include flexRow;
+}
+
+.chatlist{
+  width: 50%;
+  background-color: #66a377;
+}
+
+.singlechat{
+  width: 50%;
+  background-color: #f44336;
+}
