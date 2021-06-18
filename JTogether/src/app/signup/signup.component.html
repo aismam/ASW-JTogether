@@ -3,7 +3,7 @@
 
     <p>
       <mat-form-field appearance="outline">
-        <mat-label>Nickname</mat-label>
+        <mat-label>Username</mat-label>
         <input [(ngModel)]="username" name="username" matInput placeholder="Ex. Jotaro">
         <mat-icon matSuffix>badge</mat-icon>
         <mat-hint>Inserisci il tuo nome</mat-hint>
@@ -22,18 +22,11 @@
     <p>
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input [(ngModel)]="password" name="password" matInput type="password" class="pw">
-        <mat-icon matSuffix>password</mat-icon>
+        <input matInput name="password" [(ngModel)]="password"  [type]="hide ? 'password' : 'text'" placeholder="Password">
         <mat-hint>Inserisci la tua password</mat-hint>
-      </mat-form-field>
-    </p>
-
-    <p>
-      <mat-form-field appearance="outline">
-        <mat-label>Numero di telefono</mat-label>
-        <input matInput placeholder="Ex 321-7982941">
-        <mat-icon matSuffix>dialpad</mat-icon>
-        <mat-hint>Inserisci il tuo numero di telefono</mat-hint>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
       </mat-form-field>
     </p>
 

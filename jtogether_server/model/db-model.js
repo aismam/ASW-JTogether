@@ -28,7 +28,7 @@ activitySchema.set('toJSON', {
 
 /*       User        */
 const userActivitySchema = mongoose.Schema({
-    activity_id: {type: [String], required: true},
+    activity_id: {type: String, required: true},
     is_muted: {type: Boolean, default: false, required: true}
 })
 

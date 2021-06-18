@@ -11,8 +11,8 @@ import {TokensManagerService} from '../tokens-manager.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit{
-  username = 'ismo';
-  password = 'sasso vero';
+  username = 'test';
+  password = 'Ismam.1997';
   hide = true;
 
   constructor(

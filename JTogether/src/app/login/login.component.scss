@@ -12,6 +12,7 @@ h1{
 main {
   @include flexCol;
   width: 100%;
+  min-height: 92vh;
 
   form{
     @include flexCol;
