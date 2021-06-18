@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit{
   ngOnInit(): void {
     Notification.requestPermission().then(r => {
       if (r === 'granted'){
-        this.notificationService.createSocket('giovanni')
+        this.notificationService.createSocket('notifications')
           .subscribe(n => new Notification(n));
       }
     });
@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit{
       .then(r => this.dataService.getNearActivities(r[COORDINATES], r[ACCESS_TOKEN]))
       .then(as => this.activities = as.concat(as).concat(as).concat(as))
       .catch(e => {
+        console.log(e);
         this.snackBar.errorSnack(e.error.message);
         this.router.goLogin();
       });

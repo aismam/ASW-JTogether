@@ -11,6 +11,7 @@ export class NotificationService {
   constructor(private socket: Socket) { }
 
   createSocket(username: string): Observable<string>{
+    this.socket.once('connect', () => this.socket.emit('registration', 'sas'));
     return this.socket.fromEvent<string>(username);
   }
 }

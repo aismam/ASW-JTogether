@@ -26,7 +26,7 @@ import { ProfileCardComponent } from './profile-card/profile-card.component';
 import { ParticipatedActivityCardComponent } from './participated-activity-card/participated-activity-card.component';
 import { ParticipatedActivityComponent } from './participated-activity/participated-activity.component';
 import { NotificationsCardComponent } from './notifications-card/notifications-card.component';
-// import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {JwtModule} from '@auth0/angular-jwt';
@@ -34,7 +34,7 @@ import { ChatComponent } from './chat/chat.component';
 import { ChatCardComponent } from './chat-card/chat-card.component';
 import { ChatMessageListComponent } from './chat-message-list/chat-message-list.component';
 import { ChatMessageCardComponent } from './chat-message-card/chat-message-card.component';
-// const config: SocketIoConfig = { url: 'http://localhost:3000', options : {}};
+const config: SocketIoConfig = { url: 'http://localhost:3000', options : {}};
 
 @NgModule({
   declarations: [
@@ -67,7 +67,7 @@ import { ChatMessageCardComponent } from './chat-message-card/chat-message-card.
   ],
     imports: [
         JwtModule,
-        // SocketIoModule.forRoot(config),
+        SocketIoModule.forRoot(config),
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
