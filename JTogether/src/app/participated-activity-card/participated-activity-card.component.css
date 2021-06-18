@@ -37,6 +37,10 @@ simple-snack-bar .mat-simple-snackbar-action {
   color: white;
 }
 
+.quit {
+  background-color: #f44336;
+}
+
 mat-card-content {
   margin: 0;
 }
