@@ -1,6 +1,10 @@
 @import "../../styles";
 @import "../../mixins.scss";
 
+.quit {
+  background-color: $red;
+}
+
 mat-card-content{
   margin: 0;
   ul{

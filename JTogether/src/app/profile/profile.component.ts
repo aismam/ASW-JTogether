@@ -30,15 +30,16 @@ export class ProfileComponent implements OnInit {
       .then(u => this.dataService.getActivities({ activities_id : u.created_activities },
                                               'giovanni'))
       .then(as => this.cards = as)
-      .catch(e => this.snackBar.errorSnack(e.error.message));
+      .catch(e => this.snackBar.errorSnack(e.message));
   }
 
   private setUserInfo(): void {
     if (this.check) {
-      this.dataService.loginToken(this.localStorage.getRefreshToken() as string).then( u => {
+      this.dataService.loginToken(this.localStorage.getRefreshToken() as string)
+        .then( u => {
         this.name = u.username;
-        this.email = u.email;
-      });
+        this.email = u.email; })
+        .catch(e => this.snackBar.errorSnack(e.error.message));
       this.check = false;
     }
   }

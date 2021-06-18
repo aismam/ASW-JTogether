@@ -13,6 +13,7 @@ main {
   justify-content: center;
   align-items: center;
   width: 100%;
+  min-height: 92vh;
 }
 main form {
   display: flex;

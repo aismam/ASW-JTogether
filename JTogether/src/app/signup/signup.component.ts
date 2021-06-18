@@ -15,6 +15,7 @@ export class SignupComponent implements OnInit {
   username = undefined;
   email = undefined;
   password = undefined;
+  hide = true;
 
   constructor(
     private route: JRouter,
