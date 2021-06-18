@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {NotificationService} from './socket-io.service';
-import {JRouter} from './jrouter.service';
 
 @Component({
   selector: 'app-root',

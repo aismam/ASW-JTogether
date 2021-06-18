@@ -14,21 +14,21 @@ const activitySchema = mongoose.Schema({
     date_time: { type: Date, required: true},
     participants : {type : [String], default: [], required:true },
     location: {type: String, required: true, index: 'text'},
-    chat: {type: [messageSchema],default: [], required: true},
+    //chat: {type: [messageSchema],default: [], required: true},
     geolocation: {type: [Number], index: '2dsphere', required: true}
 })
-
 activitySchema.set('toJSON', {
-    virtuals: false,
+    virtuals: true,
     versionKey: false,
-    transform: function (_, ret) {
+    transform: function (doc, ret) {
         delete ret._id;
     }
 })
 
 /*       User        */
 const userActivitySchema = mongoose.Schema({
-    activity_id: {type: [String], required: true},
+    _id: false,
+    activity_id: {type: String, required: true},
     is_muted: {type: Boolean, default: false, required: true}
 })
 
@@ -41,7 +41,6 @@ const userSchema = mongoose.Schema({
 })
 
 userSchema.set('toJSON', {
-    virtuals: false,
     versionKey: false,
     transform: function (doc, ret) {
         delete ret._id;

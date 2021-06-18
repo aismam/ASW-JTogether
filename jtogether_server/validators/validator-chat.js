@@ -1,9 +1,9 @@
 const {check, query} = require('express-validator');
 
-const chatCreationRules = [
+const messageIncomingRule = [
 
 ]
 
 module.exports = {
-    chatCreationRules,
+    messageIncomingRule,
 }

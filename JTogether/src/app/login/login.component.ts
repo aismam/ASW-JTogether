@@ -28,13 +28,6 @@ export class LoginComponent implements OnInit{
         .then(u => this.finalizeLogin(u))
         .catch(_ => this.tokensManagerService.unsetRefreshToken());
     }
-
-    /*Notification.requestPermission().then(r => {
-      if (r === 'granted'){
-        this.notificationService.createSocket('giovanni')
-          .subscribe(n => new Notification(n));
-      }
-    });*/
   }
 
   forgottenPassword($event: MouseEvent): void {

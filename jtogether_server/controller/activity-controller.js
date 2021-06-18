@@ -8,8 +8,8 @@ const activityValidator = require('../validators/validator-activity')
 const jwt = require('../_helpers/jwt')
 const sendMessage = require('./controller-util')
 
-const DELETED_ACTIVITY = 0;
-const USERS = 1;
+const USERS_TO_BE_NOTIFIED = 0;
+const DELETED_ACTIVITY = 1;
 const DELETION_SUCCESSFUL_MESSAGE = name => `L'attività ${name} è stata cancellata`
 const ACTIVITY_MODIFIED_MESSAGE = name => `L'attività ${name} è stata modificata`
 const GEOLOCATION_URL = location => `https://eu1.locationiq.com/v1/search.php?key=pk.c7c99c10cf697dedb99068474806aab4&q=${encodeURI(location)}&format=json`
@@ -69,8 +69,9 @@ module.exports = socketController => {
     async function deleteActivity(req,res,next){
         Promise.all([userModel.deleteActivity(req.user, req.body),activityModel.deleteActivity(req.body,req.user)])
             .then(values => {
-                values[DELETED_ACTIVITY].forEach(user => socketController.notify(user.username,ACTIVITY_MODIFIED_MESSAGE(values[USERS].name)))
-                return values[USERS]
+                console.log(values[USERS_TO_BE_NOTIFIED])
+                values[USERS_TO_BE_NOTIFIED].forEach(user => socketController.notify(user.username,ACTIVITY_MODIFIED_MESSAGE(values[DELETED_ACTIVITY].name)))
+                return values[DELETED_ACTIVITY]
             })
             .then( deletedActivity => sendMessage(res,DELETION_SUCCESSFUL_MESSAGE(deletedActivity.name)))
             .catch(err => next(err))
@@ -84,7 +85,7 @@ module.exports = socketController => {
     }
 
     async function deleteParticipation(req,res,next){
-        userModel.deleteParticipation(req.body,req.user)
+        userModel.deleteParticipation(req.user,req.body)
             .then(() => activityModel.deleteParticipation(req.body,req.user))
             .then(activity => res.json(activity.toJSON()))
             .catch(err => next(err))

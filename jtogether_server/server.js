@@ -29,7 +29,7 @@ async function fillDisagio(){
         await authModel.signup({username: 'Jotaro',email : 'jotaro.kujo@speedwagon.com', password: 'jojo.1919'})
         await authModel.signup({username: 'gardo',email : 'bellarega@gmail.com', password: 'ritardato vero'})
 
-        const ismoActivity = await activityModel.createActivity(
+        /*const ismoActivity = await activityModel.createActivity(
             {name : 'sesso non protetto', description: 'Marco é il nuovo re del server disord, Ismam abdica. Viva la monarchia, morte agli infedeli.', date_time: '2021-05-23 12:45'},{username : 'ismo'})
         await userModel.createActivity({username : 'ismo'},{activity_id: ismoActivity._id})
 
@@ -53,7 +53,7 @@ async function fillDisagio(){
         await userModel.createParticipation({username : 'gardo'},{activity_id : ismoActivity._id})
 
         await activityModel.createParticipation({activity_id : ismoActivity._id},{username : 'Jotaro'})
-        await userModel.createParticipation({username : 'Jotaro'},{activity_id : ismoActivity._id})
+        await userModel.createParticipation({username : 'Jotaro'},{activity_id : ismoActivity._id})*/
     }catch (e) {
         console.log(e)
     }
