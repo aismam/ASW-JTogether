@@ -3,7 +3,7 @@ export interface Activity {
   participants: string[];
   name: string;
   creator: string;
-  place: string;
+  location: string;
   date_time: string;
   description: string;
 }

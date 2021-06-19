@@ -12,7 +12,7 @@ import {TokensManagerService} from '../tokens-manager.service';
 })
 export class LoginComponent implements OnInit{
   username = 'ismo';
-  password = 'sasso vero';
+  password = 'Sasso.1997';
   hide = true;
 
   constructor(

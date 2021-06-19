@@ -1,7 +1,20 @@
 <app-navbar [title]="'Attività partecipate'"></app-navbar>
 
 <main>
-  <app-card-list>
+  <!-- <app-card-list>
     <li *ngFor="let card of cards"><app-participated-activity-card [imageUrl]="'https://material.angular.io/assets/img/examples/shiba2.jpg'"></app-participated-activity-card></li>
+  </app-card-list> -->
+  <app-card-list>
+    <li *ngFor="let card of cards">
+      <app-participated-activity-card
+        [imageUrl]="'https://material.angular.io/assets/img/examples/shiba2.jpg'"
+        [name]="card.name"
+        [creator]="card.creator"
+        [place]="card.location"
+        [dateTime]="card.date_time"
+        [description]="card.description"
+        [id]="card.id"
+      ></app-participated-activity-card>
+    </li>
   </app-card-list>
 </main>
