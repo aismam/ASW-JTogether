@@ -30,10 +30,8 @@ export class ParticipatedActivityComponent implements OnInit {
       .then(() => this.dataService.getActivities(
         { activities_id : this.participatedActivities },
         this.localStorage.getRefreshToken() as string ))
-      .then(as => {
-        this.cards = as;
-        // console.log(as); //TODO potrebbe dare problemi, decommenta per vedere se torna
-      });
+      .then(as => this.cards = as)
+      .catch(er => this.snackBar.errorSnack(er.error.message, 'Chiudi'));
   }
 
 }

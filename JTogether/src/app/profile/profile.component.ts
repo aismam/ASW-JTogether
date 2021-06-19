@@ -28,16 +28,13 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.setUserInfo();
     this.dataService.loginToken(this.localStorage.getRefreshToken() as string)
-      /*.then(u => this.dataService.getActivities(
-        { activities_id : u.created_activities },
-        this.localStorage.getRefreshToken() as string))
-      .then(as => this.cards = as)
-      .catch(e => this.snackBar.errorSnack(e.message)); */
       .then(u => u.created_activities.forEach(e => this.createdActivities.push(e.activity_id)))
       .then(() => this.dataService.getActivities(
         { activities_id : this.createdActivities },
         this.localStorage.getRefreshToken() as string))
-      .then( as => this.cards = as);
+      .then( as => this.cards = as)
+      .catch(er => this.snackBar.errorSnack(er.error.message, 'Chiudi'))
+    ;
   }
 
   private setUserInfo(): void {
