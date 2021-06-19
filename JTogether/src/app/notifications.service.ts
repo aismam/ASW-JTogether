@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 
-export class NotificationService {
+export class NotificationsService {
 
   constructor(private socket: Socket) { }
 

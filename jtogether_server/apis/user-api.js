@@ -11,6 +11,8 @@ module.exports = {
     createActivity,
     deleteActivity,
     createChat,
+    createNotification,
+    clearNotifications
 }
 
 async function createUser(userParams){
@@ -26,6 +28,14 @@ async function deleteActivity(username,activity_id){
     const users = await User.find({participated_activities: {activity_id: activity_id}} ).exec()
     users.forEach(user => this.deleteParticipation(user.username,activity_id))
     return users
+}
+
+async function clearNotifications(username){
+    return User.findOneAndUpdate({username: username},{$set: {notifications: []}}, {new : true}).exec()
+}
+
+async function createNotification(username,notificationText){
+    return User.findOneAndUpdate({username: username},{$push: {notifications: notificationText}}, {new : true}).exec()
 }
 
 async function updateUser(userParams){

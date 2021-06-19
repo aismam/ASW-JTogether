@@ -1,9 +1,11 @@
+import {UserActivity} from './UserActivity';
+
 export interface User{
-  chats: string[];
-  created_activities: string[];
-  participated_activities: string[];
+  created_activities: UserActivity[];
+  participated_activities: UserActivity[];
   username: string;
   email: string;
   access_token: string;
   refresh_token: string;
+  notifications: string[];
 }

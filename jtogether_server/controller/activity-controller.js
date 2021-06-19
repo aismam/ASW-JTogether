@@ -14,7 +14,7 @@ const DELETION_SUCCESSFUL_MESSAGE = name => `L'attività ${name} è stata cancel
 const ACTIVITY_MODIFIED_MESSAGE = name => `L'attività ${name} è stata modificata`
 const GEOLOCATION_URL = location => `https://eu1.locationiq.com/v1/search.php?key=pk.c7c99c10cf697dedb99068474806aab4&q=${encodeURI(location)}&format=json`
 
-module.exports = socketController => {
+module.exports = notificationsController => {
     router.post('/create-activity',jwt.authenticateJWT,activityValidator.activityCreationRules,validator,createActivity)
     router.post('/modify-activity',jwt.authenticateJWT,activityValidator.activityModificationRules,validator,modifyActivity)
     router.post('/delete-activity',jwt.authenticateJWT,activityValidator.activityDeletionRules,validator,deleteActivity)
@@ -60,7 +60,7 @@ module.exports = socketController => {
     async function modifyActivity(req,res,next){
         activityModel.modifyActivity(req.body,req.user)
             .then(modifiedActivity => {
-                socketController.notify(ACTIVITY_MODIFIED_MESSAGE(modifiedActivity.name))
+                notificationsController.notify(ACTIVITY_MODIFIED_MESSAGE(modifiedActivity.name))
                 res.json(modifiedActivity.toJSON())
             })
             .catch(err => next(err))
@@ -69,8 +69,15 @@ module.exports = socketController => {
     async function deleteActivity(req,res,next){
         Promise.all([userModel.deleteActivity(req.user, req.body),activityModel.deleteActivity(req.body,req.user)])
             .then(values => {
-                console.log(values[USERS_TO_BE_NOTIFIED])
-                values[USERS_TO_BE_NOTIFIED].forEach(user => socketController.notify(user.username,ACTIVITY_MODIFIED_MESSAGE(values[DELETED_ACTIVITY].name)))
+                values[USERS_TO_BE_NOTIFIED].forEach(user => {
+                    const notificationText = ACTIVITY_MODIFIED_MESSAGE(values[DELETED_ACTIVITY].name)
+                    if(notificationsController.userIsOnline(user.username)){
+                        notificationsController.notify(user.username,notificationText)
+                    }
+                    else{
+                        userModel.createNotification(user,{notification_text: notificationText})
+                    }
+                })
                 return values[DELETED_ACTIVITY]
             })
             .then( deletedActivity => sendMessage(res,DELETION_SUCCESSFUL_MESSAGE(deletedActivity.name)))

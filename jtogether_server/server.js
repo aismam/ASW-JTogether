@@ -3,7 +3,7 @@ const app = express();
 const http = require('http').Server(app)
 const {resourceNotFoundHandler,errorHandler} = require('./_helpers/error-handler')
 const cors = require('cors')
-const {SocketIoController} = require('./controller/socket-io-controller')
+const {SocketIoController} = require('./controller/notification-controller')
 const USER_PATH = '/user'
 
 //fillDisagio()

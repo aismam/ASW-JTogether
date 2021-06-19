@@ -59,6 +59,10 @@ export class DataService {
     return this.doGet<{ access_token: string }>(this.serverUrl + 'access-token', null, DataService.refreshHeader(refreshToken));
   }
 
+  clearNotifications(accessToken: string): Promise<User> {
+    return this.doPost<User>(this.serverUrl + this.userPath + 'clear-notifications', undefined, accessToken);
+  }
+
   getNearActivities(position: Geolocation, accessToken: string): Promise<Activity[]> {
     return this.doGet<Activity[]>(
       this.serverUrl + this.userPath + 'get-near-activities',

@@ -15,6 +15,8 @@ module.exports = {
     getUserFromEmail,
     createUser,
     createChat,
+    createNotification,
+    clearNotifications
 }
 
 async function deleteUser({username}){
@@ -42,6 +44,14 @@ async function updateUser(userParams){
         throw CREDENTIAL_ALREADY_PRESENT
     }
     return userApi.updateUser(userParams)
+}
+
+async function createNotification({username},{notification_text}){
+    return userApi.createNotification(username,notification_text)
+}
+
+async function clearNotifications({username}){
+    return userApi.clearNotifications(username)
 }
 
 async function deleteParticipation({username},{activity_id}){

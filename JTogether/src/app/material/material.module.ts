@@ -11,8 +11,10 @@ import {MatListModule} from '@angular/material/list';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatBadgeModule} from '@angular/material/badge';
 
 const materialComponents = [
+  MatBadgeModule,
   MatFormFieldModule,
   MatButtonModule,
   MatIconModule,

@@ -1,4 +1,4 @@
-class SocketIoController{
+class NotificationController {
     _NOTIFICATIONS_CHANNEL_NAME = 'notifications'
     _REGISTRATION_CHANNEL_NAME = 'registration'
 
@@ -23,15 +23,15 @@ class SocketIoController{
             })
         })
     }
-    userIsPresent(userId){
+    userIsOnline(userId){
         return this._userToSocket.has(userId)
     }
 
     notify(userId,msg){
-        if(this.userIsPresent(userId)){
+        if(this.userIsOnline(userId)){
             this._userToSocket.get(userId).emit(this._NOTIFICATIONS_CHANNEL_NAME,msg)
         }
     }
 }
 
-module.exports = {SocketIoController}
+module.exports = {SocketIoController: NotificationController}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {JRouter} from '../jrouter.service';
 
 @Component({
@@ -7,6 +7,7 @@ import {JRouter} from '../jrouter.service';
   styleUrls: ['./navigation-buttons.component.scss']
 })
 export class NavigationButtonsComponent implements OnInit {
+  @Input() notifications: number | undefined;
 
   constructor(
     private router: JRouter,
