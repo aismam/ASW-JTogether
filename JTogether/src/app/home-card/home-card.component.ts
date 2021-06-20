@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 })
 export class HomeCardComponent {
 
+  @Input() activityID: string | undefined;
   @Input() imageUrl: string | undefined;
   @Input() name: string | undefined;
   @Input() creator: string | undefined;
@@ -37,6 +38,9 @@ export class HomeCardComponent {
         console.log('not ok');
       }
     );*/
+  }
+
+  participate(): void{
   }
 
 }

@@ -18,4 +18,16 @@ export class LocalStorageService {
   public unsetRefreshToken(): void {
     return window.localStorage.removeItem(REFRESH_TOKEN);
   }
+
+  public setActivityID(id: string): void {
+    window.localStorage.setItem('activityID', id);
+  }
+
+  public getActivityID(): string | null {
+    return window.localStorage.getItem('activityID');
+  }
+
+  public unsetActivityID(): void {
+    return window.localStorage.removeItem('activityID');
+  }
 }

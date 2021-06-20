@@ -31,21 +31,23 @@ export class ProfileCardComponent implements OnInit {
   }
 
   delete(): void {
+    console.log('Attivita eliminata');
     this.dataService.removeActivity(
       { activity_id: this.id},
-      'givanni')
+      this.localStorage.getRefreshToken() as string)
       .then( () => {
         this.snackBar.normalSnack('L\'attività è stata eliminata!');
-        // TODO metti qui il metodo per autodistruggerti
+        window.location.reload(); // Aggiorna la pagina, cosi vedi il cambiamento
       })
       .catch( e => this.snackBar.errorSnack(e.message));
   }
 
   modifyActivity(): void {
+    this.localStorage.setActivityID(this.id as string);
     this.route.goModifyActivity();
   }
 
   flipCard(): void {
-    this.cardSide = !this.cardSide;
+    // this.cardSide = !this.cardSide; //TODO decommenta a fine prove
   }
 }

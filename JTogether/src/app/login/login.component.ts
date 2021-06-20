@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {DataService} from '../data.service';
 import {JRouter} from '../jrouter.service';
 import {SnackBarService} from '../snack-bar.service';
@@ -11,6 +11,7 @@ import {TokensManagerService} from '../tokens-manager.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit{
+
   username = 'ismo';
   password = 'Sasso.1997';
   hide = true;

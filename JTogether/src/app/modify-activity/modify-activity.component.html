@@ -2,49 +2,41 @@
 
 <main>
 
-  <form class="form-area">
-    <p>
-      <mat-form-field appearance="outline">
-        <mat-label>Nuovo Nome</mat-label>
-        <input matInput placeholder="Ex. Jojo Fight">
-        <mat-icon matSuffix>face</mat-icon>
-        <mat-hint>Inserisci il nome dell'attività</mat-hint>
-      </mat-form-field>
-    </p>
+  <form class="form-area" #create_activity_form='ngForm' (ngSubmit)='onSubmit(create_activity_form.value)'>
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input [(ngModel)]="name" name="name" matInput placeholder="Ex. Jojo Fight">
+      <mat-icon matSuffix>face</mat-icon>
+      <mat-hint>Inserisci il nome dell'attività</mat-hint>
+    </mat-form-field>
 
-    <p>
-      <mat-form-field appearance="outline">
-        <mat-label>Nuovo Luogo</mat-label>
-        <input matInput placeholder="Ex. Morio Cho">
-        <mat-icon matSuffix>place</mat-icon>
-        <mat-hint>Inserisci il luogo dell'attività</mat-hint>
-      </mat-form-field>
-    </p>
+    <mat-form-field appearance="outline">
+      <mat-label>Luogo</mat-label>
+      <input [(ngModel)]="location" name="location" matInput placeholder="Ex. Morio Cho">
+      <mat-icon matSuffix>place</mat-icon>
+      <mat-hint>Inserisci il luogo dell'attività</mat-hint>
+    </mat-form-field>
 
-    <p>
-      <mat-form-field appearance="outline">
-        <mat-label>Nuovo Orario</mat-label>
-        <input matInput type="time" class="time" placeholder="Ex. 14:30">
-        <mat-icon matSuffix>schedule</mat-icon>
-        <mat-hint>Inserisci l'orario dell'attività</mat-hint>
-      </mat-form-field>
-    </p>
+    <mat-form-field appearance="outline">
+      <mat-label>Orario</mat-label>
+      <input id="time" [(ngModel)]="time" name="time" type="time" matInput class="time" placeholder="Ex. 14:30">
+      <mat-icon matSuffix>schedule</mat-icon>
+      <mat-hint>Inserisci l'orario dell'attività</mat-hint>
+    </mat-form-field>
 
-    <p>
-      <mat-form-field appearance="outline">
-        <mat-label>Scegli nuova una data</mat-label>
-        <input matInput [matDatepicker]="picker">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    </p>
+    <mat-form-field appearance="outline">
+      <mat-label>Scegli una data</mat-label>
+      <input id="date" [(ngModel)]="date" name="date" matInput [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-hint>Inserisci la data dell'attività</mat-hint>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
 
-    <p>
-      <mat-form-field appearance="outline" class="example-full-width">
-        <mat-label>Aggiungi nuova una descrizione</mat-label>
-        <textarea matInput placeholder="Ex. Portatevi una barca, servirà per ..."></textarea>
-      </mat-form-field>
-    </p>
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>Aggiungi una descrizione</mat-label>
+      <textarea [(ngModel)]="description" name="description" matInput placeholder="Ex. Portatevi una barca, servirà per ..."></textarea>
+      <mat-hint>Inserisci una descrizione</mat-hint>
+    </mat-form-field>
 
     <p>
       <button mat-raised-button>Modifica attività</button>
