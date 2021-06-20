@@ -31,7 +31,7 @@ export class ProfileCardComponent implements OnInit {
   }
 
   delete(): void {
-    console.log('Attivita eliminata');
+    // TODO potresti fare un dialog
     this.dataService.removeActivity(
       { activity_id: this.id},
       this.localStorage.getRefreshToken() as string)
