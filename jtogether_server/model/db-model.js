@@ -38,7 +38,7 @@ const userSchema = mongoose.Schema({
     created_activities : {type: [userActivitySchema], default: [], required : true},
     participated_activities : {type: [userActivitySchema], default: [], required : true},
     hash : {type: String, required: true},
-    notifications: {type: [String], default: ["sassss",'soooooooooooso','mannaggia a chiara'], required: true}
+    notifications: {type: [String], default: [], required: true}
 })
 
 userSchema.set('toJSON', {

@@ -1,8 +1,8 @@
 const userModel = require('../model/user-model');
 const bcrypt = require('bcryptjs')
 const jwt = require('../_helpers/jwt')
+const crypto = require('../_helpers/crypto-utils')
 
-const SALT_ROUNDS = 12
 const USERNAME_ALREADY_TAKEN = 'Username già utilizzato'
 const EMAIL_ALREADY_TAKEN = 'Email già utilizzata'
 const LOGIN_FAILED = 'Username o password non corretti'
@@ -24,7 +24,7 @@ async function signup(userParams){
         throw EMAIL_ALREADY_TAKEN
     }
 
-    return bcrypt.hash(userParams.password, SALT_ROUNDS)
+    return crypto.crypt(userParams.password)
         .then(hash => {
             userParams.hash = hash;
             userModel.createUser(userParams)

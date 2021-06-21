@@ -1,4 +1,5 @@
 const userApi = require('../apis/user-api');
+const crypto = require('../_helpers/crypto-utils')
 
 const USER_NOT_FOUND = 'Utente non trovato, username: '
 const CREDENTIAL_ALREADY_PRESENT = 'Username o email già presenti'
@@ -43,7 +44,9 @@ async function updateUser({username}, userParams){
     if(userFromEmail || userFromUsername){
         throw CREDENTIAL_ALREADY_PRESENT
     }
-    return userApi.updateUser(username,userParams)
+    return crypto.crypt(userParams.password)
+        .then(c => userParams.hash = c)
+        .then(() =>userApi.updateUser(username,userParams))
 }
 
 async function createNotification({username},{notification_text}){
