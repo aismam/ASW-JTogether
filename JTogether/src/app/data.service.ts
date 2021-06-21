@@ -85,4 +85,8 @@ export class DataService {
   modifyActivity(body: object, accessToken: string): Promise<Activity>{
     return this.doPost<Activity>(this.serverUrl + 'user/modify-activity', body, accessToken);
   }
+
+  deleteProfile(body: object, refreshToken: string): Promise<string> {
+    return this.doPost<string>(this.serverUrl + 'user/delete-user', body, refreshToken);
+  }
 }
