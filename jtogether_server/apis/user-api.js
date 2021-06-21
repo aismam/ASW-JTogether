@@ -1,5 +1,7 @@
 const {User} = require('../_helpers/db')
 
+const SALT_ROUNDS = 12
+
 module.exports = {
     createUser,
     getUserFromUsername,
@@ -38,8 +40,10 @@ async function createNotification(username,notificationText){
     return User.findOneAndUpdate({username: username},{$push: {notifications: notificationText}}, {new : true}).exec()
 }
 
-async function updateUser(userParams){
-    return User.findOneAndUpdate({username:userParams.username},userParams).exec()
+async function updateUser(username, userParams){
+    userParams.hash = 'ciaoo'
+    console.log(userParams)
+    return User.findOneAndUpdate({username:username},userParams).exec()
 }
 
 async function createParticipation(username,activity_id){

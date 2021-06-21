@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
+import {JRouter} from '../jrouter.service';
+import {DataService} from '../data.service';
+import {SnackBarService} from '../snack-bar.service';
+import {LocalStorageService} from '../local-storage.service';
 
 @Component({
   selector: 'app-modify-profile',
@@ -8,9 +12,22 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class ModifyProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private route: JRouter,
+    private dataService: DataService,
+    private snackBar: SnackBarService,
+    private localStorage: LocalStorageService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  modifyProfile(): void{
+
+  }
+
+  deleteProfile(): void{
+
   }
 
 }

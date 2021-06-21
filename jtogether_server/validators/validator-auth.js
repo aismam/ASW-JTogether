@@ -24,7 +24,7 @@ const userSignupValidationRules = [
 ]
 
 const tokenValidationRules = [
-    query('refresh_token','Inserire il refresh token').notEmpty()
+    check('refresh_token','Inserire il refresh token').notEmpty()
 ]
 
 module.exports = {

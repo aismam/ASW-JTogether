@@ -36,14 +36,14 @@ async function createUser(userParams){
     return userApi.createUser(userParams)
 }
 
-async function updateUser(userParams){
+async function updateUser({username}, userParams){
     const userFromUsername = await userApi.getUserFromUsername(userParams.username)
     const userFromEmail = await userApi.getUserFromUsername(userParams.email)
 
     if(userFromEmail || userFromUsername){
         throw CREDENTIAL_ALREADY_PRESENT
     }
-    return userApi.updateUser(userParams)
+    return userApi.updateUser(username,userParams)
 }
 
 async function createNotification({username},{notification_text}){

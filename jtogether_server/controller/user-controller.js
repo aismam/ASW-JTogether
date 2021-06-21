@@ -24,7 +24,7 @@ async function deleteUser(req,res,next){
         .catch(err => next(err))
 }
 async function updateUser(req,res,next){
-    userModel.updateUser(req.body)
+    userModel.updateUser(req.user, req.body)
         .then(user => res.json(user.toJSON()))
         .catch(err => next(err))
 }
