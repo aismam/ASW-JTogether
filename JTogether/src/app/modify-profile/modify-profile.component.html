@@ -6,42 +6,35 @@
 
     <p>
       <mat-form-field appearance="outline">
-        <mat-label>Nuova e-mail</mat-label>
-        <input matInput placeholder="Ex. Jotaro.Kujo@jojo.it">
+        <mat-label>Username</mat-label>
+        <input [(ngModel)]="username" name="username" matInput placeholder="Ex. Jotaro">
+        <mat-icon matSuffix>badge</mat-icon>
+        <mat-hint>Inserisci il tuo nome</mat-hint>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>E-Mail</mat-label>
+        <input [(ngModel)]="email" name="email" matInput placeholder="Ex. Jotaro.Kujo@JoJo.jp">
         <mat-icon matSuffix>email</mat-icon>
-        <mat-hint>Inserisci la tua nuova e-mail</mat-hint>
+        <mat-hint>Inserisci la tua mail</mat-hint>
       </mat-form-field>
     </p>
 
     <p>
       <mat-form-field appearance="outline">
-        <mat-label>Nuovo nome</mat-label>
-        <input matInput placeholder="Ex. Jotaro">
-        <mat-icon matSuffix>account_circle</mat-icon>
-        <mat-hint>Inserisci il tuo nuovo nome</mat-hint>
-      </mat-form-field>
-    </p>
-
-    <p>
-      <mat-form-field appearance="outline">
-        <mat-label>Nuova password</mat-label>
-        <input matInput type="password">
-        <mat-icon matSuffix>password</mat-icon>
-        <mat-hint>Inserisci la tua nuova password</mat-hint>
-      </mat-form-field>
-    </p>
-
-    <p>
-      <mat-form-field appearance="outline">
-        <mat-label>Nuova numero di telefono</mat-label>
-        <input matInput placeholder="Ex. 342-2421697">
-        <mat-icon matSuffix>phone</mat-icon>
-        <mat-hint>Inserisci il tuo nuovo numero di telefono</mat-hint>
+        <mat-label>Password</mat-label>
+        <input matInput name="password" [(ngModel)]="password"  [type]="hide ? 'password' : 'text'" placeholder="Password">
+        <mat-hint>Inserisci la tua password</mat-hint>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
       </mat-form-field>
     </p>
 
     <p class="update">
-      <button mat-raised-button>Modifica profilo</button>
+      <button mat-raised-button (click)="modifyProfile()">Modifica profilo</button>
     </p>
 
     <p class="delete">

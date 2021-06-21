@@ -41,7 +41,6 @@ async function createNotification(username,notificationText){
 }
 
 async function updateUser(username, userParams){
-    userParams.hash = 'ciaoo'
     console.log(userParams)
     return User.findOneAndUpdate({username:username},userParams).exec()
 }

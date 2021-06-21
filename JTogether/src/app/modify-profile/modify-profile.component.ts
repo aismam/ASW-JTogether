@@ -12,6 +12,11 @@ import {LocalStorageService} from '../local-storage.service';
 })
 export class ModifyProfileComponent implements OnInit {
 
+  username: string | undefined;
+  email: string | undefined;
+  password: string | undefined;
+  hide = true;
+
   constructor(
     private route: JRouter,
     private dataService: DataService,
@@ -23,7 +28,15 @@ export class ModifyProfileComponent implements OnInit {
   }
 
   modifyProfile(): void{
-
+    console.log('mess: ' + this.username + ' ' + this.email + ' ' + this.password);
+    this.dataService.modifyProfile(
+      { username : this.username, password : this.password, email : this.email},
+      this.localStorage.getRefreshToken() as string)
+      .then(() => {
+        this.snackBar.normalSnack('Profilo aggiornato');
+        this.route.goLogin();
+      })
+      .catch(err => this.snackBar.errorSnack(err.error.message));
   }
 
   deleteProfile(): void{
