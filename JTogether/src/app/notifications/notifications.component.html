@@ -2,7 +2,7 @@
 <main>
   <ul>
     <app-card-list>
-      <li *ngFor="let card of cards"><app-notifications-card [imageUrl]="'https://material.angular.io/assets/img/examples/shiba2.jpg'"></app-notifications-card></li>
+      <li *ngFor="let notification of notifications"><app-notifications-card [notification]="notification"></app-notifications-card></li>
     </app-card-list>
   </ul>
 </main>

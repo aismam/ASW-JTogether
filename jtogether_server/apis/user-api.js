@@ -36,8 +36,8 @@ async function clearNotifications(username){
     return User.findOneAndUpdate({username: username},{$set: {notifications: []}}, {new : true}).exec()
 }
 
-async function createNotification(username,notificationText){
-    return User.findOneAndUpdate({username: username},{$push: {notifications: notificationText}}, {new : true}).exec()
+async function createNotification(username,notificationParams){
+    return User.findOneAndUpdate({username: username},{$push: {notifications: notificationParams}}, {new : true}).exec()
 }
 
 async function updateUser(username, userParams){

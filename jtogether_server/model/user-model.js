@@ -49,8 +49,8 @@ async function updateUser({username}, userParams){
         .then(() =>userApi.updateUser(username,userParams))
 }
 
-async function createNotification({username},{notification_text}){
-    return userApi.createNotification(username,notification_text)
+async function createNotification({username},notificationParams){
+    return userApi.createNotification(username,notificationParams)
 }
 
 async function clearNotifications({username}){

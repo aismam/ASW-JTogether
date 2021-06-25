@@ -26,7 +26,7 @@ export class ParticipatedActivityComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataService.loginToken(this.localStorage.getRefreshToken() as string)
-      .then(u => u.participated_activities.forEach(e => this.participatedActivities.push(e.activity_id)))
+      .then(u => this.participatedActivities = u.participated_activities)
       .then(() => this.dataService.getActivities(
         { activities_id : this.participatedActivities },
         this.localStorage.getRefreshToken() as string ))

@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit{
   private loadHomeActivities(): void{
     Promise.all([this.geolocationService.getGeolocation(), this.tokenService.getAccessToken()])
       .then(r => this.dataService.getNearActivities(r[COORDINATES], r[ACCESS_TOKEN]))
-      .then(as => this.activities = as.concat(as).concat(as).concat(as))
+      .then(as => this.activities = as)
       .catch(e => {
         console.log(e);
         this.snackBar.errorSnack(e.error.message);

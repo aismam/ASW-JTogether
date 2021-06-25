@@ -25,12 +25,17 @@ async function fillDisagio(){
     const authModel = require('./model/auth-model')
     const activityModel = require('./model/activity-model')
     try{
-        await authModel.signup({username: 'ismo',email : 'ciao@gmail.com', password: 'sasso vero'})
+        await authModel.signup({username: 'ismo',email : 'ciao@gmail.com', password: 'Sasso.1997'})
         await authModel.signup({username: 'Jotaro',email : 'jotaro.kujo@speedwagon.com', password: 'jojo.1919'})
         await authModel.signup({username: 'gardo',email : 'bellarega@gmail.com', password: 'ritardato vero'})
 
-        /*const ismoActivity = await activityModel.createActivity(
-            {name : 'sesso non protetto', description: 'Marco é il nuovo re del server disord, Ismam abdica. Viva la monarchia, morte agli infedeli.', date_time: '2021-05-23 12:45'},{username : 'ismo'})
+        await userModel.createNotification({username: "ismo"},{activityName: "activity sas", activityOwner: "coglione a caso", message: "sas sei un po' un coglione"})
+        await userModel.createNotification({username: "ismo"},{activityName: "activity sas", activityOwner: "coglione a caso", message: "sas sei un po' un coglione2"})
+        await userModel.createNotification({username: "ismo"},{activityName: "activity sas", activityOwner: "coglione a caso", message: "sas sei un po' un coglione3"})
+        await userModel.createNotification({username: "ismo"},{activityName: "activity sas", activityOwner: "coglione a caso", message: "sas sei un po' un coglione4"})
+        await userModel.createNotification({username: "ismo"},{activityName: "activity sas", activityOwner: "coglione a caso", message: "sas sei un po' un coglione5"})
+        await userModel.createNotification({username: "ismo"},{activityName: "activity sas", activityOwner: "coglione a caso", message: "sas sei un po' un coglione6"})
+        /*    {name : 'sesso non protetto', description: 'Marco é il nuovo re del server disord, Ismam abdica. Viva la monarchia, morte agli infedeli.', date_time: '2021-05-23 12:45'},{username : 'ismo'})
         await userModel.createActivity({username : 'ismo'},{activity_id: ismoActivity._id})
 
         const ismo2Activity = await activityModel.createActivity(

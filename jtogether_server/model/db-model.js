@@ -1,12 +1,5 @@
 const mongoose = require('mongoose');
 
-/*       Activity        */
-const messageSchema = mongoose.Schema({
-    message: {type: String, required : true},
-    user_id: {type: String, required: true},
-    time_stamp: {type: Date, required: true}
-})
-
 const activitySchema = mongoose.Schema({
     creator_username : { type: String, required : true, index: 'text'},
     name: { type: String, required: true, index: 'text'},
@@ -14,7 +7,6 @@ const activitySchema = mongoose.Schema({
     date_time: { type: Date, required: true},
     participants : {type : [String], default: [], required:true },
     location: {type: String, required: true, index: 'text'},
-    //chat: {type: [messageSchema],default: [], required: true},
     geolocation: {type: [Number], index: '2dsphere', required: true}
 })
 activitySchema.set('toJSON', {
@@ -25,20 +17,21 @@ activitySchema.set('toJSON', {
     }
 })
 
-/*       User        */
-const userActivitySchema = mongoose.Schema({
+const notificationSchema = mongoose.Schema({
     _id: false,
-    activity_id: {type: String, required: true},
-    is_muted: {type: Boolean, default: false, required: true}
+    activityName: {type: String, required: true},
+    activityOwner: {type: String, required: true},
+    message: {type: String, required: true},
+    date_time: {type: Date, required: true, default: new Date()}
 })
 
 const userSchema = mongoose.Schema({
     username : {type: String, unique: true, required: true},
     email : {type: String, unique : true, required : true},
-    created_activities : {type: [userActivitySchema], default: [], required : true},
-    participated_activities : {type: [userActivitySchema], default: [], required : true},
+    created_activities : {type: [String], default: [], required : true},
+    participated_activities : {type: [String], default: [], required : true},
     hash : {type: String, required: true},
-    notifications: {type: [String], default: [], required: true}
+    notifications: {type: [notificationSchema], default: [], required: true}
 })
 
 userSchema.set('toJSON', {

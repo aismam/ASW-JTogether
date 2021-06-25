@@ -1,11 +1,11 @@
-import {UserActivity} from './UserActivity';
+import {Notification} from './Notification';
 
 export interface User{
-  created_activities: UserActivity[];
-  participated_activities: UserActivity[];
+  created_activities: string[];
+  participated_activities: string[];
   username: string;
   email: string;
   access_token: string;
   refresh_token: string;
-  notifications: string[];
+  notifications: Notification[];
 }
