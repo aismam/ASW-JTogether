@@ -14,14 +14,14 @@ module.exports = {
     searchActivities
 }
 
-async function getNearActivities({latitude,longitude}){
-    return activityApi.getNearActivities(parseInt(longitude),parseInt(latitude))
+async function getNearActivities({username},{latitude,longitude}){
+    return activityApi.getNearActivities(username,parseInt(longitude),parseInt(latitude))
         .then(as => as.map(a => a._id))
         .then(ids => activityApi.getActivities(ids));
 }
 
-async function searchActivities({text}){
-    return activityApi.searchActivities(text)
+async function searchActivities({username},{text}){
+    return activityApi.searchActivities(username,text)
 }
 
 async function getActivities({activities_id}){

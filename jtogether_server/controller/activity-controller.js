@@ -40,13 +40,13 @@ module.exports = notificationsController => {
     }
 
     async function getNearActivities(req,res,next){
-        activityModel.getNearActivities(req.query)
+        activityModel.getNearActivities(req.user,req.query)
             .then(activities => res.json(activities.map(a => a.toJSON())))
             .catch(err => next(err))
     }
 
     async function searchActivities(req,res,next){
-        activityModel.searchActivities(req.query)
+        activityModel.searchActivities(req.user,req.query)
             .then(activities => res.json(activities.map(a => a.toJSON())))
             .catch(err => next(err))
     }

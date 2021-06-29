@@ -19,21 +19,30 @@ async function createActivity(activityParams){
 }
 
 async function getNearActivities(username,longitude,latitude){
-    return Activity.aggregate([
-        {
-            $geoNear: {
+    return Activity
+        .aggregate([
+            {$geoNear: {
                 near: {type: "Point", coordinates: [longitude,latitude]},
                 spherical: true,
                 maxDistance: MAX_DISTANCE_METERS,
                 distanceField: "distance",
+<<<<<<< HEAD
             }
         }
+=======
+            }},
+            //{$match: {creator_username: {$ne: username}}}
+>>>>>>> 85302fe2a4805a604ce8e44fca593d8827a4eb77
     ]).exec()
 }
 
 async function searchActivities(username,text) {
     const regex = new RegExp(text, 'ig');
-    return Activity.find( {$or: [{name: regex}, {description: regex}, {location: regex}, {creator_username: regex}]}).exec()
+    return Activity.find(
+        {$and: [
+            {creator_username : {$ne: username}},
+            {$or: [{name: regex}, {description: regex}, {location: regex}, {creator_username: regex}]}
+        ]}).exec()
 }
 
 async function modifyActivity(activityParams){

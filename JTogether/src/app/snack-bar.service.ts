@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 const CLOSE_MESSAGE = 'Chiudi';
-const SNACK_DURATION = 2000;
+const SNACK_DURATION = 2000000;
 
 @Injectable({
   providedIn: 'root'
