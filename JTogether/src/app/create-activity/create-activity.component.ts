@@ -4,6 +4,7 @@ import {JRouter} from '../jrouter.service';
 import {SnackBarService} from '../snack-bar.service';
 import {GeolocationService} from '../geolocation-service';
 import {TokensManagerService} from '../tokens-manager.service';
+import * as moment from 'moment';
 
 const LOCATION = 0;
 const ACCESS_TOKEN = 1;
@@ -15,12 +16,12 @@ const ACCESS_TOKEN = 1;
 })
 export class CreateActivityComponent{
 
-  name: string | null = null;
-  location: string | null = null;
+  name: string | null = 'sas';
+  location: string | null = 'via mario angeloni 37 forli italia';
   date = new Date();
   time = this.date.getHours() + ':' + this.date.getMinutes();
   dateTime: string | undefined;
-  description: string | null = null;
+  description: string | null = 'descrizione';
 
   constructor(
     private router: JRouter,
@@ -31,9 +32,8 @@ export class CreateActivityComponent{
   ) {}
 
   onSubmit(value: any): void {
-    value.date_time = this.date.toISOString().split('T')[0] + ' ' + value.time;
-    // TODO check of date
-    if (Object.entries(value).find(([_, v]) => v === undefined) || new Date(value.date_time).getTime() < new Date().getTime() ){
+    value.date_time =  moment(this.date).format('YYYY-MM-DD') + ' ' + value.time;
+    if (Object.entries(value).find(([_, v]) => v === undefined) || moment(value.date_time).diff(moment()) < 0 ){
       this.snackBar.errorSnack('Immettere valori validi');
     }else{
       this.tokenManagerService.getAccessToken()

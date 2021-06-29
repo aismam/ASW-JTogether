@@ -46,11 +46,11 @@ async function updateUser(username, userParams){
 }
 
 async function createParticipation(username,activity_id){
-    return User.findOneAndUpdate({username : username},{$addToSet: {participated_activities : {activity_id: activity_id, is_muted: false}}},{new : true}).exec()
+    return User.findOneAndUpdate({username : username},{$addToSet: {participated_activities : activity_id}},{new : true}).exec()
 }
 
 async function deleteParticipation(username,activity_id){
-    return User.findOneAndUpdate({username : username},{$pull: {participated_activities : { activity_id:  activity_id}}},{new : true}).exec()
+    return User.findOneAndUpdate({username : username},{$pull: {participated_activities : activity_id}},{new : true}).exec()
 }
 
 async function deleteUser(username){
