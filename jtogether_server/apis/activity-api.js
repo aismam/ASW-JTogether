@@ -28,7 +28,7 @@ async function getNearActivities(username,longitude,latitude){
                 distanceField: "distance",
             }
         }
-    ])..exec()
+    ]).exec()
 }
 
 async function searchActivities(username,text) {

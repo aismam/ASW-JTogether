@@ -60,4 +60,13 @@ main .main-content {
   width: 90%;
 }
 
+/* Change label color on focused */
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: #66a377 !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  color: #66a377 !important;
+}
+
 /*# sourceMappingURL=login.component.css.map */

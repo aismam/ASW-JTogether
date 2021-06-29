@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {DataService} from '../data.service';
 import {JRouter} from '../jrouter.service';
 import {SnackBarService} from '../snack-bar.service';
@@ -8,7 +8,8 @@ import {TokensManagerService} from '../tokens-manager.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit{
 
