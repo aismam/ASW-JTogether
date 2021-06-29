@@ -32,7 +32,8 @@ export class CreateActivityComponent{
 
   onSubmit(value: any): void {
     value.date_time = this.date.toISOString().split('T')[0] + ' ' + value.time;
-    if (Object.entries(value).find(([_, v]) => v === undefined) || new Date(value.date_time).getTime() < Date.now() ){
+    // TODO check of date
+    if (Object.entries(value).find(([_, v]) => v === undefined) || new Date(value.date_time).getTime() < new Date().getTime() ){
       this.snackBar.errorSnack('Immettere valori validi');
     }else{
       this.tokenManagerService.getAccessToken()

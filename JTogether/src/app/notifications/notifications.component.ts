@@ -23,5 +23,4 @@ export class NotificationsComponent implements OnInit {
       .then(t => this.dataService.clearNotifications(t))
       .catch(_ => this.router.goHome());
   }
-
 }

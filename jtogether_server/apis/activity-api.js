@@ -18,7 +18,7 @@ async function createActivity(activityParams){
     return new Activity(activityParams).save()
 }
 
-async function getNearActivities(longitude,latitude){
+async function getNearActivities(username,longitude,latitude){
     return Activity.aggregate([
         {
             $geoNear: {
@@ -28,10 +28,10 @@ async function getNearActivities(longitude,latitude){
                 distanceField: "distance",
             }
         }
-    ]).exec()
+    ])..exec()
 }
 
-async function searchActivities(text) {
+async function searchActivities(username,text) {
     const regex = new RegExp(text, 'ig');
     return Activity.find( {$or: [{name: regex}, {description: regex}, {location: regex}, {creator_username: regex}]}).exec()
 }
