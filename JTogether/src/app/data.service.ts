@@ -73,24 +73,32 @@ export class DataService {
   }
 
   searchActivities(searchText: string, refreshToken: string): Promise<Activity[]> {
-    return this.doGet<Activity[]>(this.serverUrl + 'user/search-activities',
+    return this.doGet<Activity[]>(this.serverUrl + this.userPath + 'search-activities',
       refreshToken,
       new HttpParams().append('text', searchText));
   }
 
   removeActivity(body: object, refreshToken: string): Promise<string> {
-    return this.doPost<string>(this.serverUrl + 'user/delete-activity', body, refreshToken);
+    return this.doPost<string>(this.serverUrl + this.userPath + 'delete-activity', body, refreshToken);
   }
 
   modifyActivity(body: object, accessToken: string): Promise<Activity>{
-    return this.doPost<Activity>(this.serverUrl + 'user/modify-activity', body, accessToken);
+    return this.doPost<Activity>(this.serverUrl + this.userPath + 'modify-activity', body, accessToken);
+  }
+
+  createParticipation(body: object, accessToken: string): Promise<Activity>{
+    return this.doPost<Activity>(this.serverUrl + this.userPath + '/create-participation', body, accessToken);
+  }
+
+  deleteParticipation(body: object, accessToken: string): Promise<Activity>{
+    return this.doPost<Activity>(this.serverUrl + this.userPath + '/delete-participation', body, accessToken);
   }
 
   deleteProfile(body: object, refreshToken: string): Promise<string> {
-    return this.doPost<string>(this.serverUrl + 'user/delete-user', body, refreshToken);
+    return this.doPost<string>(this.serverUrl + this.userPath + 'delete-user', body, refreshToken);
   }
 
   modifyProfile(body: object, refreshToken: string): Promise<User> {
-    return this.doPost<User>(this.serverUrl + 'user/update-user', body, refreshToken);
+    return this.doPost<User>(this.serverUrl + this.userPath + 'update-user', body, refreshToken);
   }
 }
