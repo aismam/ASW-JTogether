@@ -29,7 +29,7 @@ async function getNearActivities(username,longitude,latitude){
             }},
             //{$match: {creator_username: {$ne: username}}},
             //{$not: [ {$in: [username, 'participants']} ]},
-            {$project: {result: { $not: [ {$in: [username, 'participants']} ]}}}
+            //{$project: {result: { $not: [ {$in: [username, 'participants']} ]}}}
     ]).exec()
 }
 
