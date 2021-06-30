@@ -3,7 +3,7 @@
 
 h1{
   color: $primary;
-  -webkit-text-stroke: 1px $secondary; /* width and color */
+  -webkit-text-stroke: 1px $secondary; // width and color
   margin: 30px 0;
   font-size: 400%;
   font-weight: bold;
@@ -59,10 +59,3 @@ main {
 
 }
 
-/* Change label color on focused */
-.mat-form-field.mat-focused .mat-form-field-label {
-  color: #66a377 !important;
-}
-.mat-form-field-appearance-outline .mat-form-field-outline-thick {
-  color: #66a377 !important;
-}

@@ -41,6 +41,23 @@ simple-snack-bar .mat-simple-snackbar-action {
   color: white;
 }
 
+/* INPUT FOCUS COLOR */
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: #66a377;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  color: #66a377 !important;
+}
+
+/* FOOTER */
+.mainFooter {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+}
+
 footer {
   padding: 20px;
   text-align: center;

@@ -1,7 +1,6 @@
 h1 {
   color: #66a377;
   -webkit-text-stroke: 1px #e0e0e0;
-  /* width and color */
   margin: 30px 0;
   font-size: 400%;
   font-weight: bold;
@@ -58,15 +57,6 @@ main form .txt {
 }
 main .main-content {
   width: 90%;
-}
-
-/* Change label color on focused */
-.mat-form-field.mat-focused .mat-form-field-label {
-  color: #66a377 !important;
-}
-
-.mat-form-field-appearance-outline .mat-form-field-outline-thick {
-  color: #66a377 !important;
 }
 
 /*# sourceMappingURL=login.component.css.map */
