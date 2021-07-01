@@ -27,7 +27,7 @@ export class HomeCardComponent {
   ) { }
 
   participate(): void{
-  this.tokenService.getAccessToken()
+    this.tokenService.getAccessToken()
       .then(t => this.dataService.createParticipation({activity_id: this.activityId}, t))
       .then(_ => this.snackBar.normalSnack('Adesso partecipi a ' + this.name + '!'))
       .then(_ => {

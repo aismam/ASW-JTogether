@@ -1,6 +1,6 @@
 export interface Notification {
   message: string;
   date_time: string;
-  activityName: string;
-  activityOwner: string;
+  activity_name: string;
+  activity_owner: string;
 }

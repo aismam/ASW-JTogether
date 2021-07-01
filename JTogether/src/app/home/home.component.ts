@@ -59,18 +59,20 @@ export class HomeComponent implements OnInit{
       .then(r => this.dataService.getNearActivities(r[COORDINATES], r[ACCESS_TOKEN]))
       .then(as => this.activities = as)
       .catch(e => {
-        console.log(e);
         this.snackBar.errorSnack(e.error.message);
         this.router.goLogin();
       });
   }
 
   private tryTurnNotificationsOn(): void{
-    Notification.requestPermission().then(r => {
-      if (r === 'granted'){
-        this.notificationService.createSocket('notifications')
-          .subscribe(n => new Notification(n));
-      }
-    });
+    this.dataService.loginToken(this.tokenService.getRefreshToken() as string)
+      .then(u => {
+        Notification.requestPermission().then(r => {
+          if (r === 'granted'){
+            this.notificationService.createSocket(u.username)
+              .subscribe(n => new Notification(n));
+          }
+        });
+      });
   }
 }

@@ -1,5 +1,6 @@
 import {Router} from '@angular/router';
 import {Injectable} from '@angular/core';
+import {NotificationsService} from "./notifications.service";
 
 const LOGIN = '/login';
 const HOME = '/home';
@@ -15,9 +16,10 @@ const NOTIFICATIONS = '/notifications';
   providedIn: 'root'
 })
 export class JRouter {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private notificationService: NotificationsService) {}
 
   public goLogin(): void{
+    this.notificationService.disconnect();
     this.router.navigate([LOGIN]);
   }
   public goHome(): void{

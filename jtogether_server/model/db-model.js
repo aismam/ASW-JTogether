@@ -19,8 +19,8 @@ activitySchema.set('toJSON', {
 
 const notificationSchema = mongoose.Schema({
     _id: false,
-    activityName: {type: String, required: true},
-    activityOwner: {type: String, required: true},
+    activity_name: {type: String, required: true},
+    activity_owner: {type: String, required: true},
     message: {type: String, required: true},
     date_time: {type: Date, required: true, default: new Date()}
 })

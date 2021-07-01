@@ -1,5 +1,4 @@
-class NotificationController {
-    _NOTIFICATIONS_CHANNEL_NAME = 'notifications'
+class SocketIoController {
     _REGISTRATION_CHANNEL_NAME = 'registration'
 
     _socketToUser = new Map()
@@ -13,9 +12,11 @@ class NotificationController {
             }
         })
         this.io.on('connection',(socket) =>{
-            socket.on(this._REGISTRATION_CHANNEL_NAME, userId => {
-                this._socketToUser.set(socket,userId)
-                this._userToSocket.set(userId,socket)
+            console.log('connesso')
+            socket.on(this._REGISTRATION_CHANNEL_NAME, username => {
+                this._socketToUser.set(socket,username)
+                this._userToSocket.set(username,socket)
+                console.log(username)
             })
             socket.on('disconnect',() => {
                 this._userToSocket.delete(this._socketToUser.get(socket))
@@ -23,15 +24,15 @@ class NotificationController {
             })
         })
     }
-    userIsOnline(userId){
-        return this._userToSocket.has(userId)
+
+    userIsOnline(username){
+        return this._userToSocket.has(username)
     }
 
-    notify(userId,msg){
-        if(this.userIsOnline(userId)){
-            this._userToSocket.get(userId).emit(this._NOTIFICATIONS_CHANNEL_NAME,msg)
+    notify(username,msg){
+        if(this.userIsOnline(username)){
+            this._userToSocket.get(username).emit(username,msg)
         }
     }
 }
-
-module.exports = {SocketIoController: NotificationController}
+module.exports = {SocketIoController}
