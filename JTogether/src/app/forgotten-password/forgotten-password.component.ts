@@ -8,7 +8,7 @@ import {SnackBarService} from '../snack-bar.service';
   templateUrl: './forgotten-password.component.html',
   styleUrls: ['./forgotten-password.component.scss']
 })
-export class ForgottenPasswordComponent implements OnInit {
+export class ForgottenPasswordComponent {
 
   email = undefined;
   password = undefined;
@@ -20,17 +20,18 @@ export class ForgottenPasswordComponent implements OnInit {
     private snackBar: SnackBarService,
   ) { }
 
-  ngOnInit(): void {
-  }
-
   update(): void {
     this.dataService.forgottenPassword(
       { email: this.email, password: this.password})
       .then(() => {
         this.snackBar.normalSnack('Password modificata con successo!');
-        this.route.goHome();
+        this.route.goLogin();
       })
       .catch(e => this.snackBar.errorSnack(e.error.message));
+  }
+
+  goLogin(): void {
+    this.route.goLogin();
   }
 
 }
