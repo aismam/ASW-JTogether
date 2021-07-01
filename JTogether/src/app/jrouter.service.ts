@@ -11,6 +11,7 @@ const MODIFY_ACTIVITY = '/modify-activity';
 const CREATE_ACTIVITY = '/create-activity';
 const PARTICIPATED_ACTIVITIES = '/participated-activity';
 const NOTIFICATIONS = '/notifications';
+const FORGOTTENPW = '/forgotten-password';
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +46,8 @@ export class JRouter {
   }
   public goNotifications(): void{
     this.router.navigate([NOTIFICATIONS]);
+  }
+  public goForgottenPassword(): void{
+    this.router.navigate([FORGOTTENPW]);
   }
 }

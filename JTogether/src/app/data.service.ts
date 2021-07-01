@@ -101,4 +101,8 @@ export class DataService {
   modifyProfile(body: object, refreshToken: string): Promise<User> {
     return this.doPost<User>(this.serverUrl + this.userPath + 'update-user', body, refreshToken);
   }
+
+  forgottenPassword(body: object): Promise<User> {
+    return this.doPost<User>(this.serverUrl + this.userPath  + 'forgotten-password', body);
+  }
 }

@@ -12,6 +12,7 @@ import {SettingsComponent} from './settings/settings.component';
 import {CreateActivityComponent} from './create-activity/create-activity.component';
 import {ParticipatedActivityComponent} from './participated-activity/participated-activity.component';
 import {ChatComponent} from './chat/chat.component';
+import {ForgottenPasswordComponent} from './forgotten-password/forgotten-password.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'settings', component: SettingsComponent},
   { path: 'participated-activity', component: ParticipatedActivityComponent},
   { path: 'create-activity', component: CreateActivityComponent},
-  { path: 'chat', component: ChatComponent}
+  { path: 'chat', component: ChatComponent},
+  { path: 'forgotten-password', component: ForgottenPasswordComponent}
 ];
 
 @NgModule({

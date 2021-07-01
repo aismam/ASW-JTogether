@@ -31,9 +31,9 @@ export class LoginComponent implements OnInit{
     }
   }
 
-  forgottenPassword($event: MouseEvent): void {
-    $event.preventDefault();
-    this.router.goLogin(); /* TODO */
+  forgottenPassword(): void {
+    console.log('ciao');
+    this.router.goForgottenPassword();
   }
 
   doLogin($event: MouseEvent): void {
