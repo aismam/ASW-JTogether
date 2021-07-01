@@ -14,7 +14,8 @@ module.exports = {
     deleteActivity,
     createChat,
     createNotification,
-    clearNotifications
+    clearNotifications,
+    forgottenPassword
 }
 
 /* User */
@@ -68,4 +69,9 @@ async function deleteParticipation(username,activity_id){
 
 async function createChat(username, chat_id){
     return User.findOneAndUpdate({username:username}, {$addToSet: {chats: chat_id}}, {new : true}).exec()
+}
+
+/* Forgotten Password */
+async function forgottenPassword(email, password){
+    return User.findOneAndUpdate({email: email}, {hash: password}).exec()
 }

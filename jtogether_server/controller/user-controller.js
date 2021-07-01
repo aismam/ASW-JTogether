@@ -13,6 +13,7 @@ const USER_DELETED_MESSAGE = 'Utente cancellato con successo'
 router.post('/update-user',jwt.authenticateJWT,authValidator.userSignupValidationRules,validator,updateUser)
 router.post('/delete-user',jwt.authenticateJWT,authValidator.tokenValidationRules,validator,deleteUser)
 router.post('/clear-notifications',jwt.authenticateJWT,clearNotifications)
+router.post('/forgotten-password', forgottenPassword)
 module.exports = router;
 
 async function deleteUser(req,res,next){
@@ -31,6 +32,12 @@ async function updateUser(req,res,next){
 
 async function clearNotifications(req,res,next){
     userModel.clearNotifications(req.user)
+        .then(u => res.json(u.toJSON()))
+        .catch(e => next(e))
+}
+
+async function forgottenPassword(req,res,next){
+    userModel.forgottenPassword(req.body)
         .then(u => res.json(u.toJSON()))
         .catch(e => next(e))
 }

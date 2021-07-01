@@ -17,7 +17,8 @@ module.exports = {
     createUser,
     createChat,
     createNotification,
-    clearNotifications
+    clearNotifications,
+    forgottenPassword
 }
 
 async function deleteUser({username}){
@@ -85,4 +86,9 @@ async function getUserFromEmail({email}){
 
 async function createChat({username}, {chat_id}){
     return userApi.createChat(username, chat_id)
+}
+
+async function forgottenPassword({email,password}){
+    return crypto.crypt(password)
+        .then(h => userApi.forgottenPassword(email, h))
 }
