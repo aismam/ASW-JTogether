@@ -1,0 +1,41 @@
+@import "mixins.scss";
+
+@mixin main-content {
+  @include flexCol;
+  width: 100%;
+  min-height: 92vh;
+}
+
+@mixin form-content {
+  @include flexCol;
+
+  form {
+    @include flexCol;
+
+    p, {
+      @include mobile {
+        width: 90%;
+      }
+
+      @include mobile {
+        width: 85%;
+      }
+
+      @include small-screen {
+        width: 50%;
+      }
+
+      @include desktop {
+        width: 50%;
+      }
+
+      @include large-desktop {
+        width: 40%;
+      }
+
+      mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+}

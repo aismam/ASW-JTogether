@@ -1,47 +1,14 @@
 @import "../../mixins";
 @import "../../variables";
+@import "../../content-centerer-mixins";
 
 main {
-  @include flexCol;
 
-  mat-icon {
-    color: #66a377;
+  @include main-content;
+  @include form-content;
+
+  button {
+    margin-bottom: 4%;
   }
 
-  p {
-    margin-top: 15px;
-    text-align: center;
-
-    mat-form-field {
-      width: 100%;
-    }
-
-    button {
-      margin-bottom: 4%;
-    }
-
-    .time::-webkit-calendar-picker-indicator {
-      background: none;
-    }
-  }
-
-  .form-area {
-    margin-top: 30px;
-    width: 90%;
-
-    @include small-screen {
-      margin-top: 50px;
-      width: 80%;
-    }
-    @include desktop {
-      margin-top: 70px;
-      width: 70%;
-    }
-    @include large-desktop {
-      margin-top: 100px;
-      width: 700px;
-    }
-
-
-  }
 }

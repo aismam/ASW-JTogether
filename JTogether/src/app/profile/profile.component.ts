@@ -32,7 +32,10 @@ export class ProfileComponent implements OnInit {
       .then(() => this.dataService.getActivities(
         { activities_id : this.createdActivities },
         this.localStorage.getRefreshToken() as string))
-      .then( as => this.cards = as)
+      .then( as => {
+        this.cards = as;
+        console.log(as);
+      })
       .catch(er => this.snackBar.errorSnack(er.error.message, 'Chiudi'));
   }
 

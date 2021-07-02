@@ -13,6 +13,10 @@ main {
   align-items: center;
   width: 100%;
   min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 main form {
   display: flex;
@@ -48,15 +52,12 @@ main form {
 main form p mat-form-field {
   width: 100%;
 }
-main form .txt {
+main .txt {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: #66a377;
-}
-main .main-content {
-  width: 90%;
 }
 
 /*# sourceMappingURL=login.component.css.map */

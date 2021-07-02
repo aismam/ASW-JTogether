@@ -3,44 +3,49 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-main mat-icon {
-  color: #66a377;
-}
-main p {
-  margin-top: 15px;
-  text-align: center;
-}
-main p mat-form-field {
   width: 100%;
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-main p button {
-  margin-bottom: 4%;
+main form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-main p .time::-webkit-calendar-picker-indicator {
-  background: none;
+@media screen and (min-width: 250px) {
+  main form p {
+    width: 90%;
+  }
 }
-main .form-area {
-  margin-top: 30px;
-  width: 90%;
+@media screen and (min-width: 250px) {
+  main form p {
+    width: 85%;
+  }
 }
 @media screen and (min-width: 768px) {
-  main .form-area {
-    margin-top: 50px;
-    width: 80%;
+  main form p {
+    width: 50%;
   }
 }
 @media screen and (min-width: 1024px) {
-  main .form-area {
-    margin-top: 70px;
-    width: 70%;
+  main form p {
+    width: 50%;
   }
 }
 @media screen and (min-width: 1200px) {
-  main .form-area {
-    margin-top: 100px;
-    width: 700px;
+  main form p {
+    width: 40%;
   }
+}
+main form p mat-form-field {
+  width: 100%;
+}
+main button {
+  margin-bottom: 4%;
 }
 
 /*# sourceMappingURL=signup.component.css.map */
