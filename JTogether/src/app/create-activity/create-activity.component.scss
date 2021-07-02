@@ -1,33 +1,12 @@
 @import "../../mixins";
 @import "../../variables";
+@import "../../content-centerer-mixins";
 
 main {
-  @include flexCol;
 
-  .form-area {
-    width: 90%;
+  @include main-content;
+  @include form-content;
 
-    @include small-screen {
-      width: 80%;
-    }
-
-    @include desktop {
-      width: 70%;
-    }
-
-    @include large-desktop {
-      width: 50%;
-    }
-
-    mat-form-field {
-      width: 100%;
-      margin-top: 15px;
-    }
-
-    .time::-webkit-calendar-picker-indicator {
-      background: none;
-    }
-  }
 }
 
 

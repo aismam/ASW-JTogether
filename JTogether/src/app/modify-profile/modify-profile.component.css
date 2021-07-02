@@ -3,34 +3,46 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-main .form-area {
-  width: 90%;
+main form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (min-width: 250px) {
+  main form p {
+    width: 90%;
+  }
+}
+@media screen and (min-width: 250px) {
+  main form p {
+    width: 85%;
+  }
 }
 @media screen and (min-width: 768px) {
-  main .form-area {
-    width: 80%;
-  }
-}
-@media screen and (min-width: 1024px) {
-  main .form-area {
-    width: 70%;
-  }
-}
-@media screen and (min-width: 1200px) {
-  main .form-area {
+  main form p {
     width: 50%;
   }
 }
-main .form-area p {
-  margin-top: 15px;
-  text-align: center;
+@media screen and (min-width: 1024px) {
+  main form p {
+    width: 50%;
+  }
 }
-main .form-area p mat-form-field {
+@media screen and (min-width: 1200px) {
+  main form p {
+    width: 40%;
+  }
+}
+main form p mat-form-field {
   width: 100%;
-}
-main .form-area p .time::-webkit-calendar-picker-indicator {
-  background: none;
 }
 
 /*# sourceMappingURL=modify-profile.component.css.map */
