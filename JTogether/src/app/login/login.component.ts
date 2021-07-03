@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit{
     private tokensManagerService: TokensManagerService) { }
 
   ngOnInit(): void {
+    console.log(this.tokensManagerService.getRefreshToken());
     if (this.tokensManagerService.getRefreshToken()) {
       this.dataService.loginToken(this.tokensManagerService.getRefreshToken() as string)
         .then(u => this.finalizeLogin(u))

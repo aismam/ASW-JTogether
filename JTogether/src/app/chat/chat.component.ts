@@ -11,7 +11,7 @@ import {DataService} from '../data.service';
 })
 export class ChatComponent implements OnInit{
   message = '';
-  messages: string[] = Array(200).fill('sas');
+  messages: string[] = [];
   username = '';
   private sub: any;
 

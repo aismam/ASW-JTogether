@@ -15,7 +15,7 @@ module.exports = {
 }
 
 async function getNearActivities({username},{latitude,longitude}){
-    return activityApi.getNearActivities(username,parseInt(longitude),parseInt(latitude))
+    return activityApi.getNearActivities(username,parseFloat(longitude),parseFloat(latitude))
         .then(as => as.map(a => a._id))
         .then(ids => activityApi.getActivities(ids));
 }
