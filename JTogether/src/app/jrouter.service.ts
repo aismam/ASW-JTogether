@@ -1,6 +1,5 @@
 import {Router} from '@angular/router';
 import {Injectable} from '@angular/core';
-import {NotificationsService} from "./notifications.service";
 
 const LOGIN = '/login';
 const HOME = '/home';
@@ -11,16 +10,16 @@ const MODIFY_ACTIVITY = '/modify-activity';
 const CREATE_ACTIVITY = '/create-activity';
 const PARTICIPATED_ACTIVITIES = '/participated-activity';
 const NOTIFICATIONS = '/notifications';
-const FORGOTTENPW = '/forgotten-password';
+const FORGOTTEN_PASSWORD = '/forgotten-password';
+const ACTIVITY_CHAT = '/chat/';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JRouter {
-  constructor(private router: Router, private notificationService: NotificationsService) {}
+  constructor(private router: Router) {}
 
   public goLogin(): void{
-    this.notificationService.disconnect();
     this.router.navigate([LOGIN]);
   }
   public goHome(): void{
@@ -28,6 +27,9 @@ export class JRouter {
   }
   public signup(): void{
     this.router.navigate([SIGNUP]);
+  }
+  public activityChat(activityId: string): void{
+    this.router.navigate([ACTIVITY_CHAT, activityId]);
   }
   public goProfile(): void{
     this.router.navigate([PROFILE]);
@@ -48,6 +50,6 @@ export class JRouter {
     this.router.navigate([NOTIFICATIONS]);
   }
   public goForgottenPassword(): void{
-    this.router.navigate([FORGOTTENPW]);
+    this.router.navigate([FORGOTTEN_PASSWORD]);
   }
 }

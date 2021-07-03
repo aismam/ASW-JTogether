@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
+    this.tokenService.checkLogin()
     this.loadHomeActivities();
     this.loadNotifications();
     this.tryTurnNotificationsOn();
@@ -69,8 +70,7 @@ export class HomeComponent implements OnInit{
       .then(u => {
         Notification.requestPermission().then(r => {
           if (r === 'granted'){
-            this.notificationService.createSocket(u.username)
-              .subscribe(n => new Notification(n));
+            this.notificationService.createSocket(u.username);
           }
         });
       });

@@ -27,9 +27,8 @@ async function getNearActivities(username,longitude,latitude){
                     maxDistance: MAX_DISTANCE_METERS,
                     distanceField: "distance"
             }},
-            //{$match: {creator_username: {$ne: username}}},
-            //{$not: [ {$in: [username, 'participants']} ]},
-            //{$project: {result: { $not: [ {$in: [username, 'participants']} ]}}}
+            {$match: {creator_username: {$ne: username}}},
+            {$match: {participants: {$ne: username}}},
     ]).exec()
 }
 
@@ -37,7 +36,8 @@ async function searchActivities(username,text) {
     const regex = new RegExp(text, 'ig');
     return Activity.find(
         {$and: [
-            {$match: {$nin: [username, 'participants']}},
+            {creator_username: {$ne: username}},
+            {participants: {$ne: username}},
             {creator_username : {$ne: username}},
             {$or: [{name: regex}, {description: regex}, {location: regex}, {creator_username: regex}]}
         ]}).exec()

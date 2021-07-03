@@ -1,6 +1,4 @@
 class SocketIoController {
-    _REGISTRATION_CHANNEL_NAME = 'registration'
-
     _socketToUser = new Map()
     _userToSocket = new Map()
 
@@ -12,16 +10,23 @@ class SocketIoController {
             }
         })
         this.io.on('connection',(socket) =>{
-            console.log('connesso')
-            socket.on(this._REGISTRATION_CHANNEL_NAME, username => {
+            /* notifications */
+            socket.on('registration', username => {
                 this._socketToUser.set(socket,username)
                 this._userToSocket.set(username,socket)
-                console.log(username)
             })
             socket.on('disconnect',() => {
                 this._userToSocket.delete(this._socketToUser.get(socket))
                 this._socketToUser.delete(socket)
             })
+
+            /* messaging */
+            socket.on('join-room',roomId => {
+                socket.on(roomId,message => {
+                    this.io.emit(roomId,message)
+                })
+            })
+
         })
     }
 

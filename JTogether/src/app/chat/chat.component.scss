@@ -1,15 +1,18 @@
 @import "../../mixins";
 
-main {
-  @include flexRow;
-}
+ul{
+  border-bottom: 1px solid #999;
+  margin: 5px 0;
+  max-height: 75vh;
+  overflow-y: scroll;
 
-.chatlist{
-  width: 50%;
-  background-color: #66a377;
+  li{
+    word-break: break-word;
+    padding: 5px 1%;
+  };
 }
-
-.singlechat{
-  width: 50%;
-  background-color: #f44336;
+mat-form-field{
+  display: block;
+  width: 99%;
+  margin: 5px auto 0;
 }

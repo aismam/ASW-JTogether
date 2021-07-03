@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["chat.component.scss","../../mixins.scss"],"names":[],"mappings":"AAEA;ECEE;EACA;EACA;EACA;;;ADDF;EACE;EACA;;;AAGF;EACE;EACA","file":"chat.component.css"}
+{"version":3,"sourceRoot":"","sources":["chat.component.scss"],"names":[],"mappings":"AAEA;EACE;EACA;EACA;EACA;;AAEA;EACE;EACA;;;AAGJ;EACE;EACA;EACA","file":"chat.component.css"}

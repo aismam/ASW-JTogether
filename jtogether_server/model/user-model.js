@@ -51,8 +51,6 @@ async function updateUser({username}, userParams){
 }
 
 async function createNotification(username,message, activity_name, activity_owner){
-    console.log(username,message,activity_name, activity_owner)
-
     return userApi.createNotification(username, {activity_name: activity_name, activity_owner: activity_owner, message: message})
 }
 

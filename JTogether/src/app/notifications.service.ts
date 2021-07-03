@@ -7,14 +7,12 @@ import {Observable} from 'rxjs';
 })
 
 export class NotificationsService{
-
   constructor(private socket: Socket) { }
 
-  createSocket(username: string): Observable<string>{
-    this.socket.on('connect', () => this.socket.emit('registration', username));
-    return this.socket.fromEvent<string>(username);
-  }
-  disconnect(): void {
+  createSocket(username: string): void{
     this.socket.disconnect();
+    this.socket.connect();
+    this.socket.on('connect', () => this.socket.emit('registration', username));
+    this.socket.fromEvent<string>(username).subscribe(m => new Notification(m));
   }
 }

@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'settings', component: SettingsComponent},
   { path: 'participated-activity', component: ParticipatedActivityComponent},
   { path: 'create-activity', component: CreateActivityComponent},
-  { path: 'chat', component: ChatComponent},
+  { path: 'chat/:id', component: ChatComponent},
   { path: 'forgotten-password', component: ForgottenPasswordComponent}
 ];
 
