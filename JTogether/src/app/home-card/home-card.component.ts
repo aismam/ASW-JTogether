@@ -10,7 +10,7 @@ import {ProfileImageService} from '../profile-image.service';
   templateUrl: './home-card.component.html',
   styleUrls: ['./home-card.component.scss']
 })
-export class HomeCardComponent implements OnInit{
+export class HomeCardComponent{
   @Input() imageUrl: string | undefined;
   @Input() name: string | undefined;
   @Input() creator: string | undefined;
@@ -36,10 +36,5 @@ export class HomeCardComponent implements OnInit{
         this.isHidden = true;
       })
       .catch(e => this.snackBar.errorSnack(e.message));
-  }
-
-  ngOnInit(): void {
-    //this.imageUrl = 'https://images.wallpaperscraft.com/image/deer_minimalism_camera_record_audio_cassette_yo_yo_vector_retro_99248_1680x1050.jpg';
-    this.imageUrl = this.profileImage.getRandomImage();
   }
 }

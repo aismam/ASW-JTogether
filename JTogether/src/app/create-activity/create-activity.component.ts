@@ -5,6 +5,8 @@ import {SnackBarService} from '../snack-bar.service';
 import {GeolocationService} from '../geolocation-service';
 import {TokensManagerService} from '../tokens-manager.service';
 import * as moment from 'moment';
+import {UserService} from '../user.service';
+import {LocalStorageService} from '../local-storage.service';
 
 const LOCATION = 0;
 const ACCESS_TOKEN = 1;
@@ -28,10 +30,14 @@ export class CreateActivityComponent{
     private dataService: DataService,
     private snackBar: SnackBarService,
     private geolocationService: GeolocationService,
-    private tokenManagerService: TokensManagerService
+    private tokenManagerService: TokensManagerService,
+    private userService: UserService,
+    private localStorageService: LocalStorageService,
   ) {}
 
   onSubmit(value: any): void {
+    value.profile_pic = this.localStorageService.getPicProfile();
+    console.log(value);
     value.date_time =  moment(this.date).format('YYYY-MM-DD') + ' ' + value.time;
     if (Object.entries(value).find(([_, v]) => v === undefined) || moment(value.date_time).diff(moment()) < 0 ){
       this.snackBar.errorSnack('Immettere valori validi');

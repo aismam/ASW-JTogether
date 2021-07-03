@@ -14,9 +14,11 @@ export class ProfileComponent implements OnInit {
 
   cards: Activity[] = [];
   createdActivities: string[] = [];
+
   check: boolean; // Serve per settare il nickname solo una volta
   name: string | undefined;
   email: string | undefined;
+  userProfilePic: string | undefined;
 
   constructor(
     private route: JRouter,
@@ -45,6 +47,7 @@ export class ProfileComponent implements OnInit {
         .then( u => {
           this.name = u.username;
           this.email = u.email;
+          this.userProfilePic = u.profilePic;
         })
         .catch(e => this.snackBar.errorSnack(e.error.message));
       this.check = false;

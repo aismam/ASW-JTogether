@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-    this.tokenService.checkLogin()
+    this.tokenService.checkLogin();
     this.loadHomeActivities();
     this.loadNotifications();
     this.tryTurnNotificationsOn();

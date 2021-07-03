@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DataService} from '../data.service';
 import {SnackBarService} from '../snack-bar.service';
 import {JRouter} from '../jrouter.service';
+import {ProfileImageService} from '../profile-image.service';
 
 const SUCCESSFUL_REGISTRATION = 'Registrazione avvenuta con successo!';
 
@@ -21,6 +22,7 @@ export class SignupComponent implements OnInit {
     private route: JRouter,
     private dataService: DataService,
     private snackBar: SnackBarService,
+    private profileImage: ProfileImageService,
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +35,11 @@ export class SignupComponent implements OnInit {
 
   signup($event: MouseEvent): void {
     $event.preventDefault();
-    this.dataService.signup({ username : this.username, email : this.email, password : this.password})
+    this.dataService.signup({
+      username : this.username,
+      email : this.email,
+      password : this.password,
+      profilePic : this.profileImage.getRandomImage()})
       .then(_ => {
         this.snackBar.normalSnack(SUCCESSFUL_REGISTRATION);
         this.route.goLogin();

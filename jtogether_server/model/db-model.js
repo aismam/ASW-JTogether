@@ -7,7 +7,8 @@ const activitySchema = mongoose.Schema({
     date_time: { type: Date, required: true},
     participants : {type : [String], default: [], required:true },
     location: {type: String, required: true, index: 'text'},
-    geolocation: {type: [Number], index: '2dsphere', required: true}
+    geolocation: {type: [Number], index: '2dsphere', required: true},
+    profile_pic : {type: String, unique: false, required: true}
 })
 activitySchema.set('toJSON', {
     virtuals: true,
@@ -31,7 +32,8 @@ const userSchema = mongoose.Schema({
     created_activities : {type: [String], default: [], required : true},
     participated_activities : {type: [String], default: [], required : true},
     hash : {type: String, required: true},
-    notifications: {type: [notificationSchema], default: [], required: true}
+    notifications: {type: [notificationSchema], default: [], required: true},
+    profilePic : {type: String, unique: false, required: true}
 })
 
 userSchema.set('toJSON', {
