@@ -15,9 +15,8 @@ main {
   @include main-content;
   @include form-content;
 
-    .txt {
-      @include flexCol;
-      color: $primary;
-    }
-
+  .txt {
+    @include flexCol;
+    color: $primary;
+  }
 }

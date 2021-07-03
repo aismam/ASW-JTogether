@@ -44,5 +44,8 @@ main form {
 main form p mat-form-field {
   width: 100%;
 }
+main .form-area .time::-webkit-calendar-picker-indicator {
+  background: none;
+}
 
 /*# sourceMappingURL=create-activity.component.css.map */

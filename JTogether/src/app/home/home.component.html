@@ -1,6 +1,6 @@
 <app-navbar [title]="'JTogether'"></app-navbar>
 <main>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="searchbar">
     <mat-label>Ricerca</mat-label>
     <input name="location" matInput [(ngModel)]="searchValue" placeholder="E.g. chiara scarsa" (keyup.enter)="search()">
     <mat-icon matSuffix>search</mat-icon>
@@ -15,6 +15,6 @@
         [creator]="activity.creator_username"
         [description]="activity.description"
         [dateTime]="activity.date_time"
-        [imageUrl]="'https://material.angular.io/assets/img/examples/shiba2.jpg'"></app-home-card></li>
+        [imageUrl]="'https://images.wallpaperscraft.com/image/astronaut_spacesuit_reflection_144426_1280x720.jpg'"></app-home-card></li>
   </app-card-list>
 </main>

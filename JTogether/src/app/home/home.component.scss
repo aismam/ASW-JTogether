@@ -4,4 +4,8 @@ main{
   width: 95%;
   @include flexCol;
   align-items: normal;
+
+  .searchbar{
+    padding-top: 1.5%;
+  }
 }
