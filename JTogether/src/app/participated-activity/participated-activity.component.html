@@ -7,7 +7,7 @@
   <app-card-list>
     <li *ngFor="let card of cards">
       <app-participated-activity-card
-        [imageUrl]="'https://material.angular.io/assets/img/examples/shiba2.jpg'"
+        [imageUrl]="card.profile_pic"
         [name]="card.name"
         [creator]="card.creator_username"
         [place]="card.location"

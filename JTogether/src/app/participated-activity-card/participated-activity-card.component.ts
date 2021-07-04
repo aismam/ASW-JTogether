@@ -3,8 +3,8 @@ import {JRouter} from '../jrouter.service';
 import {DataService} from '../data.service';
 import {SnackBarService} from '../snack-bar.service';
 import {LocalStorageService} from '../local-storage.service';
-import {TokensManagerService} from "../tokens-manager.service";
-import {reflectObjectLiteral} from "@angular/compiler-cli/src/ngtsc/reflection";
+import {TokensManagerService} from '../tokens-manager.service';
+import {reflectObjectLiteral} from '@angular/compiler-cli/src/ngtsc/reflection';
 
 @Component({
   selector: 'app-participated-activity-card',
