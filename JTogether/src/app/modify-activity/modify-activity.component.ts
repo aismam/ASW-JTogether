@@ -36,7 +36,6 @@ export class ModifyActivityComponent{
   }
 
   private performModifyActivity(value: any, activityId: string): void{
-    console.log(activityId);
     this.dataService.modifyActivity(
       { activity_id: activityId,
         name : this.name,

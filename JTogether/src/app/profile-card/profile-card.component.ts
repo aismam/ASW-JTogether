@@ -43,7 +43,6 @@ export class ProfileCardComponent implements OnInit {
   }
 
   modifyActivity(): void {
-    console.log(this.id as string);
     this.route.goModifyActivity(this.id as string);
   }
 

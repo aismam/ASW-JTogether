@@ -1,7 +1,5 @@
 const {User} = require('../_helpers/db')
 
-const SALT_ROUNDS = 12
-
 module.exports = {
     createUser,
     getUserFromUsername,
@@ -44,8 +42,8 @@ async function createActivity(username,activity_id){
 }
 
 async function deleteActivity(username,activity_id){
-    await User.findOneAndUpdate({username : username},{$pull: {created_activities: {activity_id: activity_id}}}).exec()
-    const users = await User.find({participated_activities: {activity_id: activity_id}} ).exec()
+    await User.findOneAndUpdate({username : username},{$pull: {created_activities: activity_id}}).exec()
+    const users = await User.find({participated_activities: activity_id} ).exec()
     users.forEach(user => this.deleteParticipation(user.username,activity_id))
     return users
 }
