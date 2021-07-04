@@ -5,6 +5,7 @@ import {SnackBarService} from '../snack-bar.service';
 import {LocalStorageService} from '../local-storage.service';
 import {TokensManagerService} from '../tokens-manager.service';
 import {reflectObjectLiteral} from '@angular/compiler-cli/src/ngtsc/reflection';
+import {UtilityService} from '../utility.service';
 
 @Component({
   selector: 'app-participated-activity-card',
@@ -25,10 +26,12 @@ export class ParticipatedActivityCardComponent implements OnInit {
     private route: JRouter,
     private dataService: DataService,
     private snackBar: SnackBarService,
-    private tokensManagerService: TokensManagerService
+    private tokensManagerService: TokensManagerService,
+    private utilityService: UtilityService,
   ) { }
 
   ngOnInit(): void {
+    this.dateTime = this.utilityService.removeTime(this.dateTime as string);
   }
 
   startChatting(): void{

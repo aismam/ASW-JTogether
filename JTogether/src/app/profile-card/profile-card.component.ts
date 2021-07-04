@@ -3,6 +3,7 @@ import {JRouter} from '../jrouter.service';
 import {SnackBarService} from '../snack-bar.service';
 import {DataService} from '../data.service';
 import {LocalStorageService} from '../local-storage.service';
+import {UtilityService} from '../utility.service';
 
 @Component({
   selector: 'app-profile-card',
@@ -24,10 +25,12 @@ export class ProfileCardComponent implements OnInit {
     private route: JRouter,
     private dataService: DataService,
     private snackBar: SnackBarService,
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService,
+    private utilityService: UtilityService,
   ) { }
 
   ngOnInit(): void {
+    this.dateTime = this.utilityService.removeTime(this.dateTime as string);
   }
 
   delete(): void {
