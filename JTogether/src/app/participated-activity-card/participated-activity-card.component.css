@@ -62,8 +62,12 @@ simple-snack-bar .mat-simple-snackbar-action {
   width: 90%;
 }
 
-.quit {
-  background-color: #f44336;
+mat-card-header {
+  margin: 1%;
+  padding: 2%;
+}
+mat-card-header img {
+  box-shadow: 2px 2px 10px #333333;
 }
 
 mat-card-content {
@@ -92,17 +96,17 @@ mat-card-content p {
 
 mat-card-actions {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-content: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-mat-card-actions mat-icon {
-  color: #66a377;
-  transform: scale(2);
-  padding: 8%;
+mat-card-actions button {
+  width: 95%;
+  margin: 3%;
+  box-shadow: 2px 2px 10px #333333;
 }
-mat-card-actions .exit {
-  color: #f44336;
+mat-card-actions .remove {
+  background-color: #f44336;
 }
 
 /*# sourceMappingURL=participated-activity-card.component.css.map */

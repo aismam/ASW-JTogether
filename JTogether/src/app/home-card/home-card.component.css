@@ -62,6 +62,14 @@ simple-snack-bar .mat-simple-snackbar-action {
   width: 90%;
 }
 
+mat-card-header {
+  margin: 1%;
+  padding: 2%;
+}
+mat-card-header img {
+  box-shadow: 2px 2px 10px #333333;
+}
+
 mat-card-content {
   margin: 0;
 }
@@ -88,6 +96,11 @@ mat-card-content p {
 
 mat-card-actions {
   text-align: center;
+}
+mat-card-actions button {
+  width: 95%;
+  margin: 2%;
+  box-shadow: 2px 2px 10px #333333;
 }
 
 /*# sourceMappingURL=home-card.component.css.map */

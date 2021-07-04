@@ -1,50 +1,17 @@
 @import "../../styles";
 @import "../../mixins.scss";
+@import "../../card-mixin.scss";
 
-.quit {
-  background-color: $red;
-}
-
-mat-card-content{
-  margin: 0;
-  ul{
-    margin-left: 2%;
-    padding: 0;
-    li{
-      &:not(:first-child){
-        margin: 10px 0;
-      }
-      display: flex;
-      align-items: center;
-
-      mat-icon{
-        color: $primary;
-      }
-      span{
-        margin-left: 5%;
-      }
-    }
-  }
-  p{
-    text-align: justify;
-  }
-}
+@include cardHeader;
+@include cardContent;
 
 mat-card-actions{
-  @include flexRow;
-
-  mat-icon{
-    color: $primary;
-    transform: scale(2);
-    padding: 8%;
+  @include flexCol;
+  button {
+    width: 95%;
+    margin: 3%;
+    box-shadow: 2px 2px 10px $dark;
   }
-
-  .exit{
-    color:  #f44336;
-  }
-
+  @include removeRedColor;
 }
-
-
-
 

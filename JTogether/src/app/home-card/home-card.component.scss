@@ -1,31 +1,18 @@
 @import "../../styles";
+@import "../../card-mixin.scss";
 
-mat-card-content{
-  margin: 0;
-  ul{
-    margin-left: 2%;
-    padding: 0;
-    li{
-      &:not(:first-child){
-        margin: 10px 0;
-      }
-      display: flex;
-      align-items: center;
 
-      mat-icon{
-        color: $primary;
-      }
-      span{
-        margin-left: 5%;
-      }
-    }
-  }
-  p{
-    text-align: justify;
-  }
-}
+@include cardHeader;
+@include cardContent;
+
 
 mat-card-actions{
   text-align: center;
+
+  button {
+    width: 95%;
+    margin: 2%;
+    box-shadow: 2px 2px 10px $dark;
+  }
 }
 
