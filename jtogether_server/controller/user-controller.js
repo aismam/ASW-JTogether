@@ -10,7 +10,7 @@ const sendMessage = require('./controller-util')
 
 const USER_DELETED_MESSAGE = 'Utente cancellato con successo'
 
-router.post('/update-user',jwt.authenticateJWT,authValidator.userSignupValidationRules,validator,updateUser)
+router.post('/update-user',jwt.authenticateJWT,authValidator.updateUserValidationRules,validator,updateUser)
 router.post('/delete-user',jwt.authenticateJWT,authValidator.tokenValidationRules,validator,deleteUser)
 router.post('/clear-notifications',jwt.authenticateJWT,clearNotifications)
 router.post('/forgotten-password', forgottenPassword)

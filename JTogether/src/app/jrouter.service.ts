@@ -1,12 +1,13 @@
-import {Router} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
 
 const LOGIN = '/login';
 const HOME = '/home';
 const SIGNUP = '/signup';
 const PROFILE = '/profile';
 const MODIFY_PROFILE = '/modify-profile';
-const MODIFY_ACTIVITY = '/modify-activity';
+const MODIFY_ACTIVITY = '/modify-activity/';
 const CREATE_ACTIVITY = '/create-activity';
 const PARTICIPATED_ACTIVITIES = '/participated-activity';
 const NOTIFICATIONS = '/notifications';
@@ -17,7 +18,8 @@ const ACTIVITY_CHAT = '/chat/';
   providedIn: 'root'
 })
 export class JRouter {
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute) {}
 
   public goLogin(): void{
     this.router.navigate([LOGIN]);
@@ -37,8 +39,8 @@ export class JRouter {
   public goModifyProfile(): void{
     this.router.navigate([MODIFY_PROFILE]);
   }
-  public goModifyActivity(): void{
-    this.router.navigate([MODIFY_ACTIVITY]);
+  public goModifyActivity(activityId: string): void{
+    this.router.navigate([MODIFY_ACTIVITY, activityId]);
   }
   public goCreateActivity(): void{
     this.router.navigate([CREATE_ACTIVITY]);

@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'navbar', component: NavbarComponent},
   { path: 'profile', component: ProfileComponent},
-  { path: 'modify-activity', component: ModifyActivityComponent},
+  { path: 'modify-activity/:id', component: ModifyActivityComponent},
   { path: 'modify-profile', component: ModifyProfileComponent},
   { path: 'notifications', component: NotificationsComponent},
   { path: 'settings', component: SettingsComponent},

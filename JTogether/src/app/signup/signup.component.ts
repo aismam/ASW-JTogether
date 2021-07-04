@@ -13,9 +13,9 @@ const SUCCESSFUL_REGISTRATION = 'Registrazione avvenuta con successo!';
 })
 export class SignupComponent implements OnInit {
 
-  username = undefined;
-  email = undefined;
-  password = undefined;
+  username = 'ismo';
+  email = 'sas@gmail.com';
+  password = 'Sasso.1997';
   hide = true;
 
   constructor(

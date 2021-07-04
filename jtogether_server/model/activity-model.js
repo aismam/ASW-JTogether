@@ -39,6 +39,10 @@ async function modifyActivity(activityParams,{username}){
     return activityApi.modifyActivity(activityParams)
 }
 
+async function changeUsername(activityId,oldUsername,newUsername){
+    return activityApi.changeUsername(activityId,oldUsername,newUsername)
+}
+
 async function deleteActivity({activity_id},{username}){
     await checkUserAndActivity(activity_id,username)
     return activityApi.deleteActivity(activity_id)

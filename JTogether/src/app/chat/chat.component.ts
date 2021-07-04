@@ -1,8 +1,9 @@
-import {Component, ElementRef, HostListener, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {ChatService} from '../chat.service';
 import {ActivatedRoute} from '@angular/router';
 import {TokensManagerService} from '../tokens-manager.service';
 import {DataService} from '../data.service';
+import {JRouter} from '../jrouter.service';
 
 @Component({
   selector: 'app-chat',
@@ -16,12 +17,13 @@ export class ChatComponent implements OnInit{
   private sub: any;
 
   constructor(private chatService: ChatService,
-              private route: ActivatedRoute,
+              private route: JRouter,
               private tokensManagerService: TokensManagerService,
-              private dataService: DataService) {}
+              private dataService: DataService,
+              private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(r => this.startChatting(r.id));
+    this.activatedRoute.params.subscribe(r => this.startChatting(r.id));
   }
 
   sendMessage(): void{

@@ -27,16 +27,14 @@ export class LoginComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-    console.log(this.tokensManagerService.getRefreshToken());
-    if (this.tokensManagerService.getRefreshToken()) {
+    /*if (this.tokensManagerService.getRefreshToken()) {
       this.dataService.loginToken(this.tokensManagerService.getRefreshToken() as string)
         .then(u => this.finalizeLogin(u))
         .catch(_ => this.tokensManagerService.unsetRefreshToken());
-    }
+    }*/
   }
 
   forgottenPassword(): void {
-    console.log('ciao');
     this.router.goForgottenPassword();
   }
 
@@ -56,7 +54,6 @@ export class LoginComponent implements OnInit{
     this.tokensManagerService.setRefreshToken(user.refresh_token);
     this.localStorage.setPicProfile(user.profilePic);
     this.localStorage.setUsername(user.username);
-    // console.log(user.profilePic);
     this.router.goHome();
   }
 

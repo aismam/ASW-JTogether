@@ -43,8 +43,8 @@ export class ProfileCardComponent implements OnInit {
   }
 
   modifyActivity(): void {
-    this.localStorage.setActivityID(this.id as string);
-    this.route.goModifyActivity();
+    console.log(this.id as string);
+    this.route.goModifyActivity(this.id as string);
   }
 
   flipCard(): void {

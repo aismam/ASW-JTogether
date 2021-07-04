@@ -36,7 +36,6 @@ async function getUserFromEmail(email){
 }
 
 async function updateUser(username, userParams){
-    console.log(userParams)
     return User.findOneAndUpdate({username:username},userParams).exec()
 }
 /* Activities */

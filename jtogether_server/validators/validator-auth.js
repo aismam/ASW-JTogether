@@ -8,11 +8,7 @@ const userLoginValidationRules = [
     check('username','Inserire username o email per accedere').notEmpty(),
     check('password','Inserire la password').notEmpty()
 ]
-
-const userSignupValidationRules = [
-    check('username',`L'username deve contenere almeno ${USERNAME_LENGTH} caratteri`)
-        .isLength({ min : USERNAME_LENGTH}),
-
+const updateUserValidationRules = [
     check('email',`Inserisci una mail valida`)
         .isEmail()
         .normalizeEmail(),
@@ -23,11 +19,18 @@ const userSignupValidationRules = [
         .withMessage("La password deve contenere almeno una maiuscola, un carattere speciale e un numero")
 ]
 
+const userSignupValidationRules = [
+    ...updateUserValidationRules,
+    check('username',`L'username deve contenere almeno ${USERNAME_LENGTH} caratteri`)
+        .isLength({ min : USERNAME_LENGTH})
+]
+
 const tokenValidationRules = [
     check('refresh_token','Inserire il refresh token').notEmpty()
 ]
 
 module.exports = {
+    updateUserValidationRules,
     tokenValidationRules,
     userSignupValidationRules,
     userLoginValidationRules
