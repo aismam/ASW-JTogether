@@ -6,10 +6,7 @@ main {
 
   @include main-content;
   @include form-content;
-
-  .form-area .time::-webkit-calendar-picker-indicator {
-    background: none;
-  }
+  @include removeTime;
 }
 
 

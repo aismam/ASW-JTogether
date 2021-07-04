@@ -26,6 +26,13 @@
   padding-bottom: 10px;
 }
 
+// rimuovere il simbolo dell' orologio dagli input
+@mixin removeTime{
+  .time::-webkit-calendar-picker-indicator {
+    background: none;
+  }
+}
+
 @mixin mobile {
   @media screen and (min-width: 250px) {
     @content;
