@@ -56,7 +56,7 @@ export class ProfileImageService {
   ];
 
   getRandomImage(): string {
-    return this.imageList[Math.floor(Math.random() * 8) + 1];
+    return this.imageList[Math.floor(Math.random() * (this.imageList.length - 1))];
   }
 }
 
