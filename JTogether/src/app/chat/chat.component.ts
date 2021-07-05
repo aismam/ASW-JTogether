@@ -1,9 +1,14 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import {ChatService} from '../chat.service';
 import {ActivatedRoute} from '@angular/router';
 import {TokensManagerService} from '../tokens-manager.service';
 import {DataService} from '../data.service';
 import {JRouter} from '../jrouter.service';
+import {LocalStorageService} from '../local-storage.service';
+import {Message} from '../_Models/Message';
+import {SnackBarService} from '../snack-bar.service';
+
+const ACTIVITY = 0;
 
 @Component({
   selector: 'app-chat',
@@ -11,25 +16,45 @@ import {JRouter} from '../jrouter.service';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit{
-  message = '';
-  messages: string[] = [];
-  username = '';
   private sub: any;
+  private activityId: string | undefined;
+
+  @ViewChild('chat') chatContainer: ElementRef | undefined;
+  scrollHeight = 0;
+  message = '';
+  messages: Message[] = [];
 
   constructor(private chatService: ChatService,
               private route: JRouter,
               private tokensManagerService: TokensManagerService,
               private dataService: DataService,
-              private activatedRoute: ActivatedRoute) {}
+              private snackBar: SnackBarService,
+              private activatedRoute: ActivatedRoute,
+              private localStorage: LocalStorageService) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(r => this.startChatting(r.id));
+    this.tokensManagerService.isLoggedIn(() => {
+      this.activatedRoute.params.subscribe(p => {
+        this.activityId = p.id;
+        this.startChatting(p.id);
+      });
+    });
   }
 
   sendMessage(): void{
     if (this.message.length){
-      this.chatService.sendMessage(this.username + ': ' + this.message);
-      this.message = '';
+      this.tokensManagerService.getAccessToken()
+        .then(t => this.dataService.sendMessage(
+          {
+            username: this.localStorage.getUsername() as string,
+            message: this.message,
+            activity_id: this.activityId
+          }, t))
+        .then(m => {
+          console.log(m);
+          this.message = '';
+        })
+        .catch(e => console.log(e));
     }
   }
 
@@ -40,11 +65,11 @@ export class ChatComponent implements OnInit{
   }
 
   private startChatting(chatId: string): void{
-    this.dataService.loginToken(this.tokensManagerService.getRefreshToken() as string)
-      .then(u => {
-        this.chatService.startChatting(chatId).subscribe(m => this.messages.push(m));
-        this.username = u.username;
-      })
-      .catch(console.log);
+    this.tokensManagerService.getAccessToken()
+      .then(t => this.dataService.getActivities({activities_id: [chatId]}, t))
+      .then(c => this.messages = c[ACTIVITY].chat)
+      .then(_ => this.scrollHeight = this.chatContainer?.nativeElement.scrollHeight)
+      .then(_ => this.chatService.startChatting(chatId).subscribe(m => this.messages.push(JSON.parse(m))))
+      .catch(e => this.snackBar.errorSnack(e));
   }
 }

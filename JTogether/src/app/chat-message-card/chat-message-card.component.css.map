@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"chat-message-card.component.css"}
+{"version":3,"sourceRoot":"","sources":["chat-message-card.component.scss","../../mixins.scss"],"names":[],"mappings":"AAMA;EAaE;EACA;;ACqCA;EDnDF;IAJE,cAMmB;IALnB,eAKmB;;;AC4CnB;ED9CF;IAJE,cASmB;IARnB,eAQmB;;;AC+BnB;EDpCF;IAJE,cAYmB;IAXnB,eAWmB;;;ACiCnB;EDzCF;IAJE,cAemB;IAdnB,eAcmB;;;AAInB;EACE;;AAGF;EAAO;;;AAGT;EACE;;;AAEF;EACE;EACA;EACA","file":"chat-message-card.component.css"}

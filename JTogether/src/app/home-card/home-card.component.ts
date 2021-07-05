@@ -39,6 +39,6 @@ export class HomeCardComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.dateTime = this.utilityService.removeTime(this.dateTime as string);
+    this.dateTime = this.utilityService.formatDateTime(this.dateTime as string);
   }
 }

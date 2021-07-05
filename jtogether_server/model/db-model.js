@@ -1,5 +1,12 @@
 const mongoose = require('mongoose');
 
+
+const messageSchema = mongoose.Schema({
+    _id: false,
+    message: {type: String, required: true},
+    time_stamp: {type: Date, required: true, default: new Date()},
+    username: {type: String, required: true}
+})
 const activitySchema = mongoose.Schema({
     creator_username : { type: String, required : true, index: 'text'},
     name: { type: String, required: true, index: 'text'},
@@ -8,7 +15,8 @@ const activitySchema = mongoose.Schema({
     participants : {type : [String], default: [], required:true },
     location: {type: String, required: true, index: 'text'},
     geolocation: {type: [Number], index: '2dsphere', required: true},
-    profile_pic : {type: String, unique: false, required: true}
+    profile_pic : {type: String, unique: false, required: true},
+    chat: {type: [messageSchema], default: [],required: true}
 })
 activitySchema.set('toJSON', {
     virtuals: true,
@@ -47,6 +55,7 @@ userSchema.set('toJSON', {
 module.exports = {
     User: mongoose.model('User',userSchema),
     Activity : mongoose.model('Activity',activitySchema),
+    Message: mongoose.model('Message',messageSchema)
 }
 
 

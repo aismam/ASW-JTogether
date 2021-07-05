@@ -5,13 +5,15 @@ const {resourceNotFoundHandler,errorHandler} = require('./_helpers/error-handler
 const cors = require('cors')
 const {SocketIoController} = require('./_helpers/socket.io-controller')
 const USER_PATH = '/user'
+const socketController = new SocketIoController(http)
 
 //fillDisagio()
 app.use(express.json())// for json body parse
     .use(cors())
     .use(require('./controller/auth-controller'))
     .use(USER_PATH,require('./controller/user-controller'))
-    .use(USER_PATH,require('./controller/activity-controller')(new SocketIoController(http)))
+    .use(USER_PATH,require('./controller/activity-controller')(socketController))
+    .use(USER_PATH,require('./controller/chat-controller')(socketController))
     .use(errorHandler)
     .use(resourceNotFoundHandler)
 

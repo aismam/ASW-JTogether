@@ -4,7 +4,6 @@ import {JRouter} from '../jrouter.service';
 import {SnackBarService} from '../snack-bar.service';
 import {User} from '../_Models/User';
 import {TokensManagerService} from '../tokens-manager.service';
-import {UserService} from '../user.service';
 import {LocalStorageService} from '../local-storage.service';
 
 @Component({

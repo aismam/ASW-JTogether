@@ -47,8 +47,8 @@ export class DataService {
     return this.doPost<Activity>(this.serverUrl + this.userPath + 'create-activity', activity, accessToken);
   }
 
-  getActivities(body: object, refreshToken: string ): Promise<Activity[]>{
-    return this.doPost<Activity[]>(this.serverUrl + this.userPath + 'get-activities', body, refreshToken);
+  getActivities(body: object, accessToken: string ): Promise<Activity[]>{
+    return this.doPost<Activity[]>(this.serverUrl + this.userPath + 'get-activities', body, accessToken);
   }
 
   loginToken(refreshToken: string): Promise<User> {
@@ -76,6 +76,10 @@ export class DataService {
     return this.doGet<Activity[]>(this.serverUrl + this.userPath + 'search-activities',
       refreshToken,
       new HttpParams().append('text', searchText));
+  }
+
+  sendMessage(body: object, accessToken: string): Promise<string> {
+    return this.doPost<string>(this.serverUrl + this.userPath + 'create-message', body, accessToken);
   }
 
   removeActivity(body: object, refreshToken: string): Promise<string> {

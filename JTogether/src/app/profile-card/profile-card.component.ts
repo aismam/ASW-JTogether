@@ -30,7 +30,7 @@ export class ProfileCardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dateTime = this.utilityService.removeTime(this.dateTime as string);
+    this.dateTime = this.utilityService.formatDateTime(this.dateTime as string);
   }
 
   delete(): void {
@@ -47,6 +47,10 @@ export class ProfileCardComponent implements OnInit {
 
   modifyActivity(): void {
     this.route.goModifyActivity(this.id as string);
+  }
+
+  goToChat(): void {
+    this.route.activityChat(this.id as string);
   }
 
   flipCard(): void {

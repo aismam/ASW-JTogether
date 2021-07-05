@@ -1,3 +1,5 @@
+import {Message} from './Message';
+
 export interface Activity {
   profile_pic: string;
   id: string;
@@ -7,4 +9,5 @@ export interface Activity {
   location: string;
   date_time: string;
   description: string;
+  chat: Message[];
 }

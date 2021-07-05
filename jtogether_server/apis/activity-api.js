@@ -1,4 +1,4 @@
-const {Activity} = require('../_helpers/db')
+const {Activity,Message} = require('../_helpers/db')
 
 const MAX_DISTANCE_METERS = 50_000
 
@@ -11,11 +11,18 @@ module.exports = {
     getActivity,
     getActivities,
     getNearActivities,
-    searchActivities
+    searchActivities,
+    createMessage
 }
 
 async function createActivity(activityParams){
     return new Activity(activityParams).save()
+}
+
+async function createMessage(activityId,message,username){
+    const messageSchema = new Message({message:message, username: username})
+    return Activity.findOneAndUpdate(activityId,{$push: {chat: messageSchema}},{new: true}).exec()
+        .then( _ => messageSchema)
 }
 
 async function getNearActivities(username,longitude,latitude){

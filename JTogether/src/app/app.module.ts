@@ -35,6 +35,9 @@ import { ChatCardComponent } from './chat-card/chat-card.component';
 import { ChatMessageListComponent } from './chat-message-list/chat-message-list.component';
 import { ChatMessageCardComponent } from './chat-message-card/chat-message-card.component';
 import { ForgottenPasswordComponent } from './forgotten-password/forgotten-password.component';
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+
+
 const config: SocketIoConfig = { url: 'http://localhost:3000', options : {}};
 
 @NgModule({
@@ -77,7 +80,10 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options : {}};
         HttpClientModule,
         FormsModule
     ],
-  providers: [],
+  providers: [
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

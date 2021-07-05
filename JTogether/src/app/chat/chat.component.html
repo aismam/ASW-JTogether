@@ -1,8 +1,10 @@
 <app-navbar [title]="'Chat'"></app-navbar>
 
 <main>
-  <ul #scrollMe [scrollTop]="scrollMe.scrollHeight">
-    <li *ngFor="let message of messages ">{{message}}</li>
+  <ul #chat [scrollTop]="chat.scrollHeight">
+    <li *ngFor="let message of messages">
+      <app-chat-message-card [message]="message"></app-chat-message-card>
+    </li>
   </ul>
 
   <mat-form-field appearance="outline">

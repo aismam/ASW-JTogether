@@ -11,7 +11,8 @@ module.exports = {
     modifyActivity,
     getActivities,
     getNearActivities,
-    searchActivities
+    searchActivities,
+    createMessage
 }
 
 async function getNearActivities({username},{latitude,longitude}){
@@ -22,6 +23,10 @@ async function getNearActivities({username},{latitude,longitude}){
 
 async function searchActivities({username},{text}){
     return activityApi.searchActivities(username,text)
+}
+
+async function createMessage({activity_id,message,username}){
+    return activityApi.createMessage(activity_id,message,username)
 }
 
 async function getActivities({activities_id}){

@@ -2,7 +2,7 @@ class SocketIoController {
     _socketToUser = new Map()
     _userToSocket = new Map()
 
-    constructor(http) {
+    constructor(http, writeMessage) {
         this.io = require('socket.io')(http, {
             cors: {
                 origin: "*",
@@ -19,14 +19,12 @@ class SocketIoController {
                 this._userToSocket.delete(this._socketToUser.get(socket))
                 this._socketToUser.delete(socket)
             })
-
             /* messaging */
-            socket.on('join-room',roomId => {
+            /*socket.on('join-room',roomId => {
                 socket.on(roomId,message => {
                     this.io.emit(roomId,message)
                 })
-            })
-
+            })*/
         })
     }
 
@@ -38,6 +36,10 @@ class SocketIoController {
         if(this.userIsOnline(username)){
             this._userToSocket.get(username).emit(username,msg)
         }
+    }
+
+    sendMessage(roomId,message){
+        this.io.emit(roomId,message)
     }
 }
 module.exports = {SocketIoController}

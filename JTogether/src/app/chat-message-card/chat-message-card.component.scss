@@ -1,0 +1,36 @@
+@import "../../mixins";
+@mixin padding($padding){
+  padding-left: $padding;
+  padding-right: $padding;
+}
+
+mat-card{
+  @include large-desktop {
+    @include padding(0.5%);
+  }
+  @include desktop {
+    @include padding(1%);
+  }
+  @include tablet {
+    @include padding(1.5%);
+  }
+  @include small-screen {
+    @include padding(2%);
+  }
+  padding: 3px 3%;
+  width: 50%;
+  p{
+    margin-bottom: 3px;
+  }
+
+  footer{text-align: right};
+}
+
+.username{
+  font-weight: bold;
+}
+.mine{
+  margin-right: 0;
+  margin-left: auto;
+  background-color: #e8f5e9;
+}

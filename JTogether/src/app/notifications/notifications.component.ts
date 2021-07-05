@@ -17,10 +17,12 @@ export class NotificationsComponent implements OnInit {
               private tokenManagerService: TokensManagerService) { }
 
   ngOnInit(): void {
+    this.tokenManagerService.isLoggedIn(() => {
       this.dataService.loginToken(this.tokenManagerService.getRefreshToken() as string)
-      .then(u => this.notifications = u.notifications)
-      .then(() => this.tokenManagerService.getAccessToken())
-      .then(t => this.dataService.clearNotifications(t))
-      .catch(_ => this.router.goHome());
+        .then(u => this.notifications = u.notifications)
+        .then(() => this.tokenManagerService.getAccessToken())
+        .then(t => this.dataService.clearNotifications(t))
+        .catch(_ => this.router.goHome());
+    });
   }
 }

@@ -18,8 +18,7 @@ const ACTIVITY_CHAT = '/chat/';
   providedIn: 'root'
 })
 export class JRouter {
-  constructor(private router: Router,
-              private activatedRoute: ActivatedRoute) {}
+  constructor(private router: Router) {}
 
   public goLogin(): void{
     this.router.navigate([LOGIN]);

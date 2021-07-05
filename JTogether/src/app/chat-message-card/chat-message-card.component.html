@@ -1,6 +1,7 @@
-<mat-card>
-  <mat-card-header>
-    <img mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba2.jpg">
-    <mat-card-title>Ciao fra che combini ?</mat-card-title>
-  </mat-card-header>
+<mat-card [ngClass]="cardClass">
+  <mat-card-content>
+    <p class="username">{{message?.username}}</p>
+    <p>{{message?.message}}</p>
+    <footer>{{date}}</footer>
+  </mat-card-content>
 </mat-card>

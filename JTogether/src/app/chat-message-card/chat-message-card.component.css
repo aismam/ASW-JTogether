@@ -1,3 +1,46 @@
+mat-card {
+  padding: 3px 3%;
+  width: 50%;
+}
+@media screen and (min-width: 1200px) {
+  mat-card {
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  mat-card {
+    padding-left: 1%;
+    padding-right: 1%;
+  }
+}
+@media screen and (min-width: 480px) {
+  mat-card {
+    padding-left: 1.5%;
+    padding-right: 1.5%;
+  }
+}
+@media screen and (min-width: 768px) {
+  mat-card {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+}
+mat-card p {
+  margin-bottom: 3px;
+}
+mat-card footer {
+  text-align: right;
+}
 
+.username {
+  font-weight: bold;
+}
+
+.mine {
+  margin-right: 0;
+  margin-left: auto;
+  background-color: #e8f5e9;
+}
 
 /*# sourceMappingURL=chat-message-card.component.css.map */
