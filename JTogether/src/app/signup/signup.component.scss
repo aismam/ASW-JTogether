@@ -11,4 +11,44 @@ main {
     margin-bottom: 4%;
   }
 
+  mat-expansion-panel {
+    background-color: $secondary;
+    margin-bottom: 2%;
+  }
+
 }
+
+// MAT-SELECT
+/* .imagelist {
+  //background-color: red; //debug
+  margin-bottom: 1%;
+  &:not(:last-child){
+    margin-top: 1%;
+  }
+  .img {
+    border-radius: 50%;
+    width: 8%;
+    height: 8%;
+    display: block;
+    margin-right: auto;
+  }
+} */
+
+
+.imgaccordion{
+  border-radius: 50%;
+  width: 8%;
+  height: 8%;
+  display: block;
+  margin-right: auto;
+}
+
+.expansion-content {
+  margin-bottom: 1%;
+  &:not(:last-child){
+    margin-top: 1%;
+  }
+  @include flexRow;
+}
+
+

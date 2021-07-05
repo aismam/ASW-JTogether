@@ -27,6 +27,32 @@
           </button>
         </mat-form-field>
       </p>
+
+
+      <p>
+
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true"
+                               (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>Immagine di profilo</mat-panel-title>
+              <mat-panel-description>Scegli tra le immagini elencate</mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="expansion-content" *ngFor="let image of lis">
+      <img class="imgaccordion" mat-card-avatar src="{{image[0]}}" alt="{{image}}" (click)="selectImage(image[0])">
+      <span>{{image[1]}}</span>
+    </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <!--<mat-form-field appearance="fill">
+          <mat-label>Scegli l'immagine di profilo</mat-label>
+          <mat-select>
+              <mat-option value="option1" class="imagelist" *ngFor="let image of imageList">
+                <img class="img" mat-card-avatar src="{{image}}" alt="{{image}}" (click)="selectImage(image)">
+              </mat-option>
+          </mat-select>
+        </mat-form-field> -->
+      </p>
       <p>
         <button mat-raised-button (click)="signup($event)">Crea profilo</button>
         <button mat-raised-button (click)="goLogin($event)">Effettua login</button>

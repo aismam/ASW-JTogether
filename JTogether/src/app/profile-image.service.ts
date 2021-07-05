@@ -55,8 +55,5 @@ export class ProfileImageService {
     'https://image.flaticon.com/icons/png/512/1019/1019128.png',
   ];
 
-  getRandomImage(): string {
-    return this.imageList[Math.floor(Math.random() * (this.imageList.length - 1))];
-  }
 }
 

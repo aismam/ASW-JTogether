@@ -47,5 +47,42 @@ main form p mat-form-field {
 main button {
   margin-bottom: 4%;
 }
+main mat-expansion-panel {
+  background-color: #e0e0e0;
+  margin-bottom: 2%;
+}
+
+/* .imagelist {
+  //background-color: red; //debug
+  margin-bottom: 1%;
+  &:not(:last-child){
+    margin-top: 1%;
+  }
+  .img {
+    border-radius: 50%;
+    width: 8%;
+    height: 8%;
+    display: block;
+    margin-right: auto;
+  }
+} */
+.imgaccordion {
+  border-radius: 50%;
+  width: 8%;
+  height: 8%;
+  display: block;
+  margin-right: auto;
+}
+
+.expansion-content {
+  margin-bottom: 1%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-content: center;
+}
+.expansion-content:not(:last-child) {
+  margin-top: 1%;
+}
 
 /*# sourceMappingURL=signup.component.css.map */

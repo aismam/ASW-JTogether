@@ -12,6 +12,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSelectModule} from '@angular/material/select';
 
 const materialComponents = [
   MatBadgeModule,
@@ -26,7 +28,10 @@ const materialComponents = [
   MatListModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatExpansionModule,
+  MatSelectModule,
+  MatGridListModule,
 ];
 
 @NgModule({
