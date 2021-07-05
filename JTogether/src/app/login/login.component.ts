@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit{
 
   private finalizeLogin(user: User): void{
     this.tokensManagerService.setRefreshToken(user.refresh_token);
-    this.localStorage.setPicProfile(user.profilePic);
+    this.localStorage.setPicProfile(user.profile_pic);
     this.localStorage.setUsername(user.username);
     this.router.goHome();
   }

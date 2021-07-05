@@ -31,6 +31,9 @@ const activityCreationRules = [
 
     check('location', 'Inserire un luogo valido')
         .notEmpty(),
+
+    check('profile_pic',`L'immagine non deve essere vuota`)
+        .notEmpty()
 ]
 
 const activityModificationRules = [

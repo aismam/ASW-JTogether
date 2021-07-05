@@ -22,7 +22,9 @@ const updateUserValidationRules = [
 const userSignupValidationRules = [
     ...updateUserValidationRules,
     check('username',`L'username deve contenere almeno ${USERNAME_LENGTH} caratteri`)
-        .isLength({ min : USERNAME_LENGTH})
+        .isLength({ min : USERNAME_LENGTH}),
+    check('profile_pic',`L'immagine non deve essere vuota`)
+        .notEmpty()
 ]
 
 const tokenValidationRules = [

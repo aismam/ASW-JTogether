@@ -7,7 +7,7 @@ const {SocketIoController} = require('./_helpers/socket.io-controller')
 const USER_PATH = '/user'
 const socketController = new SocketIoController(http)
 
-//fillDisagio()
+fillDisagio()
 app.use(express.json())// for json body parse
     .use(cors())
     .use(require('./controller/auth-controller'))
@@ -27,16 +27,126 @@ async function fillDisagio(){
     const authModel = require('./model/auth-model')
     const activityModel = require('./model/activity-model')
     try{
-        await authModel.signup({username: 'ismo',email : 'ciao@gmail.com', password: 'Sasso.1997'})
-        await authModel.signup({username: 'Jotaro',email : 'jotaro.kujo@speedwagon.com', password: 'jojo.1919'})
-        await authModel.signup({username: 'gardo',email : 'bellarega@gmail.com', password: 'ritardato vero'})
+        /* await authModel.signup({username: '',email : '@speedwagon.com', password: 'Sasso.1997', profile_pic: ''})
+        const marco = await activityModel.createActivity({
+            creator_username: '',
+            name: '',
+            description: '',
+            date_time: new Date(),
+            location: 'Forli',
+            latitude: '44.222',
+            longitude: '12.040',
+            profile_pic: 'https://image.flaticon.com/icons/png/512/1176/1176208.png',
+        }, {username: ''})
+        await userModel.createActivity({username: ''}, {activity_id: marco._id}) */
 
-        await userModel.createNotification({username: "ismo"},{activityName: "activity sas", activityOwner: "coglione a caso", message: "sas sei un po' un coglione"})
-        await userModel.createNotification({username: "ismo"},{activityName: "activity sas", activityOwner: "coglione a caso", message: "sas sei un po' un coglione2"})
-        await userModel.createNotification({username: "ismo"},{activityName: "activity sas", activityOwner: "coglione a caso", message: "sas sei un po' un coglione3"})
-        await userModel.createNotification({username: "ismo"},{activityName: "activity sas", activityOwner: "coglione a caso", message: "sas sei un po' un coglione4"})
-        await userModel.createNotification({username: "ismo"},{activityName: "activity sas", activityOwner: "coglione a caso", message: "sas sei un po' un coglione5"})
-        await userModel.createNotification({username: "ismo"},{activityName: "activity sas", activityOwner: "coglione a caso", message: "sas sei un po' un coglione6"})
+        /* await authModel.signup({username: 'Chiara',email : 'chiara@speedwagon.com', password: 'Sasso.1997', profile_pic: 'https://image.flaticon.com/icons/png/512/1176/1176206.png'})
+        const ac1 = await activityModel.createActivity({
+            creator_username: 'Chiara',
+            name: 'Monopoli Africa Gang',
+            description: 'Parleremo di un viaggio infinito, Vlad che non torna, gardo che torna steso e Ismam che torna rotolando. Ne vedremo delle belle amici e amiche. Davie piccolo paccaro bastardo, viva il COMUNISMAM.',
+            date_time: new Date(),
+            location: 'Forli',
+            latitude: '44.222',
+            longitude: '12.040',
+            profile_pic: 'https://image.flaticon.com/icons/png/512/1176/1176206.png',
+        }, {username: 'Chiara'})
+        await userModel.createActivity({username: 'Chiara'}, {activity_id: '60e3176acfe15a26e4580e74'}) */
+
+        /* await authModel.signup({username: 'Vlad',email : 'vlad@speedwagon.com', password: 'Sasso.1997', profile_pic: 'https://image.flaticon.com/icons/png/512/1176/1176207.png'})
+        const vlad = await activityModel.createActivity({
+            creator_username: 'Vlad',
+            name: 'Rimini fa SCHIFO',
+            description: 'In sto posto chiamano crescione cassone, sale il crimine, ma d altronde non puoi dire Rimini se non dici crimini',
+            date_time: new Date(),
+            location: 'Forli',
+            latitude: '44.222',
+            longitude: '12.040',
+            profile_pic: 'https://image.flaticon.com/icons/png/512/1176/1176207.png',
+        }, {username: 'Vlad'})
+        await userModel.createActivity({username: 'Vlad'}, {activity_id: vlad._id}) */
+
+       /*  await authModel.signup({username: 'Marcotto',email : 'marcotto@speedwagon.com', password: 'Sasso.1997', profile_pic: 'https://image.flaticon.com/icons/png/512/1176/1176208.png'})
+        const marco = await activityModel.createActivity({
+            creator_username: 'Marcotto',
+            name: 'Solarolo bois',
+            description: 'Il territorio di Solarolo fu abitato fin dalla preistoria. Nella campagna solarolese è stato rinvenuto un villaggio dell\'Età del Bronzo. Il sito occupava l\'area di sette ettari e fu abitato per un periodo di tempo ragguardevole: quattro secoli, dal 1600 al 1200 a.C. Nel villaggio visse una comunità numerosa, stimata in 400-500 persone, dedite all\'allevamento dei bovini e alla coltivazione dei cereali (frumento, orzo, avena e miglio).',
+            date_time: new Date(),
+            location: 'Forli',
+            latitude: '44.222',
+            longitude: '12.040',
+            profile_pic: 'https://image.flaticon.com/icons/png/512/1176/1176208.png',
+        }, {username: 'Marcotto'})
+        await userModel.createActivity({username: 'Marcotto'}, {activity_id: marco._id})
+        const marco2 = await activityModel.createActivity({
+            creator_username: 'Marcotto',
+            name: 'Castelbolognese Jojo Fight',
+            description: 'Castel Bolognese rappresenta un tipico esempio di centro di fondazione medievale, eretto per consolidare il dominio di una città su un territorio conteso con altre potenze dei dintorni. Nel XIII secolo Bologna era in forte espansione, sia verso Nord che verso Est. ',
+            date_time: new Date(),
+            location: 'Forli',
+            latitude: '44.222',
+            longitude: '12.040',
+            profile_pic: 'https://image.flaticon.com/icons/png/512/1176/1176208.png',
+        }, {username: 'Marcotto'})
+        await userModel.createActivity({username: 'Marcotto'}, {activity_id: marco2._id})
+        const marco3 = await activityModel.createActivity({
+            creator_username: 'Marcotto',
+            name: 'L.U. Steins:GATE',
+            description: 'Le nozioni di tempo e viaggio nel tempo sono i temi principali dell\'uscita. Tuttavia anche il concetto di causa ed effetto ha un posto di rilievo nel corso della storia, in quanto il protagonista viaggia all\'indietro nel tempo numerose volte per eseguire azioni differenti nel tentativo di alterare ciò che è successo nel futuro',
+            date_time: new Date(),
+            location: 'Forli',
+            latitude: '44.222',
+            longitude: '12.040',
+            profile_pic: 'https://image.flaticon.com/icons/png/512/1176/1176208.png',
+        }, {username: 'Marcotto'})
+        await userModel.createActivity({username: 'Marcotto'}, {activity_id: marco3._id})*/
+
+        /*
+        await authModel.signup({username: 'Riccardo',email : 'riccardo@speedwagon.com', password: 'Sasso.1997', profile_pic: 'https://image.flaticon.com/icons/png/512/1018/1018973.png'})
+        const rik = await activityModel.createActivity({
+            creator_username: 'Riccardo',
+            name: 'Io pacco forte',
+            description: 'La scatola è un contenitore di forma generalmente parallelepipeda o cilindrica e munito di coperchio usato per riporre o trasportare materiali solidi di vario genere. L\'atto di riporre qualcosa in una scatola viene detto inscatolamento.',
+            date_time: new Date(),
+            location: 'Forli',
+            latitude: '44.222',
+            longitude: '12.040',
+            profile_pic: 'https://image.flaticon.com/icons/png/512/1018/1018973.png',
+        }, {username: 'Riccardo'})
+        await userModel.createActivity({username: 'Riccardo'}, {activity_id: rik._id})
+        const rik2 = await activityModel.createActivity({
+            creator_username: 'Riccardo',
+            name: 'Sushi',
+            description: 'Il sushi è un insieme di piatti tipici della cucina giapponese a base di riso insieme ad altri ingredienti come pesce, alghe nori o uova. Il ripieno è crudo o in alcune varianti cotto e può essere servito appoggiato sul riso, arrotolato in una striscia di alga, disposto in rotoli di riso o inserito in una piccola tasca di tofu.',
+            date_time: new Date(),
+            location: 'Forli',
+            latitude: '44.222',
+            longitude: '12.040',
+            profile_pic: 'https://image.flaticon.com/icons/png/512/1018/1018973.png',
+        }, {username: 'Riccardo'})
+        await userModel.createActivity({username: 'Riccardo'}, {activity_id: rik2._id})
+        const rik3 = await activityModel.createActivity({
+            creator_username: 'Riccardo',
+            name: 'Turbo TB',
+            description: 'Oltre al ruolo diretto nella produzione del miele, l\'ape è un indicatore biologico della qualità dell\'ambiente e attualmente rappresenta una delle emergenze ecologiche in corso. Il maggior produttore di miele è l\'Argentina che ha ridotto del 27% le sue 75.000 tonnellate annue. In Italia nel 2007 sono morte il 50% delle api, persi 200.000 alveari e 250 milioni di euro nel settore agricolo.',
+            date_time: new Date(),
+            location: 'Forli',
+            latitude: '44.222',
+            longitude: '12.040',
+            profile_pic: 'https://image.flaticon.com/icons/png/512/1018/1018973.png',
+        }, {username: 'Riccardo'})
+        await userModel.createActivity({username: 'Riccardo'}, {activity_id: rik3._id}) */
+
+
+
+
+        /*
+                await userModel.createNotification({username: "ismo"},{activityName: "activity sas", activityOwner: "coglione a caso", message: "sas sei un po' un coglione"})
+                await userModel.createNotification({username: "ismo"},{activityName: "activity sas", activityOwner: "coglione a caso", message: "sas sei un po' un coglione2"})
+                await userModel.createNotification({username: "ismo"},{activityName: "activity sas", activityOwner: "coglione a caso", message: "sas sei un po' un coglione3"})
+                await userModel.createNotification({username: "ismo"},{activityName: "activity sas", activityOwner: "coglione a caso", message: "sas sei un po' un coglione4"})
+                await userModel.createNotification({username: "ismo"},{activityName: "activity sas", activityOwner: "coglione a caso", message: "sas sei un po' un coglione5"})
+                await userModel.createNotification({username: "ismo"},{activityName: "activity sas", activityOwner: "coglione a caso", message: "sas sei un po' un coglione6"})*/
         /*    {name : 'sesso non protetto', description: 'Marco é il nuovo re del server disord, Ismam abdica. Viva la monarchia, morte agli infedeli.', date_time: '2021-05-23 12:45'},{username : 'ismo'})
         await userModel.createActivity({username : 'ismo'},{activity_id: ismoActivity._id})
 

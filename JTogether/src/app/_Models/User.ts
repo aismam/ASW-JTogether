@@ -1,7 +1,7 @@
 import {Notification} from './Notification';
 
 export interface User{
-  profilePic: string;
+  profile_pic: string;
   created_activities: string[];
   participated_activities: string[];
   username: string;

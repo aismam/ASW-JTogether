@@ -41,7 +41,7 @@ const userSchema = mongoose.Schema({
     participated_activities : {type: [String], default: [], required : true},
     hash : {type: String, required: true},
     notifications: {type: [notificationSchema], default: [], required: true},
-    profilePic : {type: String, unique: false, required: true}
+    profile_pic : {type: String, unique: false, required: true}
 })
 
 userSchema.set('toJSON', {

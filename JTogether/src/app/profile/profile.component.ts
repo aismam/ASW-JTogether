@@ -47,7 +47,7 @@ export class ProfileComponent implements OnInit {
         .then( u => {
           this.name = u.username;
           this.email = u.email;
-          this.userProfilePic = u.profilePic;
+          this.userProfilePic = u.profile_pic;
         })
         .catch(e => this.snackBar.errorSnack(e.error.message));
       this.check = false;
