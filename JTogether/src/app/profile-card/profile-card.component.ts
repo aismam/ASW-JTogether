@@ -2,8 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {JRouter} from '../jrouter.service';
 import {SnackBarService} from '../snack-bar.service';
 import {DataService} from '../data.service';
-import {LocalStorageService} from '../local-storage.service';
 import {UtilityService} from '../utility.service';
+import {TokensManagerService} from '../tokens-manager.service';
 
 @Component({
   selector: 'app-profile-card',
@@ -20,12 +20,13 @@ export class ProfileCardComponent implements OnInit {
   @Input() description: string | undefined;
   @Input() id: string | undefined;
   cardSide = false;
+  isVisible = true;
 
   constructor(
     private route: JRouter,
     private dataService: DataService,
     private snackBar: SnackBarService,
-    private localStorage: LocalStorageService,
+    private tokenManagerService: TokensManagerService,
     private utilityService: UtilityService,
   ) { }
 
@@ -34,13 +35,11 @@ export class ProfileCardComponent implements OnInit {
   }
 
   delete(): void {
-    // TODO potresti fare un dialog
-    this.dataService.removeActivity(
-      { activity_id: this.id},
-      this.localStorage.getRefreshToken() as string)
-      .then( () => {
+    this.tokenManagerService.getAccessToken()
+      .then(t => this.dataService.removeActivity({ activity_id: this.id}, t))
+      .then(_ => {
         this.snackBar.normalSnack('L\'attività è stata eliminata!');
-        window.location.reload(); // Aggiorna la pagina, cosi vedi il cambiamento
+        this.isVisible = false;
       })
       .catch( e => this.snackBar.errorSnack(e.message));
   }

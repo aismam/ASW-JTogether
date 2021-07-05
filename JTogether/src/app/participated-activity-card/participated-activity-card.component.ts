@@ -2,9 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {JRouter} from '../jrouter.service';
 import {DataService} from '../data.service';
 import {SnackBarService} from '../snack-bar.service';
-import {LocalStorageService} from '../local-storage.service';
 import {TokensManagerService} from '../tokens-manager.service';
-import {reflectObjectLiteral} from '@angular/compiler-cli/src/ngtsc/reflection';
 import {UtilityService} from '../utility.service';
 
 @Component({
@@ -21,6 +19,7 @@ export class ParticipatedActivityCardComponent implements OnInit {
   @Input() dateTime: string | undefined;
   @Input() description: string | undefined;
   @Input() id: string | undefined;
+  isVisible = true;
 
   constructor(
     private route: JRouter,
@@ -39,6 +38,9 @@ export class ParticipatedActivityCardComponent implements OnInit {
   }
 
   removeParticipation(): void{
-
+    this.tokensManagerService.getAccessToken()
+      .then(t => this.dataService.deleteParticipation({activity_id: this.id as string}, t))
+      .then(_ => this.isVisible = false)
+      .catch(e => this.snackBar.errorSnack(e));
   }
 }

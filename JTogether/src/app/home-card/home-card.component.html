@@ -1,4 +1,4 @@
-<mat-card [hidden]="isHidden" class="example-card">
+<mat-card *ngIf="isVisible" class="example-card">
   <mat-card-header>
     <img mat-card-avatar src="{{imageUrl}}">
     <mat-card-title>{{name}}</mat-card-title>
@@ -6,8 +6,9 @@
   </mat-card-header>
   <mat-card-content>
     <ul>
-      <li><mat-icon>location_on</mat-icon> <span><!--{{place}}-->Giovanni</span></li>
-      <li><mat-icon>watch_later</mat-icon> <span>{{dateTime}}</span></li>
+      <li><mat-icon>location_on</mat-icon><span>{{location}}</span></li>
+      <li *ngIf="distanceInMeters"><mat-icon>straighten</mat-icon><span>{{distanceInMeters}}m</span></li>
+      <li><mat-icon>watch_later</mat-icon><span>{{dateTime}}</span></li>
     </ul>
   </mat-card-content>
   <mat-card-content>

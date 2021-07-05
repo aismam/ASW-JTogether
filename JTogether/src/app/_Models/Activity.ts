@@ -1,4 +1,5 @@
 import {Message} from './Message';
+import {Geolocation} from './Geolocation';
 
 export interface Activity {
   profile_pic: string;
@@ -9,5 +10,6 @@ export interface Activity {
   location: string;
   date_time: string;
   description: string;
+  geolocation: Geolocation;
   chat: Message[];
 }

@@ -10,7 +10,9 @@
   <app-card-list>
     <li *ngFor="let activity of activities">
       <app-home-card
+        [geolocation]="activity.geolocation"
         [activityId]="activity.id"
+        [location]="activity.location"
         [name]="activity.name"
         [creator]="activity.creator_username"
         [description]="activity.description"
