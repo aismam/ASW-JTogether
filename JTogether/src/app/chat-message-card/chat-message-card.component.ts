@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Message} from '../_Models/Message';
 import {LocalStorageService} from '../local-storage.service';
-import {UtilityService} from "../utility.service";
+import {UtilityService} from '../utility.service';
 
 const MINE = 'mine';
 const OTHER = 'other';

@@ -19,8 +19,6 @@ export class ChatComponent implements OnInit{
   private sub: any;
   private activityId: string | undefined;
 
-  @ViewChild('chat') chatContainer: ElementRef | undefined;
-  scrollHeight = 0;
   message = '';
   messages: Message[] = [];
 
@@ -68,7 +66,6 @@ export class ChatComponent implements OnInit{
     this.tokensManagerService.getAccessToken()
       .then(t => this.dataService.getActivities({activities_id: [chatId]}, t))
       .then(c => this.messages = c[ACTIVITY].chat)
-      .then(_ => this.scrollHeight = this.chatContainer?.nativeElement.scrollHeight)
       .then(_ => this.chatService.startChatting(chatId).subscribe(m => this.messages.push(JSON.parse(m))))
       .catch(e => this.snackBar.errorSnack(e));
   }
