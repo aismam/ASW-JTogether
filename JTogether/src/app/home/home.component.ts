@@ -7,7 +7,7 @@ import {TokensManagerService} from '../tokens-manager.service';
 import {GeolocationService} from '../geolocation-service';
 import {NotificationsService} from '../notifications.service';
 import {LocalStorageService} from '../local-storage.service';
-import {Geolocation} from "../_Models/Geolocation";
+import {Geolocation} from '../_Models/Geolocation';
 
 const COORDINATES = 0;
 const ACCESS_TOKEN = 1;

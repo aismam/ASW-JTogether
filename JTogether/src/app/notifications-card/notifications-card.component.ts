@@ -10,10 +10,10 @@ export class NotificationsCardComponent implements OnInit{
   @Input() notification: Notification | undefined;
   date: Date | undefined;
 
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit(): void {
     this.date = new Date(this.notification?.date_time as string);
   }
-
 }

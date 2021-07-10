@@ -3,14 +3,15 @@ import {JRouter} from '../jrouter.service';
 import {DataService} from '../data.service';
 import {SnackBarService} from '../snack-bar.service';
 import {LocalStorageService} from '../local-storage.service';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
+import {TokensManagerService} from '../tokens-manager.service';
 
 @Component({
   selector: 'app-modify-activity',
   templateUrl: './modify-activity.component.html',
   styleUrls: ['./modify-activity.component.scss']
 })
-export class ModifyActivityComponent{
+export class ModifyActivityComponent implements OnInit{
 
   name: string | null = null;
   location: string | null = null;
@@ -24,7 +25,8 @@ export class ModifyActivityComponent{
     private dataService: DataService,
     private snackBar: SnackBarService,
     private localStorage: LocalStorageService,
-    private  activatedRoute: ActivatedRoute
+    private  activatedRoute: ActivatedRoute,
+    private tokenManager: TokensManagerService,
   ) { }
 
   onSubmit(value: any): void {
@@ -49,5 +51,9 @@ export class ModifyActivityComponent{
         this.route.goHome();
       })
       .catch(er => this.snackBar.errorSnack(er.error.message));
+  }
+
+  ngOnInit(): void {
+    this.tokenManager.isLoggedIn(() => {});
   }
 }

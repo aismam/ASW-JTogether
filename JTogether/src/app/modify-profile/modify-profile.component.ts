@@ -4,6 +4,7 @@ import {JRouter} from '../jrouter.service';
 import {DataService} from '../data.service';
 import {SnackBarService} from '../snack-bar.service';
 import {LocalStorageService} from '../local-storage.service';
+import {TokensManagerService} from '../tokens-manager.service';
 
 @Component({
   selector: 'app-modify-profile',
@@ -21,10 +22,12 @@ export class ModifyProfileComponent implements OnInit {
     private route: JRouter,
     private dataService: DataService,
     private snackBar: SnackBarService,
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService,
+    private tokenManager: TokensManagerService,
   ) { }
 
   ngOnInit(): void {
+    this.tokenManager.isLoggedIn(() => {});
   }
 
   modifyProfile(): void{
