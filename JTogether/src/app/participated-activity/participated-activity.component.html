@@ -1,10 +1,8 @@
 <app-navbar [title]="'Attività partecipate'"></app-navbar>
 
 <main>
-  <!-- <app-card-list>
-    <li *ngFor="let card of cards"><app-participated-activity-card [imageUrl]="'https://material.angular.io/assets/img/examples/shiba2.jpg'"></app-participated-activity-card></li>
-  </app-card-list> -->
   <app-card-list>
+
     <li *ngFor="let card of cards">
       <app-participated-activity-card
         [imageUrl]="card.profile_pic"

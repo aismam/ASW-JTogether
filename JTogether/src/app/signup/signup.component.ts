@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {DataService} from '../data.service';
 import {SnackBarService} from '../snack-bar.service';
 import {JRouter} from '../jrouter.service';
-import {ProfileImageService} from '../profile-image.service';
 
 const SUCCESSFUL_REGISTRATION = 'Registrazione avvenuta con successo!';
 
@@ -46,7 +45,6 @@ export class SignupComponent implements OnInit {
     private route: JRouter,
     private dataService: DataService,
     private snackBar: SnackBarService,
-    private profileImageService: ProfileImageService,
   ) { }
 
   ngOnInit(): void {

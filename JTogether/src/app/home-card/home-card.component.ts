@@ -3,10 +3,9 @@ import {DataService} from '../data.service';
 import {Router} from '@angular/router';
 import {TokensManagerService} from '../tokens-manager.service';
 import {SnackBarService} from '../snack-bar.service';
-import {ProfileImageService} from '../profile-image.service';
 import {UtilityService} from '../utility.service';
-import {GeolocationService} from "../geolocation-service";
-import {Geolocation} from "../_Models/Geolocation";
+import {GeolocationService} from '../geolocation-service';
+import {Geolocation} from '../_Models/Geolocation';
 
 @Component({
   selector: 'app-home-card',
@@ -30,7 +29,6 @@ export class HomeCardComponent implements OnInit{
     private snackBar: SnackBarService,
     private dataService: DataService,
     private tokenService: TokensManagerService,
-    private profileImage: ProfileImageService,
     private geolocationService: GeolocationService,
     private utilityService: UtilityService) { }
 
