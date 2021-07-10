@@ -41,6 +41,7 @@ export class ModifyActivityComponent{
         name : this.name,
         description : this.description,
         location : this.location,
+        profile_pic : this.localStorage.getPicProfile(),
         date_time : this.date.toISOString().split('T')[0] + ' ' + value.time},
       this.localStorage.getRefreshToken() as string)
       .then(() => {

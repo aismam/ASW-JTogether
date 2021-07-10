@@ -63,7 +63,7 @@ export class SignupComponent implements OnInit {
       username : this.username,
       email : this.email,
       password : this.password,
-      profilePic : this.profilePic})
+      profile_pic : this.profilePic})
       .then(_ => {
         this.snackBar.normalSnack(SUCCESSFUL_REGISTRATION);
         this.route.goLogin();

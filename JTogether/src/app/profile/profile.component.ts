@@ -4,6 +4,7 @@ import {DataService} from '../data.service';
 import {JRouter} from '../jrouter.service';
 import {SnackBarService} from '../snack-bar.service';
 import {LocalStorageService} from '../local-storage.service';
+import {TokensManagerService} from '../tokens-manager.service';
 
 @Component({
   selector: 'app-profile',
@@ -24,20 +25,24 @@ export class ProfileComponent implements OnInit {
     private route: JRouter,
     private dataService: DataService,
     private snackBar: SnackBarService,
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService,
+    private tokenManager: TokensManagerService,
   ) { this.check = true; }
 
   ngOnInit(): void {
-    this.setUserInfo();
+    this.tokenManager.isLoggedIn(() => {
+      this.setUserInfo();
+      this.activityFiller();
+    });
+  }
+
+  private activityFiller(): void {
     this.dataService.loginToken(this.localStorage.getRefreshToken() as string)
       .then(u => this.createdActivities = u.created_activities)
-      .then(() => this.dataService.getActivities(
-        { activities_id : this.createdActivities },
-        this.localStorage.getRefreshToken() as string))
-      .then( as => {
-        this.cards = as;
-        console.log(as);
-      })
+      .then(_ => this.tokenManager.getAccessToken())
+      .then(t => this.dataService.getActivities(
+        { activities_id : this.createdActivities }, t))
+      .then( as => this.cards = as)
       .catch(er => this.snackBar.errorSnack(er.error.message, 'Chiudi'));
   }
 
