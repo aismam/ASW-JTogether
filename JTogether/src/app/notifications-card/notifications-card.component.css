@@ -62,6 +62,10 @@ simple-snack-bar .mat-simple-snackbar-action {
   width: 90%;
 }
 
+mat-card {
+  height: 94%;
+}
+
 mat-card-content {
   margin: 0;
 }

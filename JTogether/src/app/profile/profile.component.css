@@ -62,6 +62,10 @@ simple-snack-bar .mat-simple-snackbar-action {
   width: 90%;
 }
 
+mat-card {
+  height: 94%;
+}
+
 main, .profPic, .profNameEmail, button {
   display: flex;
   flex-direction: column;
