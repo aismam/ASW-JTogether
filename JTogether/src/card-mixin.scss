@@ -42,3 +42,10 @@
     background-color: $red;
   }
 }
+
+@mixin actionButtons{
+  position: absolute;
+  width: 94%;
+  bottom: 10px;
+  transform: translateY(-10%);
+}

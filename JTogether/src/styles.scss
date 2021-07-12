@@ -28,7 +28,6 @@ a{
 }
 
 /* Snackbars */
-
 simple-snack-bar {
   color: $tertiary;
   .mat-simple-snackbar-action {
@@ -63,6 +62,13 @@ simple-snack-bar {
   width: 90%;
 }
 
+/* CARDS */
 mat-card {
   height: 94%;
 }
+
+mat-card-content:not(:first-of-type) {
+  margin-bottom: 60px;
+}
+
+

@@ -62,8 +62,13 @@ simple-snack-bar .mat-simple-snackbar-action {
   width: 90%;
 }
 
+/* CARDS */
 mat-card {
   height: 94%;
+}
+
+mat-card-content:not(:first-of-type) {
+  margin-bottom: 60px;
 }
 
 mat-card-content {

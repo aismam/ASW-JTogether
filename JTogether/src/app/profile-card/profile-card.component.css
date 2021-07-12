@@ -62,8 +62,13 @@ simple-snack-bar .mat-simple-snackbar-action {
   width: 90%;
 }
 
+/* CARDS */
 mat-card {
   height: 94%;
+}
+
+mat-card-content:not(:first-of-type) {
+  margin-bottom: 60px;
 }
 
 mat-card-header {
@@ -103,6 +108,13 @@ mat-card-actions {
   justify-content: space-between;
   flex-wrap: wrap;
   align-content: center;
+  position: absolute;
+  width: 94%;
+  bottom: 10px;
+  transform: translateY(-10%);
+}
+mat-card-actions .remove {
+  background-color: #f44336;
 }
 mat-card-actions #f {
   margin: 2%;
@@ -115,9 +127,6 @@ mat-card-actions button {
   width: 29%;
   margin: 2%;
   box-shadow: 2px 2px 10px #333333;
-}
-mat-card-actions .remove {
-  background-color: #f44336;
 }
 
 /*# sourceMappingURL=profile-card.component.css.map */

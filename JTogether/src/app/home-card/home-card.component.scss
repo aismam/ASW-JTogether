@@ -5,15 +5,14 @@
 @include cardHeader;
 @include cardContent;
 
-
 mat-card-actions{
   text-align: center;
+  @include actionButtons;
 
   button {
     width: 95%;
     margin: 2%;
     box-shadow: 2px 2px 10px $dark;
-
-    align-items: flex-end;
   }
 }
+

@@ -7,6 +7,10 @@
 
 mat-card-actions {
   @include flexRow;
+  @include removeRedColor;
+  @include actionButtons;
+
+
   #f {
     margin: 2%;
     @include flexCol;
@@ -16,7 +20,5 @@ mat-card-actions {
     margin: 2%;
     box-shadow: 2px 2px 10px $dark;
   }
-
-  @include removeRedColor;
 }
 
