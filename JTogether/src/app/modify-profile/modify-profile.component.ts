@@ -31,7 +31,6 @@ export class ModifyProfileComponent implements OnInit {
   }
 
   modifyProfile(): void{
-    console.log('mess: ' + this.username + ' ' + this.email + ' ' + this.password);
     this.dataService.modifyProfile(
       { username : this.username, password : this.password, email : this.email},
       this.localStorage.getRefreshToken() as string)

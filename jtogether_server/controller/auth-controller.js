@@ -11,7 +11,7 @@ const LOGOUT_SUCCESSFUL_MESSAGE = 'Logout effettuato con successo'
 
 router.post('/login',authValidator.userLoginValidationRules,validator,login)
 router.post('/signup',authValidator.userSignupValidationRules,validator,signup)
-router.post('/logout',jwt.authenticateJWT,logout)
+router.post('/logout',jwt.authenticateJWT,authValidator.tokenValidationRules,validator,logout)
 router.get('/access-token',authValidator.tokenValidationRules,validator,jwt.refreshToken)
 router.get('/login-token',authValidator.tokenValidationRules,validator,logToken)
 

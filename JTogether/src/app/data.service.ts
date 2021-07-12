@@ -39,6 +39,10 @@ export class DataService {
     return this.doPost<User>(this.serverUrl + 'login/', user);
   }
 
+  logout(refreshToken: object, accessToken: string): Promise<string> {
+    return this.doPost<string>(this.serverUrl + 'logout/', refreshToken, accessToken);
+  }
+
   signup(user: object): Promise<User>{
     return this.doPost<User>(this.serverUrl + 'signup/', user);
   }
