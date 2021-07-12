@@ -25,7 +25,7 @@ async function searchActivities({username},{text}){
     return activityApi.searchActivities(username,text)
 }
 
-async function createMessage({activity_id,message,username}){
+async function createMessage({username},{activity_id,message}){
     return activityApi.createMessage(activity_id,message,username)
 }
 

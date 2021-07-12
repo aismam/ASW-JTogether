@@ -44,14 +44,10 @@ export class ChatComponent implements OnInit{
       this.tokensManagerService.getAccessToken()
         .then(t => this.dataService.sendMessage(
           {
-            username: this.localStorage.getUsername() as string,
             message: this.message,
             activity_id: this.activityId
           }, t))
-        .then(m => {
-          console.log(m);
-          this.message = '';
-        })
+        .then(_ => this.message = '')
         .catch(e => console.log(e));
     }
   }
@@ -66,6 +62,7 @@ export class ChatComponent implements OnInit{
     this.tokensManagerService.getAccessToken()
       .then(t => this.dataService.getActivities({activities_id: [chatId]}, t))
       .then(c => this.messages = c[ACTIVITY].chat)
+      .then(_ => console.log(this.messages))
       .then(_ => this.chatService.startChatting(chatId).subscribe(m => this.messages.push(JSON.parse(m))))
       .catch(e => this.snackBar.errorSnack(e));
   }

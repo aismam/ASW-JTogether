@@ -11,7 +11,7 @@ module.exports = socketController => {
     return router;
 
     async function createMessage(req,res,next){
-        activityModel.createMessage(req.body)
+        activityModel.createMessage(req.user,req.body)
             .then(message => {
                 socketController.sendMessage(req.body.activity_id,JSON.stringify(message.toJSON()))
                 res.json(message.toJSON())

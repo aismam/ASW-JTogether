@@ -30,7 +30,9 @@ export class ParticipatedActivityCardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dateTime = this.utilityService.formatDateTime(this.dateTime as string);
+    this.tokensManagerService.isLoggedIn(() => {
+      this.dateTime = this.utilityService.formatDateTime(this.dateTime as string);
+    });
   }
 
   startChatting(): void{

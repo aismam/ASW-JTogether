@@ -51,8 +51,4 @@ export class ProfileCardComponent implements OnInit {
   goToChat(): void {
     this.route.activityChat(this.id as string);
   }
-
-  flipCard(): void {
-    // this.cardSide = !this.cardSide; //TODO decommenta a fine prove
-  }
 }

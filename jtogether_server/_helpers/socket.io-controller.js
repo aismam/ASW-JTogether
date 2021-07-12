@@ -19,12 +19,6 @@ class SocketIoController {
                 this._userToSocket.delete(this._socketToUser.get(socket))
                 this._socketToUser.delete(socket)
             })
-            /* messaging */
-            /*socket.on('join-room',roomId => {
-                socket.on(roomId,message => {
-                    this.io.emit(roomId,message)
-                })
-            })*/
         })
     }
 

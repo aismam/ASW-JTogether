@@ -21,7 +21,7 @@ async function createActivity(activityParams){
 
 async function createMessage(activityId,message,username){
     const messageSchema = new Message({message:message, username: username})
-    return Activity.findOneAndUpdate(activityId,{$push: {chat: messageSchema}},{new: true}).exec()
+    return Activity.findByIdAndUpdate(activityId,{$push: {chat: messageSchema}},{new: true}).exec()
         .then( _ => messageSchema)
 }
 

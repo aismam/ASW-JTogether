@@ -7,7 +7,7 @@ const {SocketIoController} = require('./_helpers/socket.io-controller')
 const USER_PATH = '/user'
 const socketController = new SocketIoController(http)
 
-fillDisagio()
+//fillDisagio()
 app.use(express.json())// for json body parse
     .use(cors())
     .use(require('./controller/auth-controller'))
@@ -27,7 +27,7 @@ async function fillDisagio(){
     const authModel = require('./model/auth-model')
     const activityModel = require('./model/activity-model')
     try{
-        /* await authModel.signup({username: '',email : '@speedwagon.com', password: 'Sasso.1997', profile_pic: ''})
+        /*await authModel.signup({username: '',email : '@speedwagon.com', password: 'Sasso.1997', profile_pic: ''})
         const marco = await activityModel.createActivity({
             creator_username: '',
             name: '',
@@ -38,9 +38,9 @@ async function fillDisagio(){
             longitude: '12.040',
             profile_pic: 'https://image.flaticon.com/icons/png/512/1176/1176208.png',
         }, {username: ''})
-        await userModel.createActivity({username: ''}, {activity_id: marco._id}) */
+        await userModel.createActivity({username: ''}, {activity_id: marco._id})*/
 
-        /* await authModel.signup({username: 'Chiara',email : 'chiara@speedwagon.com', password: 'Sasso.1997', profile_pic: 'https://image.flaticon.com/icons/png/512/1176/1176206.png'})
+        await authModel.signup({username: 'Chiara',email : 'chiara@speedwagon.com', password: 'Sasso.1997', profile_pic: 'https://image.flaticon.com/icons/png/512/1176/1176206.png'})
         const ac1 = await activityModel.createActivity({
             creator_username: 'Chiara',
             name: 'Monopoli Africa Gang',
@@ -51,9 +51,9 @@ async function fillDisagio(){
             longitude: '12.040',
             profile_pic: 'https://image.flaticon.com/icons/png/512/1176/1176206.png',
         }, {username: 'Chiara'})
-        await userModel.createActivity({username: 'Chiara'}, {activity_id: '60e3176acfe15a26e4580e74'}) */
+        await userModel.createActivity({username: 'Chiara'}, {activity_id: '60e3176acfe15a26e4580e74'})
 
-        /* await authModel.signup({username: 'Vlad',email : 'vlad@speedwagon.com', password: 'Sasso.1997', profile_pic: 'https://image.flaticon.com/icons/png/512/1176/1176207.png'})
+        await authModel.signup({username: 'Vlad',email : 'vlad@speedwagon.com', password: 'Sasso.1997', profile_pic: 'https://image.flaticon.com/icons/png/512/1176/1176207.png'})
         const vlad = await activityModel.createActivity({
             creator_username: 'Vlad',
             name: 'Rimini fa SCHIFO',
@@ -64,9 +64,9 @@ async function fillDisagio(){
             longitude: '12.040',
             profile_pic: 'https://image.flaticon.com/icons/png/512/1176/1176207.png',
         }, {username: 'Vlad'})
-        await userModel.createActivity({username: 'Vlad'}, {activity_id: vlad._id}) */
+        await userModel.createActivity({username: 'Vlad'}, {activity_id: vlad._id})
 
-       /*  await authModel.signup({username: 'Marcotto',email : 'marcotto@speedwagon.com', password: 'Sasso.1997', profile_pic: 'https://image.flaticon.com/icons/png/512/1176/1176208.png'})
+       await authModel.signup({username: 'Marcotto',email : 'marcotto@speedwagon.com', password: 'Sasso.1997', profile_pic: 'https://image.flaticon.com/icons/png/512/1176/1176208.png'})
         const marco = await activityModel.createActivity({
             creator_username: 'Marcotto',
             name: 'Solarolo bois',
@@ -99,7 +99,7 @@ async function fillDisagio(){
             longitude: '12.040',
             profile_pic: 'https://image.flaticon.com/icons/png/512/1176/1176208.png',
         }, {username: 'Marcotto'})
-        await userModel.createActivity({username: 'Marcotto'}, {activity_id: marco3._id})*/
+        await userModel.createActivity({username: 'Marcotto'}, {activity_id: marco3._id})
 
         /*
         await authModel.signup({username: 'Riccardo',email : 'riccardo@speedwagon.com', password: 'Sasso.1997', profile_pic: 'https://image.flaticon.com/icons/png/512/1018/1018973.png'})
