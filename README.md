@@ -1,3 +1,4 @@
 # ASW-JTogether
-Elaborato per il progetto di Applicazioni e Servizi Web
-Il front-end è stato realizzato con Angular ed è contenuto in JTogether, il back-end è stato realizzato utilizzando MongoDB, Express e NodeJS ed è contenuto in jtogether_server
+ASW project, MSc UNIBO.
+Front-end was realized with Angular and it is contained in JTogether, back-end was realized using MongoDB, Express and NodeJS and it is contained in jtogether_server.
+
